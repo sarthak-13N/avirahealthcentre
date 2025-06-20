@@ -3,7 +3,7 @@ name: 🚀 Deploy to Hostinger VPS
 on:
   push:
     branches:
-      - main
+      - main  # Trigger only on push to 'main' branch
 
 jobs:
   deploy:
@@ -20,4 +20,6 @@ jobs:
 
       - name: 🚀 Deploy via rsync
         run: |
+          mkdir -p ~/.ssh
+          echo -e "Host *\n\tStrictHostKeyChecking no\n" > ~/.ssh/config
           rsync -avz --delete ./ root@168.231.123.182:/var/www/myproject/
