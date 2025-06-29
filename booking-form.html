@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Book Appointment – Avira Health Center</title>
+
+  <!-- Fonts & Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <!-- Favicon -->
+  <link rel="icon" href="logo1.ico" type="image/x-icon" />
+  <link rel="apple-touch-icon" href="logo1.ico" />
+
+  <style>
+    * { box-sizing: border-box; }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f9f9f9;
+      margin: 0;
+      padding-top: 100px;
+    }
+
+    /* Navbar styles */
+    nav.navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 15px 40px;
+      background: #fff;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      z-index: 1000;
+    }
+
+    nav .logo img {
+      height: 55px;
+      transition: all 0.3s ease;
+    }
+
+    nav .logo img:hover {
+      transform: scale(1.05);
+    }
+
+    .nav-links {
+      display: flex;
+      list-style: none;
+      gap: 25px;
+      margin: 0;
+      padding: 0;
+    }
+
+    .nav-links li a {
+      text-decoration: none;
+      color: #2c3e50;
+      font-weight: 600;
+      font-size: 1.05rem;
+      position: relative;
+      padding: 5px 0;
+      transition: all 0.3s ease;
+    }
+
+    .nav-links li a::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: #27ae60;
+      transition: all 0.3s ease;
+    }
+
+    .nav-links li a:hover {
+      color: #27ae60;
+    }
+
+    .nav-links li a:hover::after {
+      width: 100%;
+    }
+
+    /* Main layout */
+    .booking-wrapper {
+      display: flex;
+      max-width: 1200px;
+      margin: auto;
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+    }
+
+    .booking-info {
+      flex: 1;
+      background-color: #063855;
+      color: #fff;
+      padding: 40px 30px;
+    }
+
+    .booking-info h2 {
+      font-size: 1.8rem;
+      margin-bottom: 15px;
+    }
+
+    .booking-info p {
+      font-size: 1rem;
+      margin-bottom: 25px;
+      line-height: 1.6;
+    }
+
+    .booking-info ul {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 20px;
+    }
+
+    .booking-info ul li {
+      display: flex;
+      align-items: flex-start;
+      gap: 15px;
+      margin-bottom: 20px;
+    }
+
+    .booking-info ul li i {
+      font-size: 1.5rem;
+      color: #ffcc00;
+      margin-top: 4px;
+    }
+
+    .booking-info ul li h3 {
+      margin: 0 0 5px;
+      font-size: 1rem;
+    }
+
+    .booking-info ul li p {
+      margin: 0;
+      font-size: 0.95rem;
+      color: #dcdcdc;
+    }
+
+    .booking-info .btn-call {
+      display: inline-block;
+      margin-top: 15px;
+      padding: 10px 20px;
+      background: transparent;
+      border: 2px solid #fff;
+      color: #fff;
+      text-decoration: none;
+      font-weight: bold;
+      border-radius: 6px;
+      transition: 0.3s;
+    }
+
+    .booking-info .btn-call:hover {
+      background: #fff;
+      color: #063855;
+    }
+
+    .form-container {
+      flex: 1;
+      padding: 40px;
+      background: #fff;
+    }
+
+    h2 {
+      text-align: center;
+      color: #2c3e50;
+      margin-bottom: 25px;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    label {
+      font-weight: 600;
+    }
+
+    input, select, textarea {
+      padding: 12px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      font-size: 1rem;
+      width: 100%;
+    }
+
+    button {
+      background-color: #27ae60;
+      color: white;
+      padding: 12px;
+      border: none;
+      border-radius: 5px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #219150;
+    }
+
+    .success, .error {
+      font-weight: bold;
+      text-align: center;
+      margin-top: 10px;
+    }
+
+    .success { color: green; }
+    .error { color: red; }
+
+    .loader {
+      text-align: center;
+      font-size: 1rem;
+      color: #7f8c8d;
+      margin-top: 10px;
+    }
+
+    @media (max-width: 991px) {
+      .booking-wrapper {
+        flex-direction: column;
+      }
+
+      .form-container, .booking-info {
+        padding: 25px 20px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav class="navbar">
+    <div class="logo">
+      <a href="index.html"><img src="logo.jpg" alt="Avira Health Centre Logo" /></a>
+    </div>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="index.html#services">Therapies</a></li>
+      <li><a href="index.html#conditions">Health Benefits</a></li>
+      <li><a href="index.html#about">About</a></li>
+      <li><a href="booking-form.html">Book At Home</a></li>
+      <li><a href="index.html#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- WhatsApp Floating Button -->
+<a href="https://wa.me/919545246708" target="_blank"
+   style="
+     position: fixed;
+     bottom: 20px;
+     right: 20px;
+     z-index: 1000;
+     background-color: #25D366;
+     width: 60px;
+     height: 60px;
+     border-radius: 50%;
+     display: flex;
+     align-items: center;
+     justify-content: center;
+     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+     text-decoration: none;
+   ">
+   <i class="fab fa-whatsapp" style="color: white; font-size: 28px;"></i>
+</a>
+
+  <div class="booking-wrapper">
+    <!-- LEFT: Info -->
+    <div class="booking-info">
+      <h2 style="color: #fff;">Book Home Wellness Visit</h2>
+      <p>Complete this form, and our coordinator will contact you within 30 minutes to confirm your appointment.</p>
+
+      <ul>
+        <li>
+          <i class="fas fa-clock"></i>
+          <div>
+            <h3>Service Hours</h3>
+            <p>Mon-Sat: 8:00 AM - 8:00 PM<br>Sun: 9:00 AM - 4:00 PM</p>
+          </div>
+        </li>
+        <li>
+          <i class="fas fa-rupee-sign"></i>
+          <div>
+            <h3>Service Areas</h3>
+            <p>All Pune city areas + 15km radius<br>Additional charges may apply beyond 10km</p>
+          </div>
+        </li>
+        <li>
+          <i class="fas fa-bell"></i>
+          <div>
+            <h3>Same-Day Visits</h3>
+            <p>Emergency appointments available with 2-hour response time</p>
+          </div>
+        </li>
+      </ul>
+
+      <a href="tel:+919545246708" class="btn-call">
+        <i class="fas fa-phone-alt"></i> IMMEDIATE BOOKING
+      </a>
+    </div>
+
+    <!-- RIGHT: Form -->
+    <div class="form-container">
+      <h2>Book an Appointment</h2>
+      <form id="appointmentForm">
+        <label for="name">Full Name *</label>
+        <input type="text" id="name" name="name" required />
+
+        <label for="email">Email *</label>
+        <input type="email" id="email" name="email" required />
+
+        <label for="phone">Phone Number *</label>
+        <input type="tel" id="phone" name="phone" required />
+
+        <label for="services">Therapy *</label>
+        <input type="text" id="service_name" name="services" required />
+        <input type="hidden" id="service_id" name="service_id" />
+
+        <label for="appointment_date">Appointment Date *</label>
+        <input type="date" id="appointment_date" name="appointment_date" required />
+
+        <label for="appointment_time">Appointment Time *</label>
+        <input type="time" id="appointment_time" name="appointment_time" required />
+
+        <label for="payment_status">Payment Status</label>
+        <select id="payment_status" name="payment_status">
+          <option value="unpaid">Unpaid</option>
+          <!-- <option value="paid">Paid</option> -->
+        </select>
+
+        <label for="payment_mode">Payment Mode</label>
+        <select id="payment_mode" name="payment_mode">
+          <option value="">Select</option>
+          <option value="cash">Cash</option>
+          <option value="upi">UPI</option>
+          <option value="card">Card</option>
+        </select>
+
+        <label for="notes">Notes</label>
+        <select id="notes" name="notes">
+          <option value="">Select Note (optional)</option>
+          <option value="New Customer">New Customer</option>
+          <option value="Follow-up">Follow-up</option>
+          <option value="Referred">Referred</option>
+          <option value="Discount Eligible">Discount Eligible</option>
+        </select>
+
+        <label for="message">Message</label>
+        <textarea id="message" name="message" rows="3"></textarea>
+
+        <button type="submit">Book Appointment</button>
+        <div id="statusMsg"></div>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    const serviceNameInput = document.getElementById('service_name');
+const serviceIdInput = document.getElementById('service_id');
+const form = document.getElementById('appointmentForm');
+const statusMsg = document.getElementById('statusMsg');
+const dateInput = document.getElementById('appointment_date');
+const timeInput = document.getElementById('appointment_time');
+const messageBox = document.getElementById('message');
+
+const params = new URLSearchParams(window.location.search);
+const serviceId = params.get('service_id');
+const offerId = params.get('offer_id');
+
+// 🔄 Load either service or offer title
+async function loadTherapyDetails() {
+  try {
+    if (offerId) {
+      const res = await fetch(`http://168.231.123.182:3000/api/admin/offers/${offerId}`);
+      if (!res.ok) throw new Error('Offer not found');
+      const offer = await res.json();
+      serviceNameInput.value = offer.title || 'Offer Therapy';
+      serviceIdInput.value = `OFFER-${offer.offer_id}`;
+    } else if (serviceId) {
+      const res = await fetch(`http://168.231.123.182:3000/api/admin/services/${serviceId}`);
+      if (!res.ok) throw new Error('Therapy not found');
+      const service = await res.json();
+      serviceNameInput.value = service.title || 'Selected Therapy';
+      serviceIdInput.value = service.service_id;
+    } else {
+      serviceNameInput.value = "No therapy selected";
+    }
+  } catch (err) {
+    console.error(err);
+    serviceNameInput.value = "Failed to load therapy";
+  }
+}
+
+// 🧠 Auto-fill message
+function updateMessage() {
+  const service = serviceNameInput.value;
+  const date = dateInput.value;
+  const time = timeInput.value;
+  if (service && date && time) {
+    messageBox.value = `Appointment booked for ${service} on ${date} at ${time}`;
+  }
+}
+
+// 🔁 On page load
+document.addEventListener('DOMContentLoaded', async () => {
+  await loadTherapyDetails();
+
+  // Default next hour time
+  const now = new Date();
+  const nextHour = new Date(now.getTime() + 60 * 60 * 1000);
+  const hours = nextHour.getHours().toString().padStart(2, '0');
+  const minutes = '00';
+  timeInput.value = `${hours}:${minutes}`;
+
+  // Set today's date as min
+  const today = new Date().toISOString().split('T')[0];
+  dateInput.setAttribute('min', today);
+
+  updateMessage();
+});
+
+dateInput.addEventListener('change', updateMessage);
+timeInput.addEventListener('change', updateMessage);
+
+// 📩 Submit form
+form.addEventListener('submit', async (e) => {
+  e.preventDefault();
+  statusMsg.innerHTML = '<div class="loader">Submitting your appointment...</div>';
+
+  const formData = new FormData(form);
+  const data = Object.fromEntries(formData.entries());
+
+  if (!data.appointment_time) {
+    statusMsg.innerHTML = '<div class="error">❌ Please select appointment time.</div>';
+    return;
+  }
+
+  try {
+    const res = await fetch('http://168.231.123.182:3000/api/book-appointment', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data)
+    });
+
+    const result = await res.json();
+
+    if (res.ok) {
+      form.reset();
+      statusMsg.innerHTML = `<div class="success">✅ ${result.msg}</div>`;
+      setTimeout(() => {
+        window.location.href = 'index.html';
+      }, 3000);
+    } else {
+      statusMsg.innerHTML = `<div class="error">❌ ${result.msg}</div>`;
+    }
+  } catch (err) {
+    console.error(err);
+    statusMsg.innerHTML = `<div class="error">❌ Something went wrong. Please try again later.</div>`;
+  }
+});
+
+  </script>
+
+</body>
+</html>

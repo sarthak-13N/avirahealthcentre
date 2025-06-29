@@ -1,0 +1,868 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - Appointments & Enquiries</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #4a6cf7;
+            --primary-dark: #3a5ce4;
+            --primary-light: #eef2ff;
+            --secondary: #6c757d;
+            --success: #28a745;
+            --success-light: #e6f7eb;
+            --danger: #dc3545;
+            --danger-light: #fce8ea;
+            --warning: #ffc107;
+            --warning-light: #fff8e6;
+            --info: #17a2b8;
+            --light: #f8f9fa;
+            --dark: #343a40;
+            --gray: #6c757d;
+            --light-gray: #e9ecef;
+            --lighter-gray: #f5f7fa;
+            --white: #ffffff;
+            --border-radius: 8px;
+            --border-radius-sm: 4px;
+            --box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+            --box-shadow-md: 0 4px 20px rgba(0, 0, 0, 0.12);
+            --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-sans);
+            background-color: var(--lighter-gray);
+            color: var(--dark);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .container {
+            max-width: 1600px;
+            margin: 0 auto;
+            padding: 24px;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 32px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid var(--light-gray);
+        }
+
+        .header-left h1 {
+            font-size: 24px;
+            font-weight: 600;
+            color: var(--dark);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .header-left h1 i {
+            color: var(--primary);
+        }
+
+        .header-right {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .logout-btn {
+            background-color: var(--white);
+            color: var(--danger);
+            border: 1px solid var(--danger-light);
+            padding: 8px 16px;
+            border-radius: var(--border-radius-sm);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: var(--transition);
+            font-weight: 500;
+            font-size: 14px;
+        }
+
+        .logout-btn:hover {
+            background-color: var(--danger-light);
+            box-shadow: 0 2px 6px rgba(220, 53, 69, 0.1);
+        }
+
+        .card {
+            background-color: var(--white);
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            margin-bottom: 32px;
+            overflow: hidden;
+            border: 1px solid var(--light-gray);
+            transition: var(--transition);
+        }
+
+        .card:hover {
+            box-shadow: var(--box-shadow-md);
+        }
+
+        .card-header {
+            padding: 16px 24px;
+            background-color: var(--white);
+            color: var(--dark);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--light-gray);
+        }
+
+        .card-header h2 {
+            font-size: 18px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .card-header h2 i {
+            color: var(--primary);
+        }
+
+        .refresh-btn {
+            background-color: var(--primary-light);
+            color: var(--primary);
+            border: none;
+            padding: 6px 12px;
+            border-radius: var(--border-radius-sm);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            transition: var(--transition);
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .refresh-btn:hover {
+            background-color: var(--primary);
+            color: var(--white);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+        }
+
+        thead {
+            background-color: var(--lighter-gray);
+        }
+
+        th {
+            padding: 16px;
+            text-align: left;
+            font-weight: 600;
+            color: var(--dark);
+            position: sticky;
+            top: 0;
+            background-color: var(--lighter-gray);
+            z-index: 10;
+        }
+
+        td {
+            padding: 14px 16px;
+            text-align: left;
+            border-bottom: 1px solid var(--light-gray);
+            vertical-align: middle;
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        tr:hover {
+            background-color: var(--primary-light);
+        }
+
+        .status {
+            display: inline-flex;
+            align-items: center;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 500;
+            text-transform: capitalize;
+        }
+
+        .status-pending {
+            background-color: var(--warning-light);
+            color: var(--warning);
+        }
+
+        .status-approved {
+            background-color: var(--success-light);
+            color: var(--success);
+        }
+
+        .status-cancelled {
+            background-color: var(--danger-light);
+            color: var(--danger);
+        }
+
+        .action-btn {
+            padding: 6px 12px;
+            border: none;
+            border-radius: var(--border-radius-sm);
+            cursor: pointer;
+            font-weight: 500;
+            font-size: 13px;
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .action-btn + .action-btn {
+            margin-left: 8px;
+        }
+
+        .approve-btn {
+            background-color: var(--success);
+            color: white;
+        }
+
+        .approve-btn:hover {
+            background-color: #218838;
+            box-shadow: 0 2px 6px rgba(40, 167, 69, 0.2);
+        }
+
+        .cancel-btn {
+            background-color: var(--danger);
+            color: white;
+        }
+
+        .cancel-btn:hover {
+            background-color: #c82333;
+            box-shadow: 0 2px 6px rgba(220, 53, 69, 0.2);
+        }
+
+        .no-data {
+            padding: 32px;
+            text-align: center;
+            color: var(--gray);
+            font-size: 15px;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 24px;
+            height: 24px;
+            padding: 0 6px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 600;
+            background-color: var(--primary);
+            color: white;
+            margin-left: 8px;
+        }
+
+        .text-muted {
+            color: var(--gray);
+            font-size: 13px;
+            margin-top: 4px;
+        }
+
+        /* Loading spinner */
+        .spinner {
+            display: inline-block;
+            width: 16px;
+            height: 16px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            border-top-color: var(--white);
+            animation: spin 1s ease-in-out infinite;
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* Toast notification */
+        .toast {
+            position: fixed;
+            top: 24px;
+            right: 24px;
+            padding: 16px 24px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow-md);
+            color: white;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            transform: translateX(150%);
+            transition: transform 0.3s ease;
+            max-width: 400px;
+        }
+
+        .toast.show {
+            transform: translateX(0);
+        }
+
+        .toast-success {
+            background-color: var(--success);
+        }
+
+        .toast-error {
+            background-color: var(--danger);
+        }
+
+        .toast-warning {
+            background-color: var(--warning);
+        }
+
+        .toast-icon {
+            font-size: 20px;
+        }
+
+        .toast-message {
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        /* Responsive styles */
+        @media (max-width: 1200px) {
+            .container {
+                padding: 20px;
+            }
+        }
+
+        @media (max-width: 992px) {
+            .container {
+                padding: 16px;
+            }
+
+            th, td {
+                padding: 12px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            table, thead, tbody, th, td, tr {
+                display: block;
+            }
+
+            thead {
+                display: none;
+            }
+
+            tr {
+                margin-bottom: 16px;
+                border: 1px solid var(--light-gray);
+                border-radius: var(--border-radius);
+                padding: 12px;
+                position: relative;
+            }
+
+            td {
+                padding: 8px 8px 8px 50%;
+                text-align: right;
+                position: relative;
+                border-bottom: 1px solid var(--light-gray);
+            }
+
+            td:last-child {
+                border-bottom: none;
+            }
+
+            td::before {
+                content: attr(data-label);
+                position: absolute;
+                left: 16px;
+                top: 8px;
+                font-weight: 600;
+                color: var(--dark);
+                font-size: 13px;
+            }
+
+            .action-btns {
+                display: flex;
+                justify-content: flex-end;
+            }
+        }
+
+        @media (max-width: 576px) {
+            td {
+                padding-left: 40%;
+            }
+
+            .header-left h1 {
+                font-size: 20px;
+            }
+
+            .logout-btn {
+                padding: 6px 12px;
+                font-size: 13px;
+            }
+
+            .card-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 12px;
+            }
+
+            .refresh-btn {
+                align-self: flex-end;
+            }
+        }
+
+        /* Additional professional touches */
+        .card-body {
+            overflow-x: auto;
+        }
+
+        .table-container {
+            min-width: 100%;
+            width: max-content;
+        }
+
+        .text-ellipsis {
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            max-width: 200px;
+            display: inline-block;
+        }
+
+        /* Payment status indicators */
+        .payment-paid {
+            color: var(--success);
+            font-weight: 500;
+        }
+
+        .payment-pending {
+            color: var(--warning);
+            font-weight: 500;
+        }
+
+        .payment-failed {
+            color: var(--danger);
+            font-weight: 500;
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <div class="header-left">
+                <h1><i class="fas fa-tachometer-alt"></i> Admin Dashboard</h1>
+            </div>
+            <div class="header-right">
+                <button class="logout-btn" onclick="logout()">
+                    <i class="fas fa-sign-out-alt"></i> Logout
+                </button>
+            </div>
+        </header>
+
+        <div class="card">
+            <div class="card-header">
+                <h2><i class="far fa-calendar-alt"></i> Appointments <span class="badge" id="appointmentsCount">0</span></h2>
+                <button class="refresh-btn" onclick="fetchAppointments()">
+                    <i class="fas fa-sync-alt"></i> Refresh
+                </button>
+            </div>
+            <div class="card-body">
+                <div class="table-container">
+                    <table id="appointmentsTable">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>User</th>
+                                <th>Contact</th>
+                                <th>Service</th>
+                                <th>Date & Time</th>
+                                <th>Payment</th>
+                                <th>Mode</th>
+                                <th>Notes</th>
+                                <th>Created</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td colspan="11" class="no-data">Loading appointments...</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <h2><i class="far fa-envelope"></i> Enquiries <span class="badge" id="enquiriesCount">0</span></h2>
+                <button class="refresh-btn" onclick="fetchEnquiries()">
+                    <i class="fas fa-sync-alt"></i> Refresh
+                </button>
+            </div>
+            <div class="card-body">
+                <div class="table-container">
+                    <table id="enquiriesTable">
+                        <thead>
+                            <tr>
+                                <th>User</th>
+                                <th>Contact</th>
+                                <th>Message</th>
+                                <th>Received</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td colspan="4" class="no-data">Loading enquiries...</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="toast" class="toast">
+        <i class="fas fa-check-circle toast-icon"></i>
+        <div class="toast-message"></div>
+    </div>
+
+    <script>
+        const token = localStorage.getItem('token');
+        const apiBase = 'http://168.231.123.182:3000/api/admin';
+
+        // Check authentication
+        if (!token) {
+            showToast('⚠️ Unauthorized. Please login as admin.', 'error');
+            setTimeout(() => {
+                window.location.href = '/admin-login.html';
+            }, 2000);
+        }
+
+        // DOM Loaded
+        document.addEventListener('DOMContentLoaded', () => {
+            fetchAppointments();
+            fetchEnquiries();
+        });
+
+        // Toast notification
+        function showToast(message, type = 'success') {
+            const toast = document.getElementById('toast');
+            const toastIcon = toast.querySelector('.toast-icon');
+            const toastMessage = toast.querySelector('.toast-message');
+            
+            // Set icon based on type
+            if (type === 'success') {
+                toastIcon.className = 'fas fa-check-circle toast-icon';
+            } else if (type === 'error') {
+                toastIcon.className = 'fas fa-exclamation-circle toast-icon';
+            } else if (type === 'warning') {
+                toastIcon.className = 'fas fa-exclamation-triangle toast-icon';
+            }
+            
+            toastMessage.textContent = message;
+            toast.className = `toast toast-${type}`;
+            toast.classList.add('show');
+
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 4000);
+        }
+
+        // Logout function
+        function logout() {
+            localStorage.removeItem('token');
+            showToast('Logged out successfully', 'success');
+            setTimeout(() => {
+                window.location.href = '/admin-login.html';
+            }, 1500);
+        }
+
+        // Fetch appointments
+        async function fetchAppointments() {
+            const tbody = document.querySelector('#appointmentsTable tbody');
+            const refreshBtn = document.querySelector('#appointmentsTable').closest('.card').querySelector('.refresh-btn');
+
+            try {
+                tbody.innerHTML = `
+                    <tr>
+                        <td colspan="11" class="no-data">
+                            <i class="fas fa-spinner fa-spin"></i> Loading appointments...
+                        </td>
+                    </tr>
+                `;
+                refreshBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Loading';
+
+                const res = await fetch(`${apiBase}/appointments`, {
+                    headers: { Authorization: `Bearer ${token}` }
+                });
+
+                if (!res.ok) {
+                    throw new Error('Failed to fetch appointments');
+                }
+
+                const appointments = await res.json();
+                tbody.innerHTML = '';
+
+                if (appointments.length === 0) {
+                    tbody.innerHTML = `
+                        <tr>
+                            <td colspan="11" class="no-data">No appointments found</td>
+                        </tr>
+                    `;
+                    document.getElementById('appointmentsCount').textContent = '0';
+                    return;
+                }
+
+                document.getElementById('appointmentsCount').textContent = appointments.length;
+
+                appointments.forEach(app => {
+                    const tr = document.createElement('tr');
+                    tr.innerHTML = `
+                        <td>${app.appointment_id}</td>
+                        <td>
+                            <div>${app.user_name}</div>
+                            <div class="text-muted">ID: ${app.user_id || '—'}</div>
+                        </td>
+                        <td>
+                            <div>${app.email}</div>
+                            <div class="text-muted">${app.phone || '—'}</div>
+                        </td>
+                        <td>${app.services}</td>
+                        <td>
+                            <div>${formatDate(app.appointment_date)}</div>
+                            <div class="text-muted">${app.appointment_time}</div>
+                        </td>
+                        <td class="payment-${app.payment_status.toLowerCase()}">${capitalize(app.payment_status)}</td>
+                        <td>${capitalize(app.payment_mode || '—')}</td>
+                        <td><span class="text-ellipsis">${app.notes || '—'}</span></td>
+                        <td>
+                            <div>${formatDate(app.created_at, true)}</div>
+                            <div class="text-muted">${formatTime(app.created_at)}</div>
+                        </td>
+                        <td><span class="status status-${app.status.toLowerCase()}">${capitalize(app.status)}</span></td>
+                        <td>
+                            ${app.status === 'pending' ? `
+                                <button class="action-btn approve-btn" onclick="approveAppointment(${app.appointment_id})">
+                                    <i class="fas fa-check"></i> Approve
+                                </button>
+                                <button class="action-btn cancel-btn" onclick="cancelAppointment(${app.appointment_id})">
+                                    <i class="fas fa-times"></i> Cancel
+                                </button>
+                            ` : '—'}
+                        </td>
+                    `;
+                    tbody.appendChild(tr);
+                });
+
+            } catch (err) {
+                console.error('Error loading appointments:', err);
+                tbody.innerHTML = `
+                    <tr>
+                        <td colspan="11" class="no-data">
+                            <i class="fas fa-exclamation-triangle"></i> Failed to load appointments
+                        </td>
+                    </tr>
+                `;
+                showToast('Failed to load appointments', 'error');
+            } finally {
+                refreshBtn.innerHTML = '<i class="fas fa-sync-alt"></i> Refresh';
+            }
+        }
+
+        // Fetch enquiries
+        async function fetchEnquiries() {
+            const tbody = document.querySelector('#enquiriesTable tbody');
+            const refreshBtn = document.querySelector('#enquiriesTable').closest('.card').querySelector('.refresh-btn');
+
+            try {
+                tbody.innerHTML = `
+                    <tr>
+                        <td colspan="4" class="no-data">
+                            <i class="fas fa-spinner fa-spin"></i> Loading enquiries...
+                        </td>
+                    </tr>
+                `;
+                refreshBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Loading';
+
+                const res = await fetch(`${apiBase}/enquiries`, {
+                    headers: { Authorization: `Bearer ${token}` }
+                });
+
+                if (!res.ok) {
+                    throw new Error('Failed to fetch enquiries');
+                }
+
+                const enquiries = await res.json();
+                tbody.innerHTML = '';
+
+                if (enquiries.length === 0) {
+                    tbody.innerHTML = `
+                        <tr>
+                            <td colspan="4" class="no-data">No enquiries found</td>
+                        </tr>
+                    `;
+                    document.getElementById('enquiriesCount').textContent = '0';
+                    return;
+                }
+
+                document.getElementById('enquiriesCount').textContent = enquiries.length;
+
+                enquiries.forEach(enq => {
+                    const tr = document.createElement('tr');
+                    tr.innerHTML = `
+                        <td data-label="User">
+                            <div><strong>${enq.name}</strong></div>
+                            <div class="text-muted">ID: ${enq.user_id || '—'}</div>
+                        </td>
+                        <td data-label="Contact">
+                            <div>${enq.email}</div>
+                            <div class="text-muted">${enq.phone || '—'}</div>
+                        </td>
+                        <td data-label="Message">
+                            <div class="text-ellipsis" title="${enq.message}">${truncateText(enq.message, 60)}</div>
+                        </td>
+                        <td data-label="Received">
+                            <div>${formatDate(enq.created_at, true)}</div>
+                            <div class="text-muted">${formatTime(enq.created_at)}</div>
+                        </td>
+                    `;
+                    tbody.appendChild(tr);
+                });
+
+            } catch (err) {
+                console.error('Error loading enquiries:', err);
+                tbody.innerHTML = `
+                    <tr>
+                        <td colspan="4" class="no-data">
+                            <i class="fas fa-exclamation-triangle"></i> Failed to load enquiries
+                        </td>
+                    </tr>
+                `;
+                showToast('Failed to load enquiries', 'error');
+            } finally {
+                refreshBtn.innerHTML = '<i class="fas fa-sync-alt"></i> Refresh';
+            }
+        }
+
+        // Approve appointment
+        async function approveAppointment(id) {
+            if (!confirm('Are you sure you want to approve this appointment?')) return;
+
+            const approveBtn = document.querySelector(`button.approve-btn[onclick="approveAppointment(${id})"]`);
+            const originalText = approveBtn.innerHTML;
+            approveBtn.innerHTML = '<span class="spinner"></span> Approving';
+            approveBtn.disabled = true;
+
+            try {
+                const res = await fetch(`${apiBase}/appointment/approve`, {
+                    method: 'PUT',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        Authorization: `Bearer ${token}`
+                    },
+                    body: JSON.stringify({ appointment_id: id })
+                });
+
+                if (!res.ok) {
+                    throw new Error('Failed to approve appointment');
+                }
+
+                const data = await res.json();
+                showToast(data.msg || 'Appointment approved successfully');
+                fetchAppointments();
+            } catch (err) {
+                console.error('Error approving appointment:', err);
+                showToast(err.message || 'Failed to approve appointment', 'error');
+            } finally {
+                approveBtn.innerHTML = originalText;
+                approveBtn.disabled = false;
+            }
+        }
+
+        // Cancel appointment
+        async function cancelAppointment(id) {
+            if (!confirm('Are you sure you want to cancel this appointment?')) return;
+
+            const cancelBtn = document.querySelector(`button.cancel-btn[onclick="cancelAppointment(${id})"]`);
+            const originalText = cancelBtn.innerHTML;
+            cancelBtn.innerHTML = '<span class="spinner"></span> Cancelling';
+            cancelBtn.disabled = true;
+
+            try {
+                const res = await fetch(`${apiBase}/appointment/cancel/${id}`, {
+                    method: 'PATCH',
+                    headers: { Authorization: `Bearer ${token}` }
+                });
+
+                if (!res.ok) {
+                    throw new Error('Failed to cancel appointment');
+                }
+
+                const data = await res.json();
+                showToast(data.msg || 'Appointment cancelled successfully');
+                fetchAppointments();
+            } catch (err) {
+                console.error('Error cancelling appointment:', err);
+                showToast(err.message || 'Failed to cancel appointment', 'error');
+            } finally {
+                cancelBtn.innerHTML = originalText;
+                cancelBtn.disabled = false;
+            }
+        }
+
+        // Utility functions
+        function formatDate(dateString, short = false) {
+            if (!dateString) return '—';
+            const options = short 
+                ? { year: 'numeric', month: 'short', day: 'numeric' }
+                : { weekday: 'short', year: 'numeric', month: 'short', day: 'numeric' };
+            return new Date(dateString).toLocaleDateString('en-US', options);
+        }
+
+        function formatTime(dateString) {
+            if (!dateString) return '—';
+            return new Date(dateString).toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' });
+        }
+
+        function formatDateTime(dateString) {
+            if (!dateString) return '—';
+            const date = new Date(dateString);
+            return `${formatDate(dateString, true)} at ${formatTime(dateString)}`;
+        }
+
+        function truncateText(text, maxLength) {
+            if (!text) return '—';
+            if (text.length <= maxLength) return text;
+            return text.substring(0, maxLength) + '...';
+        }
+
+        function capitalize(str) {
+            if (!str) return '—';
+            return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
+        }
+    </script>
+</body>
+
+</html>

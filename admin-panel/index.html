@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Admin Panel</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <div class="sidebar">
+    <h1>Admin Panel</h1>
+    <nav>
+      <a href="#dashboard">Dashboard</a>
+      <a href="#add-service">Add Service</a>
+      <a href="#all-services">All Services</a>
+      <a href="#add-offer">Add Offer</a>
+      <a href="#all-offers">All Offers</a>
+      <a href="admin.html">Appointments</a>
+      <button id="logoutBtn" style="display: none;">🚪 Logout</button>
+    </nav>
+  </div>
+
+  <div class="main-content" id="admin-wrapper">
+
+    <!-- Login Section -->
+    <section id="dashboard">
+      <h2>🔐 Admin Login</h2>
+      <form id="loginForm">
+        <input type="email" id="email" placeholder="Admin Email" required>
+        <input type="password" id="password" placeholder="Password" required>
+        <button type="submit">Login</button>
+      </form>
+    </section>
+
+    <!-- Add Service Section -->
+    <section id="add-service">
+      <h2>➕ Add Service</h2>
+      <form id="serviceForm" enctype="multipart/form-data">
+        <input type="text" name="title" placeholder="Service Title" required>
+        <input type="text" name="type" placeholder="Type" required>
+        <input type="text" name="card_description" placeholder="Card Description" required>
+        <input type="text" name="big_description" placeholder="Big Description" required>
+        <input type="number" name="min_price" placeholder="Min Price" required>
+        <input type="number" name="max_price" placeholder="Max Price" required>
+
+        <label>Card Image:</label><input type="file" name="card_image" accept="image/*">
+        <label>Image 1:</label><input type="file" name="image1" accept="image/*">
+        <label>Image 2:</label><input type="file" name="image2" accept="image/*">
+        <label>Image 3:</label><input type="file" name="image3" accept="image/*">
+        <label>Image 4:</label><input type="file" name="image4" accept="image/*">
+        <label>Image 5:</label><input type="file" name="image5" accept="image/*">
+        <label>Image 6:</label><input type="file" name="image6" accept="image/*">
+
+        <button type="submit" id="serviceSubmitBtn">Upload Service</button>
+      </form>
+    </section>
+
+    <!-- Services List Section -->
+    <section id="all-services">
+      <h2>📋 All Services</h2>
+      <div id="servicesContainer"></div>
+    </section>
+
+    <!-- Add Offer Section -->
+    <section id="add-offer">
+      <h2 id="formTitle">➕ Add Offer</h2>
+      <form id="offerForm" enctype="multipart/form-data">
+        <input name="title" placeholder="Title" required />
+        <input name="subtitle" placeholder="Subtitle" />
+        <textarea name="description" placeholder="Description" required></textarea>
+        <input type="number" name="discount" placeholder="Discount (%)" />
+        <input type="number" name="price_before" placeholder="Price Before" />
+        <input type="number" name="price_after" placeholder="Price After" />
+        <input type="date" name="valid_from" placeholder="Valid From" />
+        <input type="date" name="valid_till" placeholder="Valid Till" />
+        <input name="tag" placeholder="Tag" />
+        <input name="button_text" placeholder="Button Text (e.g. Book Now)" />
+        <input type="file" name="image" accept="image/*" />
+        <button type="submit" id="offerSubmitBtn">Upload Offer</button>
+      </form>
+    </section>
+
+    <!-- Offers List Section -->
+    <section id="all-offers">
+      <h2>📋 All Offers</h2>
+      <div id="offersContainer"></div>
+    </section>
+
+  </div>
+
+  <script src="app.js"></script>
+</body>
+
+</html>
