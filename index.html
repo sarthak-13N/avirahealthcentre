@@ -1427,7 +1427,7 @@
             });
         });
 
-        const offerURL = 'http://168.231.123.182:3000/api/admin/offers';
+        const offerURL = 'https://avirahealthcentre.in:3000/api/admin/offers';
         let slideInterval;
 
         async function loadOffers() {
@@ -1499,7 +1499,7 @@
                     });
 
                     slide.style.backgroundImage = offer.image
-                        ? `linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('http://168.231.123.182:3000/uploads/${offer.image}')`
+                        ? `linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://avirahealthcentre.in:3000/uploads/${offer.image}')`
                         : 'linear-gradient(135deg, var(--secondary-color), #3498db)';
 
                     slide.innerHTML = `

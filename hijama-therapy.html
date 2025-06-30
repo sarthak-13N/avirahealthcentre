@@ -203,7 +203,7 @@
 
   <script>
     document.addEventListener('DOMContentLoaded', function () {
-      const apiUrl = 'http://168.231.123.182:3000/api/admin/services/type/cupping';
+      const apiUrl = 'https://avirahealthcentre.in:3000/api/admin/services/type/cupping';
       const container = document.getElementById('services-container');
 
       async function fetchServices() {
@@ -234,7 +234,7 @@
             ${services.map(service => `
               <a href="service-details.html?id=${service.service_id}" class="service-card">
                 <div class="service-image">
-                  <img src="http://168.231.123.182:3000/uploads/${service.card_image}" alt="${service.title}" loading="lazy">
+                  <img src="https://avirahealthcentre.in:3000/uploads/${service.card_image}" alt="${service.title}" loading="lazy">
                 </div>
                 <div class="service-content">
                   <h3>${service.title}</h3>

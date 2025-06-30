@@ -409,18 +409,18 @@
       }
 
       try {
-        const res = await fetch(`http://168.231.123.182:3000/api/admin/services/${id}`);
+        const res = await fetch(`https://avirahealthcentre.in:3000/api/admin/services/${id}`);
         if (!res.ok) throw new Error('Service not found');
 
         const service = await res.json();
         const images = [service.image1, service.image2, service.image3, service.image4, service.image5, service.image6]
           .filter(img => img !== null)
-          .map(img => `<img src="http://168.231.123.182:3000/uploads/${img}" alt="${service.title} image" />`)
+          .map(img => `<img src="https://avirahealthcentre.in:3000/uploads/${img}" alt="${service.title} image" />`)
           .join('');
 
         container.innerHTML = `
           <div class="card">
-            <img class="main-img" src="http://168.231.123.182:3000/uploads/${service.card_image}" alt="${service.title}" />
+            <img class="main-img" src="https://avirahealthcentre.in:3000/uploads/${service.card_image}" alt="${service.title}" />
             <div class="card-body">
               <h1>${service.title}</h1>
               <p class="description">${service.big_description || service.card_description || 'No description available.'}</p>

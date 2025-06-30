@@ -376,13 +376,13 @@ const offerId = params.get('offer_id');
 async function loadTherapyDetails() {
   try {
     if (offerId) {
-      const res = await fetch(`http://168.231.123.182:3000/api/admin/offers/${offerId}`);
+      const res = await fetch(`https://avirahealthcentre.in:3000/api/admin/offers/${offerId}`);
       if (!res.ok) throw new Error('Offer not found');
       const offer = await res.json();
       serviceNameInput.value = offer.title || 'Offer Therapy';
       serviceIdInput.value = `OFFER-${offer.offer_id}`;
     } else if (serviceId) {
-      const res = await fetch(`http://168.231.123.182:3000/api/admin/services/${serviceId}`);
+      const res = await fetch(`https://avirahealthcentre.in:3000/api/admin/services/${serviceId}`);
       if (!res.ok) throw new Error('Therapy not found');
       const service = await res.json();
       serviceNameInput.value = service.title || 'Selected Therapy';
@@ -441,7 +441,7 @@ form.addEventListener('submit', async (e) => {
   }
 
   try {
-    const res = await fetch('http://168.231.123.182:3000/api/book-appointment', {
+    const res = await fetch('https://avirahealthcentre.in:3000/api/book-appointment', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(data)

@@ -12,7 +12,7 @@ document.getElementById('loginForm').addEventListener('submit', async (e) => {
   const email = document.getElementById('email').value;
   const password = document.getElementById('password').value;
 
-  const res = await fetch('http://168.231.123.182:3000/api/login', {
+  const res = await fetch('https://avirahealthcentre.in:3000/api/login', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ email, password })
@@ -34,7 +34,7 @@ document.getElementById('loginForm').addEventListener('submit', async (e) => {
 // ===== Logout =====
 document.getElementById('logoutBtn').addEventListener('click', async () => {
   try {
-    const res = await fetch('http://168.231.123.182:3000/api/admin/logout', {
+    const res = await fetch('https://avirahealthcentre.in:3000/api/admin/logout', {
       method: 'POST',
       headers: { Authorization: `Bearer ${token}` }
     });
@@ -56,8 +56,8 @@ document.getElementById('serviceForm').addEventListener('submit', async (e) => {
   const formData = new FormData(e.target);
 
   const url = serviceEditMode
-    ? `http://168.231.123.182:3000/api/admin/services/${editingServiceId}`
-    : `http://168.231.123.182:3000/api/admin/services`;
+    ? `https://avirahealthcentre.in:3000/api/admin/services/${editingServiceId}`
+    : `https://avirahealthcentre.in:3000/api/admin/services`;
 
   const method = serviceEditMode ? 'PUT' : 'POST';
 
@@ -81,7 +81,7 @@ document.getElementById('serviceForm').addEventListener('submit', async (e) => {
 
 // ===== Load Services =====
 async function loadServices() {
-  const res = await fetch('http://168.231.123.182:3000/api/admin/services', {
+  const res = await fetch('https://avirahealthcentre.in:3000/api/admin/services', {
     headers: { Authorization: `Bearer ${token}` }
   });
   const data = await res.json();
@@ -90,7 +90,7 @@ async function loadServices() {
 
   data.forEach(service => {
     const card = document.createElement('div');
-    const img = (file) => file ? `<img src="http://168.231.123.182:3000/uploads/${file}" alt="img">` : '';
+    const img = (file) => file ? `<img src="https://avirahealthcentre.in:3000/uploads/${file}" alt="img">` : '';
 
     card.innerHTML = `
       <h3>${service.title}</h3>
@@ -118,7 +118,7 @@ async function loadServices() {
 
 async function deleteService(id) {
   if (!confirm('Delete this service?')) return;
-  const res = await fetch(`http://168.231.123.182:3000/api/admin/services/${id}`, {
+  const res = await fetch(`https://avirahealthcentre.in:3000/api/admin/services/${id}`, {
     method: 'DELETE',
     headers: { Authorization: `Bearer ${token}` }
   });
@@ -128,7 +128,7 @@ async function deleteService(id) {
 }
 
 async function editService(id) {
-  const res = await fetch(`http://168.231.123.182:3000/api/admin/services/${id}`, {
+  const res = await fetch(`https://avirahealthcentre.in:3000/api/admin/services/${id}`, {
     headers: { Authorization: `Bearer ${token}` }
   });
   const service = await res.json();
@@ -151,8 +151,8 @@ document.getElementById('offerForm').addEventListener('submit', async (e) => {
   const formData = new FormData(e.target);
 
   const url = offerEditMode
-    ? `http://168.231.123.182:3000/api/admin/offers/${editingOfferId}`
-    : `http://168.231.123.182:3000/api/admin/offers`;
+    ? `https://avirahealthcentre.in:3000/api/admin/offers/${editingOfferId}`
+    : `https://avirahealthcentre.in:3000/admin/offers`;
 
   const method = offerEditMode ? 'PUT' : 'POST';
 
@@ -176,7 +176,7 @@ document.getElementById('offerForm').addEventListener('submit', async (e) => {
 
 // ===== Load Offers =====
 async function loadOffers() {
-  const res = await fetch('http://168.231.123.182:3000/api/admin/offers', {
+  const res = await fetch('https://avirahealthcentre.in:3000/api/admin/offers', {
     headers: { Authorization: `Bearer ${token}` }
   });
   const offers = await res.json();
@@ -195,7 +195,7 @@ async function loadOffers() {
       <p><strong>Valid:</strong> ${offer.valid_from} to ${offer.valid_till}</p>
       <p><strong>Tag:</strong> ${offer.tag}</p>
       <p><strong>Button:</strong> ${offer.button_text}</p>
-      ${offer.image ? `<img src="http://168.231.123.182:3000/uploads/${offer.image}" alt="Offer Image">` : ''}
+      ${offer.image ? `<img src="https://avirahealthcentre.in:3000/uploads/${offer.image}" alt="Offer Image">` : ''}
       <div class="btn-group">
         <button onclick="editOffer(${offer.offer_id})">✏️ Edit</button>
         <button onclick="deleteOffer(${offer.offer_id})">🗑️ Delete</button>
@@ -206,7 +206,7 @@ async function loadOffers() {
 }
 
 async function editOffer(id) {
-  const res = await fetch(`http://168.231.123.182:3000/api/admin/offers/${id}`, {
+  const res = await fetch(`https://avirahealthcentre.in:3000/api/admin/offers/${id}`, {
     headers: { Authorization: `Bearer ${token}` }
   });
   const offer = await res.json();
@@ -230,7 +230,7 @@ async function editOffer(id) {
 
 async function deleteOffer(id) {
   if (!confirm('Delete this offer?')) return;
-  const res = await fetch(`http://168.231.123.182:3000/api/admin/offers/${id}`, {
+  const res = await fetch(`https://avirahealthcentre.in:3000/api/admin/offers/${id}`, {
     method: 'DELETE',
     headers: { Authorization: `Bearer ${token}` }
   });
