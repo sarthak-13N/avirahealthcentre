@@ -137,7 +137,7 @@ h5 {
 
 .btn-accent {
     background: var(--accent);
-    /* color: var(--dark); */
+    color: var(--dark);
 }
 
 .btn-accent:hover {
