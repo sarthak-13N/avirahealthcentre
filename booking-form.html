@@ -230,7 +230,12 @@
         flex-direction: column;
       }
 
-      .form-container, .booking-info {
+
+      .form-container{
+        order: -1; /* Move form to top on mobile */
+        padding: 25px 20px;
+      }
+       .booking-info {
         padding: 25px 20px;
       }
     }
