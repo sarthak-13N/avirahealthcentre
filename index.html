@@ -1472,6 +1472,9 @@
                 });
             }
 
+
+
+
             window.onclick = function (e) {
                 if (e.target === modal) {
                     closeEnquiryModal();
@@ -1484,6 +1487,12 @@
             modal.classList.remove("show");
             document.body.classList.remove("modal-open");
         }
+        function toggleEnquiryModal() {
+            const modal = document.getElementById("enquiry-modal");
+            modal.classList.add("show");
+            document.body.classList.add("modal-open");
+        }
+
 
     </script>
 </body>
