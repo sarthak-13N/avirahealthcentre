@@ -81,7 +81,7 @@
     }
 
     .service-image {
-      height: 400px;
+      height: 200px;
       overflow: hidden;
     }
 
@@ -159,18 +159,17 @@
     </div>
 
     <ul class="nav-links" id="nav-links">
-    <li><a href="index.html">Home</a></li>
-    <li><a href="index.html#services">Therapies</a></li>
-    <li><a href="index.html#conditions">Health Benefits</a></li>
-    <li><a href="index.html#about">About</a></li>
-    <li><a href="booking-form.html">Book At Home</a></li>
-    <li><a href="index.html#contact">Contact</a></li>
-  </ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="index.html#services">Therapies</a></li>
+      <li><a href="index.html#conditions">Health Benefits</a></li>
+      <li><a href="index.html#about">About</a></li>
+      <li><a href="booking-form.html">Book At Home</a></li>
+      <li><a href="index.html#contact">Contact</a></li>
+    </ul>
   </nav>
 
   <!-- WhatsApp Floating Button -->
-<a href="https://wa.me/919545246708" target="_blank"
-   style="
+  <a href="https://wa.me/919545246708" target="_blank" style="
      position: fixed;
      bottom: 20px;
      right: 20px;
@@ -185,8 +184,8 @@
      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
      text-decoration: none;
    ">
-   <i class="fab fa-whatsapp" style="color: white; font-size: 28px;"></i>
-</a>
+    <i class="fab fa-whatsapp" style="color: white; font-size: 28px;"></i>
+  </a>
 
   <section class="services">
     <div class="container">
@@ -249,7 +248,51 @@
 
       fetchServices();
     });
+
+    document.addEventListener('DOMContentLoaded', () => {
+      // Mobile Menu Toggle
+      const menuToggle = document.getElementById('mobile-menu');
+      const navLinks = document.getElementById('nav-links');
+
+      menuToggle.addEventListener('click', () => {
+        navLinks.classList.toggle('active');
+        menuToggle.classList.toggle('open');
+      });
+
+      // Close menu when clicking on links
+      document.querySelectorAll('.nav-links a').forEach(link => {
+        link.addEventListener('click', () => {
+          navLinks.classList.remove('active');
+          menuToggle.classList.remove('open');
+        });
+      });
+
+      // Navbar scroll effect
+      const navbar = document.querySelector('.navbar');
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 50) {
+          navbar.classList.add('scrolled');
+        } else {
+          navbar.classList.remove('scrolled');
+        }
+      });
+
+      // Smooth scrolling for anchor links
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+          e.preventDefault();
+          const targetId = this.getAttribute('href');
+          const targetElement = document.querySelector(targetId);
+
+          window.scrollTo({
+            top: targetElement.offsetTop - 70,
+            behavior: 'smooth'
+          });
+        });
+      });
+    });
   </script>
+
 
 </body>
 

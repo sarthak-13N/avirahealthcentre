@@ -75,116 +75,123 @@
         rel="stylesheet" />
 
     <!-- Styles -->
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="styles.css" />
 
     <!-- Favicon & Monogram -->
     <link rel="icon" href="logo1.ico" type="image/x-icon" />
     <link rel="apple-touch-icon" href="logo1.ico" />
     <style>
         :root {
-            --primary-color: #27ae60;
-            --primary-dark: #219653;
-            --secondary-color: #2c3e50;
-            --accent-color: #e74c3c;
-            --call-color: #3498db;
-            --call-dark: #2980b9;
-            --text-light: #ffffff;
-            --text-dark: #2d3436;
-            --text-muted: #b2bec3;
-            --overlay-dark: rgba(0, 0, 0, 0.2);
-            /* More transparent */
-            --overlay-light: rgba(0, 0, 0, 0.1);
-            /* Lighter */
-            --border-radius: 12px;
-            --box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
-            --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            --primary: #0f3057;
+            --secondary: #008891;
+            --accent: #e7e7de;
+            --gray: #444;
         }
 
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
+        /* Modal Base */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(8px);
+            opacity: 0;
+            transition: opacity 0.3s ease;
         }
 
-        body {
-            font-family: 'Segoe UI', 'Roboto', -apple-system, BlinkMacSystemFont, sans-serif;
-            background: #f9f9f9;
-            color: var(--text-dark);
-            line-height: 1.6;
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
+        .modal.show {
+            display: block;
+            opacity: 1;
         }
 
-        /* Loading Animation */
-        @keyframes spin {
-            to {
-                transform: rotate(360deg);
-            }
+        .modal-content {
+            background: rgba(255, 255, 255, 0.95);
+            margin: 4% auto;
+            padding: 40px;
+            border-radius: 16px;
+            width: 90%;
+            max-width: 500px;
+            position: relative;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(12px);
+            transform: translateY(-20px);
+            transition: all 0.4s cubic-bezier(0.32, 0.72, 0, 1);
         }
 
-        .loading-spinner {
-            display: inline-block;
-            width: 40px;
-            height: 40px;
-            border: 4px solid rgba(255, 255, 255, 0.2);
+        .modal.show .modal-content {
+            transform: translateY(0);
+            animation: modalFadeIn 0.4s ease-out forwards;
+        }
+
+        .modal-header h2 {
+            color: var(--primary);
+            font-size: 28px;
+            font-weight: bold;
+            margin: 0 0 10px;
+            position: relative;
+        }
+
+        .modal-header p {
+            color: var(--gray);
+            font-size: 15px;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            font-size: 24px;
+            color: var(--gray);
+            cursor: pointer;
+            background: rgba(0, 0, 0, 0.05);
+            width: 36px;
+            height: 36px;
             border-radius: 50%;
-            border-top-color: #fff;
-            animation: spin 1s ease-in-out infinite;
+            text-align: center;
+            line-height: 36px;
+        }
+
+        .form-group {
             margin-bottom: 20px;
         }
 
-        /* Hero Slider Container */
-        .hero-slider {
-            position: relative;
+        .form-group label {
+            display: block;
+            margin-bottom: 6px;
+            font-weight: 500;
+            color: var(--primary);
+        }
+
+        .form-control {
             width: 100%;
-            height: 100vh;
-            min-height: 680px;
-            max-height: 900px;
-            overflow: hidden;
-            margin-top: 40px;
+            padding: 12px 14px;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+            font-size: 14px;
         }
 
-        /* Individual Slides */
-        .slide {
-            position: absolute;
+        .submit-btn {
             width: 100%;
-            height: 100%;
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            transition: var(--transition);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            opacity: 0;
-            padding: 40px;
+            padding: 14px;
+            background: linear-gradient(135deg, var(--secondary), var(--primary));
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 10px;
         }
 
-        .slide.active {
-            opacity: 1;
-            z-index: 1;
-        }
-
-        /* Content Overlay - Lighter version */
-        .slide-overlay {
-            background-color: var(--overlay-dark);
-            padding: 60px 50px;
-            border-radius: var(--border-radius);
-            max-width: 900px;
-            width: 90%;
-            margin: 0 auto;
-            backdrop-filter: blur(2px);
-            /* Reduced blur */
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            box-shadow: var(--box-shadow);
-            text-align: center;
-            animation: fadeInUp 0.8s cubic-bezier(0.22, 0.61, 0.36, 1);
-        }
-
-        @keyframes fadeInUp {
+        @keyframes modalFadeIn {
             from {
                 opacity: 0;
-                transform: translateY(30px);
+                transform: translateY(20px);
             }
 
             to {
@@ -193,316 +200,14 @@
             }
         }
 
-        /* Typography with better contrast */
-        .slide h1 {
-            font-size: 2.8rem;
-            margin-bottom: 15px;
-            font-weight: 700;
-            color: var(--text-light);
-            line-height: 1.2;
-            letter-spacing: -0.5px;
-            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
-        }
 
-        .offer-subtitle {
-            display: inline-block;
-            background: rgba(255, 255, 255, 0.1);
-            color: var(--text-light);
-            padding: 10px 24px;
-            border-radius: 30px;
-            font-weight: 600;
-            font-size: 1.1rem;
-            margin: 15px 0;
-            letter-spacing: 0.5px;
-        }
-
-        .offer-description {
-            font-size: 1.2rem;
-            margin: 0 auto 30px;
-            color: rgba(255, 255, 255, 0.95);
-            max-width: 700px;
-            line-height: 1.7;
-        }
-
-        /* Pricing Section */
-        .price-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 20px;
-            margin-bottom: 30px;
-            flex-wrap: wrap;
-        }
-
-        .original-price {
-            text-decoration: line-through;
-            font-size: 1.4rem;
-            color: var(--text-muted);
-            font-weight: 500;
-        }
-
-        .discounted-price {
-            font-size: 2.4rem;
-            font-weight: 700;
-            color: var(--text-light);
-            position: relative;
-        }
-
-        .discounted-price::before {
-            content: '₹';
-            font-size: 1.4rem;
-            position: relative;
-            top: -8px;
-            margin-right: 2px;
-        }
-
-        .discount-badge {
-            background-color: var(--accent-color);
-            color: white;
-            padding: 8px 18px;
-            border-radius: 30px;
-            font-weight: 700;
-            font-size: 1.1rem;
-            letter-spacing: 0.5px;
-        }
-
-        /* Button Container */
-        .btn-container {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            margin: 30px 0 20px;
-            flex-wrap: wrap;
-        }
-
-        /* Button Styles */
-        .btn {
-            color: var(--text-light);
-            padding: 16px 36px;
-            border: none;
-            border-radius: 50px;
-            font-size: 1.1rem;
-            cursor: pointer;
-            text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            transition: var(--transition);
-            font-weight: 600;
-            letter-spacing: 0.5px;
-            min-width: 180px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .btn::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
-            opacity: 0;
-            transition: var(--transition);
-        }
-
-        .btn:hover::after {
-            opacity: 1;
-        }
-
-        .btn.book {
-            background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
-        }
-
-        .btn.book:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(39, 174, 96, 0.4);
-        }
-
-        .btn.call {
-            background: linear-gradient(135deg, var(--call-color), var(--call-dark));
-        }
-
-        .btn.call:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(52, 152, 219, 0.4);
-        }
-
-        .offer-validity {
-            font-size: 0.95rem;
-            color: rgba(255, 255, 255, 0.85);
-            margin-top: 25px;
-            display: inline-block;
-            padding: 8px 18px;
-            background: rgba(0, 0, 0, 0.1);
-            border-radius: 30px;
-            font-weight: 500;
-        }
-
-        /* Slider Controls */
-        .slider-controls {
-            position: absolute;
-            bottom: 40px;
-            left: 50%;
-            transform: translateX(-50%);
-            display: flex;
-            gap: 12px;
-            z-index: 3;
-        }
-
-        .slider-dot {
-            width: 14px;
-            height: 14px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.4);
-            cursor: pointer;
-            transition: var(--transition);
-        }
-
-        .slider-dot.active {
-            background: var(--primary-color);
-            transform: scale(1.2);
-            box-shadow: 0 0 10px rgba(39, 174, 96, 0.6);
-        }
-
-        .slider-nav {
-            position: absolute;
-            top: 50%;
-            width: 100%;
-            display: flex;
-            justify-content: space-between;
-            padding: 0 30px;
-            transform: translateY(-50%);
-            z-index: 3;
-        }
-
-        .slider-nav button {
-            background: rgba(0, 0, 0, 0.4);
-            color: white;
-            border: none;
-            width: 48px;
-            height: 48px;
-            border-radius: 50%;
-            cursor: pointer;
-            font-size: 1.3rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: var(--transition);
-            backdrop-filter: blur(4px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .slider-nav button:hover {
-            background: rgba(0, 0, 0, 0.6);
-            transform: scale(1.1);
-        }
-
-        /* Responsive Design */
-        @media (max-width: 992px) {
-            .hero-slider {
-                min-height: 600px;
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
             }
 
-            .slide-overlay {
-                padding: 50px 30px;
-            }
-
-            .slide h1 {
-                font-size: 2.4rem;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .hero-slider {
-                height: calc(100vh - 60px);
-                min-height: 500px;
-                max-height: none;
-                margin-top: 60px;
-            }
-
-            .slide {
-                padding: 30px 20px;
-            }
-
-            .slide-overlay {
-                padding: 40px 25px;
-                width: 95%;
-                backdrop-filter: blur(2px);
-            }
-
-            .slide h1 {
-                font-size: 2rem;
-                margin-bottom: 12px;
-            }
-
-            .offer-subtitle {
-                font-size: 1rem;
-                padding: 8px 18px;
-            }
-
-            .offer-description {
-                font-size: 1rem;
-                margin-bottom: 25px;
-            }
-
-            .price-container {
-                gap: 12px;
-                margin-bottom: 25px;
-            }
-
-            .original-price {
-                font-size: 1.2rem;
-            }
-
-            .discounted-price {
-                font-size: 1.8rem;
-            }
-
-            .discount-badge {
-                font-size: 1rem;
-                padding: 6px 14px;
-            }
-
-            .btn-container {
-                flex-direction: column;
-                gap: 12px;
-                margin: 25px 0 15px;
-            }
-
-            .btn {
-                width: 100%;
-                padding: 14px;
-                font-size: 1rem;
-                min-width: auto;
-            }
-
-            .offer-validity {
-                font-size: 0.85rem;
-                margin-top: 20px;
-            }
-
-            .slider-controls {
-                bottom: 25px;
-            }
-
-            .slider-nav button {
-                width: 40px;
-                height: 40px;
-                font-size: 1.1rem;
-            }
-        }
-
-        /* Fallback for browsers that don't support backdrop-filter */
-        @supports not (backdrop-filter: blur(8px)) {
-            .slide-overlay {
-                background-color: rgba(0, 0, 0, 0.5);
-            }
-
-            .slider-nav button {
-                background: rgba(0, 0, 0, 0.6);
+            100% {
+                transform: rotate(360deg);
             }
         }
     </style>
@@ -1221,7 +926,25 @@
                             <p>Mon-Sat: 8:00 AM - 8:00 PM<br>Sun: 9:00 AM - 4:00 PM</p>
                         </div>
                     </div>
+
+                    <!-- Enquiry Button with Inline CSS -->
+                    <button onclick="toggleEnquiryModal()" style="
+    background: linear-gradient(135deg, #008891, #0f3057);
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  ">
+                        Enquire Now
+                    </button>
+
                 </div>
+
 
                 <div class="map">
                     <iframe
@@ -1230,6 +953,52 @@
                 </div>
             </div>
         </div>
+
+        <!-- Enquiry Modal -->
+        <div id="enquiry-modal" class="modal">
+            <div class="modal-content">
+                <span class="close-btn" onclick="closeEnquiryModal()">&times;</span>
+                <div class="modal-header">
+                    <h2>Enquire Now</h2>
+                    <p>Please fill in the form and we’ll get back to you.</p>
+                </div>
+                <form id="enquiryForm">
+                    <!-- Loader Spinner -->
+                    <div id="enquiryLoader" style="display:none; text-align:center; margin-top:20px;">
+                        <div class="spinner" style="
+      width: 40px;
+      height: 40px;
+      border: 4px solid #ccc;
+      border-top: 4px solid var(--primary, #0d8a72);
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+      margin: 0 auto;
+  "></div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="name">Full Name</label>
+                        <input type="text" name="name" id="name" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" name="email" id="email" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Phone No.</label>
+                        <input type="number" name="phone" id="phone" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Your Message</label>
+                        <textarea id="message" name="message" class="form-control" required></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn">Submit</button>
+                </form>
+            </div>
+        </div>
+
+
+
     </section>
 
     <!-- Footer -->
@@ -1659,6 +1428,62 @@
 
         window.addEventListener('DOMContentLoaded', loadOffers);
 
+        window.onload = function () {
+            const modal = document.getElementById("enquiry-modal");
+            const form = document.getElementById("enquiryForm");
+            modal.classList.add("show");
+
+            if (form) {
+                form.addEventListener("submit", async function (e) {
+                    e.preventDefault();
+
+                    const loader = document.getElementById("enquiryLoader");
+                    loader.style.display = "block"; // Show loader
+                    const formData = new FormData(this);
+                    const data = {
+                        name: formData.get("name"),
+                        email: formData.get("email"),
+                        phone: formData.get("phone"),
+                        message: formData.get("message")
+                    };
+
+                    try {
+                        const response = await fetch("https://avirahealthcentre.in:3000/api/enquiry", {
+                            method: "POST",
+                            headers: {
+                                "Content-Type": "application/json"
+                            },
+                            body: JSON.stringify(data)
+                        });
+
+                        const result = await response.json();
+                        loader.style.display = "none"; // Hide loader
+                        if (response.ok) {
+                            alert(result.msg);
+                            this.reset();
+                            closeEnquiryModal();
+                        } else {
+                            alert(result.msg);
+                        }
+                    } catch (err) {
+                        alert("❌ Something went wrong!");
+                        console.error(err);
+                    }
+                });
+            }
+
+            window.onclick = function (e) {
+                if (e.target === modal) {
+                    closeEnquiryModal();
+                }
+            };
+        };
+
+        function closeEnquiryModal() {
+            const modal = document.getElementById("enquiry-modal");
+            modal.classList.remove("show");
+            document.body.classList.remove("modal-open");
+        }
 
     </script>
 </body>
