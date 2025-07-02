@@ -152,7 +152,7 @@ document.getElementById('offerForm').addEventListener('submit', async (e) => {
 
   const url = offerEditMode
     ? `https://avirahealthcentre.in:3000/api/admin/offers/${editingOfferId}`
-    : `https://avirahealthcentre.in:3000/admin/offers`;
+    : `https://avirahealthcentre.in:3000/api/admin/offers`;
 
   const method = offerEditMode ? 'PUT' : 'POST';
 
