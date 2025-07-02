@@ -162,6 +162,8 @@ document.getElementById('offerForm').addEventListener('submit', async (e) => {
     body: formData
   });
 
+
+  
   const data = await res.json();
   alert(data.msg);
   if (res.ok) {
