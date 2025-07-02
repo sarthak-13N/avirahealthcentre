@@ -18,8 +18,12 @@ jobs:
         with:
           ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
 
-      - name: 🚀 Deploy via rsync
+      - name: 🚀 Deploy Static Site via rsync
         run: |
           mkdir -p ~/.ssh
           echo -e "Host *\n\tStrictHostKeyChecking no\n" > ~/.ssh/config
-          rsync -avz --delete ./ root@168.231.123.182:/var/www/myproject/
+
+          rsync -avz --delete \
+            --exclude=".git*" \
+            --exclude="README.md" \
+            ./ root@168.231.123.182:/var/www/myproject/
