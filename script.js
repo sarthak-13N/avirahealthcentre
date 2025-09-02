@@ -112,7 +112,7 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
-const offerURL = "https://avirahealthcentre.in:3000/api/admin/offers";
+const offerURL = "https://my-backend-hsra.onrender.com/api/admin/offers";
 let slideInterval;
 
 async function loadOffers() {
@@ -184,7 +184,7 @@ async function loadOffers() {
       });
 
       slide.style.backgroundImage = offer.image
-        ? `linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://avirahealthcentre.in:3000/uploads/${offer.image}')`
+        ? `linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://my-backend-hsra.onrender.com/uploads/${offer.image}')`
         : "linear-gradient(135deg, var(--secondary-color), #3498db)";
 
       slide.innerHTML = `
@@ -377,7 +377,7 @@ window.onload = function () {
 
       try {
         const response = await fetch(
-          "https://avirahealthcentre.in:3000/api/enquiry",
+          "https://my-backend-hsra.onrender.com/api/enquiry",
           {
             method: "POST",
             headers: {
