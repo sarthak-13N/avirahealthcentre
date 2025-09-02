@@ -1,8 +1,0 @@
-services:
-  - type: web
-    name: avira-health-centre
-    env: static
-    buildCommand: ""       
-    publishDir: index.html
-    domains:
-      - avirahealthcentre.in
