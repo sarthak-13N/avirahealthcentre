@@ -3,6 +3,6 @@ services:
     name: avira-health-centre
     env: static
     buildCommand: ""       
-    publishDir: root        
+    publishDir: root/    
     domains:
       - avirahealthcentre.in
