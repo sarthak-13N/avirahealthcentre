@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Dashboard - Appointments & Enquiries</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" href="/logo1.ico" type="image/x-icon" />
+    <link rel="apple-touch-icon" href="/logo1.ico" />
     <style>
         :root {
             --primary: #4a6cf7;
@@ -231,7 +233,7 @@
             gap: 6px;
         }
 
-        .action-btn + .action-btn {
+        .action-btn+.action-btn {
             margin-left: 8px;
         }
 
@@ -355,13 +357,20 @@
                 padding: 16px;
             }
 
-            th, td {
+            th,
+            td {
                 padding: 12px;
             }
         }
 
         @media (max-width: 768px) {
-            table, thead, tbody, th, td, tr {
+
+            table,
+            thead,
+            tbody,
+            th,
+            td,
+            tr {
                 display: block;
             }
 
@@ -481,7 +490,8 @@
 
         <div class="card">
             <div class="card-header">
-                <h2><i class="far fa-calendar-alt"></i> Appointments <span class="badge" id="appointmentsCount">0</span></h2>
+                <h2><i class="far fa-calendar-alt"></i> Appointments <span class="badge" id="appointmentsCount">0</span>
+                </h2>
                 <button class="refresh-btn" onclick="fetchAppointments()">
                     <i class="fas fa-sync-alt"></i> Refresh
                 </button>
@@ -556,7 +566,7 @@
         if (!token) {
             showToast('⚠️ Unauthorized. Please login as admin.', 'error');
             setTimeout(() => {
-                window.location.href = '/admin-login.html';
+                window.location.href = '/admin-panel/index.html';
             }, 2000);
         }
 
@@ -571,7 +581,7 @@
             const toast = document.getElementById('toast');
             const toastIcon = toast.querySelector('.toast-icon');
             const toastMessage = toast.querySelector('.toast-message');
-            
+
             // Set icon based on type
             if (type === 'success') {
                 toastIcon.className = 'fas fa-check-circle toast-icon';
@@ -580,7 +590,7 @@
             } else if (type === 'warning') {
                 toastIcon.className = 'fas fa-exclamation-triangle toast-icon';
             }
-            
+
             toastMessage.textContent = message;
             toast.className = `toast toast-${type}`;
             toast.classList.add('show');
@@ -595,7 +605,7 @@
             localStorage.removeItem('token');
             showToast('Logged out successfully', 'success');
             setTimeout(() => {
-                window.location.href = '/admin-login.html';
+                window.location.href = '/admin-panel/index.html';
             }, 1500);
         }
 
@@ -835,7 +845,7 @@
         // Utility functions
         function formatDate(dateString, short = false) {
             if (!dateString) return '—';
-            const options = short 
+            const options = short
                 ? { year: 'numeric', month: 'short', day: 'numeric' }
                 : { weekday: 'short', year: 'numeric', month: 'short', day: 'numeric' };
             return new Date(dateString).toLocaleDateString('en-US', options);

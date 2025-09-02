@@ -1,10 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Admin Dashboard - Appointments</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="icon" href="/logo1.ico" type="image/x-icon" />
+  <link rel="apple-touch-icon" href="/logo1.ico" />
   <style>
     :root {
       --primary: #4361ee;
@@ -133,7 +136,8 @@
       background-color: var(--light-gray);
     }
 
-    th, td {
+    th,
+    td {
       padding: 12px 15px;
       text-align: left;
       border-bottom: 1px solid var(--light-gray);
@@ -202,7 +206,7 @@
       gap: 5px;
     }
 
-    .action-btn + .action-btn {
+    .action-btn+.action-btn {
       margin-left: 8px;
     }
 
@@ -258,8 +262,9 @@
       .container {
         padding: 15px;
       }
-      
-      th, td {
+
+      th,
+      td {
         padding: 10px 12px;
       }
     }
@@ -272,7 +277,13 @@
     }
 
     @media (max-width: 768px) {
-      table, thead, tbody, th, td, tr {
+
+      table,
+      thead,
+      tbody,
+      th,
+      td,
+      tr {
         display: block;
       }
 
@@ -318,11 +329,11 @@
       td {
         padding-left: 40%;
       }
-      
+
       .header-left h1 {
         font-size: 20px;
       }
-      
+
       .logout-btn {
         padding: 6px 10px;
         font-size: 14px;
@@ -334,14 +345,16 @@
       display: inline-block;
       width: 20px;
       height: 20px;
-      border: 3px solid rgba(255,255,255,.3);
+      border: 3px solid rgba(255, 255, 255, .3);
       border-radius: 50%;
       border-top-color: var(--white);
       animation: spin 1s ease-in-out infinite;
     }
 
     @keyframes spin {
-      to { transform: rotate(360deg); }
+      to {
+        transform: rotate(360deg);
+      }
     }
 
     /* Toast notification */
@@ -378,6 +391,7 @@
     }
   </style>
 </head>
+
 <body>
   <div class="container">
     <header>
@@ -432,7 +446,7 @@
     if (!token) {
       showToast('⚠️ Unauthorized. Please login as admin.', 'error');
       setTimeout(() => {
-        window.location.href = '/admin-login.html';
+        window.location.href = '/admin-panel/index.html';
       }, 2000);
     }
 
@@ -451,7 +465,7 @@
         ${message}
       `;
       toast.classList.add('show');
-      
+
       setTimeout(() => {
         toast.classList.remove('show');
       }, 3000);
@@ -462,7 +476,7 @@
       localStorage.removeItem('token');
       showToast('Logged out successfully', 'success');
       setTimeout(() => {
-        window.location.href = '/admin-login.html';
+        window.location.href = '/admin-panel/index.html';
       }, 1500);
     }
 
@@ -470,7 +484,7 @@
     async function fetchAppointments() {
       const tbody = document.querySelector('#appointmentsTable tbody');
       const refreshBtn = document.querySelector('#appointmentsTable').closest('.card').querySelector('.refresh-btn');
-      
+
       try {
         tbody.innerHTML = `
           <tr>
@@ -479,20 +493,20 @@
             </td>
           </tr>
         `;
-        
+
         refreshBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Loading';
-        
+
         const res = await fetch(`${apiBase}/appointments`, {
           headers: { Authorization: `Bearer ${token}` }
         });
-        
+
         if (!res.ok) {
           throw new Error('Failed to fetch appointments');
         }
-        
+
         const appointments = await res.json();
         tbody.innerHTML = '';
-        
+
         if (appointments.length === 0) {
           tbody.innerHTML = `
             <tr>
@@ -502,9 +516,9 @@
           document.getElementById('appointmentsCount').textContent = '0';
           return;
         }
-        
+
         document.getElementById('appointmentsCount').textContent = appointments.length;
-        
+
         appointments.forEach(app => {
           const tr = document.createElement('tr');
           tr.innerHTML = `
@@ -520,8 +534,8 @@
               <div>${formatDate(app.appointment_date)}</div>
               <div class="text-muted">${app.appointment_time}</div>
               <div class="text-muted">Created: ${formatDateTime(app.created_at, true)}</div>
-              ${app.updated_at !== app.created_at ? 
-                `<div class="text-muted">Updated: ${formatDateTime(app.updated_at, true)}</div>` : ''}
+              ${app.updated_at !== app.created_at ?
+              `<div class="text-muted">Updated: ${formatDateTime(app.updated_at, true)}</div>` : ''}
             </td>
             <td data-label="Payment">
               <span class="payment-status payment-${app.payment_status}">${app.payment_status}</span>
@@ -545,7 +559,7 @@
           `;
           tbody.appendChild(tr);
         });
-        
+
       } catch (err) {
         console.error('Error loading appointments:', err);
         tbody.innerHTML = `
@@ -564,12 +578,12 @@
     // Approve appointment
     async function approveAppointment(id) {
       if (!confirm('Are you sure you want to approve this appointment?')) return;
-      
+
       const approveBtn = document.querySelector(`button.approve-btn[onclick="approveAppointment(${id})"]`);
       const originalText = approveBtn.innerHTML;
       approveBtn.innerHTML = '<span class="spinner"></span> Approving';
       approveBtn.disabled = true;
-      
+
       try {
         const res = await fetch(`${apiBase}/appointment/approve`, {
           method: 'PUT',
@@ -579,11 +593,11 @@
           },
           body: JSON.stringify({ appointment_id: id })
         });
-        
+
         if (!res.ok) {
           throw new Error('Failed to approve appointment');
         }
-        
+
         const data = await res.json();
         showToast(data.msg || 'Appointment approved successfully');
         fetchAppointments();
@@ -599,22 +613,22 @@
     // Cancel appointment
     async function cancelAppointment(id) {
       if (!confirm('Are you sure you want to cancel this appointment?')) return;
-      
+
       const cancelBtn = document.querySelector(`button.cancel-btn[onclick="cancelAppointment(${id})"]`);
       const originalText = cancelBtn.innerHTML;
       cancelBtn.innerHTML = '<span class="spinner"></span> Cancelling';
       cancelBtn.disabled = true;
-      
+
       try {
         const res = await fetch(`${apiBase}/appointment/cancel/${id}`, {
           method: 'PATCH',
           headers: { Authorization: `Bearer ${token}` }
         });
-        
+
         if (!res.ok) {
           throw new Error('Failed to cancel appointment');
         }
-        
+
         const data = await res.json();
         showToast(data.msg || 'Appointment cancelled successfully');
         fetchAppointments();
@@ -634,7 +648,7 @@
     }
 
     function formatDateTime(dateString, short = false) {
-      const options = short 
+      const options = short
         ? { year: 'numeric', month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' }
         : { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit' };
       return new Date(dateString).toLocaleDateString('en-US', options);
@@ -647,4 +661,5 @@
     }
   </script>
 </body>
+
 </html>
