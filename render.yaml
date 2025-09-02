@@ -1,8 +1,8 @@
 services:
-  - type: static_site
+  - type: web
     name: avira-health-centre
     env: static
-    buildCommand: ""         # leave blank if no build needed
-    publishDir: .            # root folder containing index.html
+    buildCommand: ""       # leave blank if no build is needed
+    publishDir: .          # folder where index.html is located
     domains:
-      - avirahealthcentre.in      # optional custom domain
+      - avirahealthcentre.in
