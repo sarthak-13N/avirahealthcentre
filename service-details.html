@@ -415,12 +415,12 @@
         const service = await res.json();
         const images = [service.image1, service.image2, service.image3, service.image4, service.image5, service.image6]
           .filter(img => img !== null)
-          .map(img => `<img src="https://my-backend-hsra.onrender.com/uploads/${img}" alt="${service.title} image" />`)
+          .map(img => `<img src="${img}" alt="${service.title} image" />`)
           .join('');
 
         container.innerHTML = `
           <div class="card">
-            <img class="main-img" src="https://my-backend-hsra.onrender.com/uploads/${service.card_image}" alt="${service.title}" />
+            <img class="main-img" src="${service.card_image}" alt="${service.title}" />
             <div class="card-body">
               <h1>${service.title}</h1>
               <p class="description">${service.big_description || service.card_description || 'No description available.'}</p>

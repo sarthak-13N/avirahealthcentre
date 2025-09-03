@@ -233,7 +233,7 @@
             ${services.map(service => `
               <a href="service-details.html?id=${service.service_id}" class="service-card">
                 <div class="service-image">
-                  <img src="https://my-backend-hsra.onrender.com/uploads/${service.card_image}" alt="${service.title}" loading="lazy">
+                  <img src="${service.card_image}" alt="${service.title}" loading="lazy">
                 </div>
                 <div class="service-content">
                   <h3>${service.title}</h3>

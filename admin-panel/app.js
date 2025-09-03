@@ -90,7 +90,7 @@ async function loadServices() {
 
   data.forEach(service => {
     const card = document.createElement('div');
-    const img = (file) => file ? `<img src="https://my-backend-hsra.onrender.com/uploads/${file}" alt="img">` : '';
+    const img = (file) => file ? `<img src="${file}" alt="img">` : '';
 
     card.innerHTML = `
       <h3>${service.title}</h3>
@@ -197,7 +197,7 @@ async function loadOffers() {
       <p><strong>Valid:</strong> ${offer.valid_from} to ${offer.valid_till}</p>
       <p><strong>Tag:</strong> ${offer.tag}</p>
       <p><strong>Button:</strong> ${offer.button_text}</p>
-      ${offer.image ? `<img src="https://my-backend-hsra.onrender.com/uploads/${offer.image}" alt="Offer Image">` : ''}
+      ${offer.image ? `<img src="${offer.image}" alt="Offer Image">` : ''}
       <div class="btn-group">
         <button onclick="editOffer(${offer.offer_id})">✏️ Edit</button>
         <button onclick="deleteOffer(${offer.offer_id})">🗑️ Delete</button>

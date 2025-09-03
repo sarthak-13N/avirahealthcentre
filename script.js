@@ -182,9 +182,10 @@ async function loadOffers() {
         month: "short",
         year: "numeric",
       });
+      const bucketUrl = "https://storage.googleapis.com/avira-uploads";
 
       slide.style.backgroundImage = offer.image
-        ? `linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://my-backend-hsra.onrender.com/uploads/${offer.image}')`
+        ? `linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('${offer.image}')`
         : "linear-gradient(135deg, var(--secondary-color), #3498db)";
 
       slide.innerHTML = `
