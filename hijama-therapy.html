@@ -28,11 +28,10 @@
   <!-- Performance -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="preconnect" href="https://www.googletagmanager.com" />
 
   <!-- Fonts & icons -->
   <link
-    href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Open+Sans:wght@300;400;600&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700&display=swap"
     rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 
@@ -45,127 +44,433 @@
 
   <style>
     :root {
-      --primary: #27ae60;
-      --secondary: #2c3e50;
-      --accent: #e74c3c;
+      /* Brand Colors from Logo */
+      --primary: #1a7a6e;
+      --primary-dark: #145e55;
+      --accent: #c9a77c;
+      --accent-light: #e5d4be;
+      
+      /* Base Colors */
       --light: #ffffff;
-      --dark: #2d3436;
-      --text-muted: #7f8c8d;
-      --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-      --transition: all 0.3s ease;
+      --dark: #1a1a1a;
+      --text-primary: #2d2d2d;
+      --text-secondary: #5a5a5a;
+      --text-muted: #767676;
+      
+      /* Backgrounds */
+      --bg-primary: #ffffff;
+      --bg-secondary: #fafafa;
+      --bg-accent: #f8f6f3;
+      
+      /* Shadows */
+      --shadow-sm: 0 2px 8px rgba(26, 122, 110, 0.08);
+      --shadow-md: 0 4px 16px rgba(26, 122, 110, 0.12);
+      
+      --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      --border-radius: 12px;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
     }
 
     body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      line-height: 1.6;
-      color: #333;
-      padding: 0;
-      margin: 0;
-      background-color: #f9f9f9;
+      font-family: 'Poppins', sans-serif;
+      line-height: 1.7;
+      color: var(--text-primary);
+      background-color: var(--bg-primary);
+      overflow-x: hidden;
     }
 
-    .container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 20px;
-    }
-
-    .section-title {
+    /* Hero Section */
+    .hero-section {
+      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+      padding: 100px 20px 80px;
       text-align: center;
-      margin-bottom: 40px;
+      color: var(--light);
+      position: relative;
+      overflow: hidden;
     }
 
-    .section-title h2 {
-      color: var(--secondary);
-      font-size: 2.2rem;
-      margin-bottom: 15px;
+    .hero-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="rgba(255,255,255,0.1)" d="M0,96L48,112C96,128,192,160,288,160C384,160,480,128,576,122.7C672,117,768,139,864,138.7C960,139,1056,117,1152,96C1248,75,1344,53,1392,42.7L1440,32L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>') no-repeat bottom;
+      background-size: cover;
+      opacity: 0.3;
     }
 
-    .section-title p {
-      color: var(--text-muted);
-      font-size: 1.1rem;
-      max-width: 700px;
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 900px;
       margin: 0 auto;
     }
 
-    .services-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    .hero-section h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 3.5rem;
+      font-weight: 700;
+      margin-bottom: 25px;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+      color: var(--light);
+    }
+
+    .hero-section p {
+      font-size: 1.3rem;
+      margin-bottom: 40px;
+      opacity: 0.95;
+      color: var(--light);
+      line-height: 1.8;
+    }
+
+    .hero-badges {
+      display: flex;
+      justify-content: center;
       gap: 30px;
+      flex-wrap: wrap;
+      margin-top: 40px;
     }
 
-    .service-card {
-      background: var(--light);
-      border-radius: 10px;
-      overflow: hidden;
-      transition: var(--transition);
-      box-shadow: var(--shadow);
+    .badge {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      background: rgba(255, 255, 255, 0.15);
+      padding: 15px 30px;
+      border-radius: 50px;
+      backdrop-filter: blur(10px);
+      border: 2px solid rgba(255, 255, 255, 0.25);
+      color: var(--light);
+      font-weight: 500;
+    }
+
+    .badge i {
+      font-size: 1.4rem;
+      color: var(--accent-light);
+    }
+
+    /* Container */
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 80px 20px;
+      background-color: var(--bg-primary);
+    }
+
+    /* Service Section */
+    .service-section {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+      margin-bottom: 80px;
+      padding: 60px 0;
+    }
+
+    .service-section:not(:last-child) {
+      border-bottom: 2px solid var(--bg-secondary);
+    }
+
+    /* Alternate layout */
+    .service-section:nth-child(even) {
+      direction: rtl;
+    }
+
+    .service-section:nth-child(even) > * {
+      direction: ltr;
+    }
+
+    .service-image-wrapper {
       position: relative;
-      text-decoration: none;
-      color: inherit;
-      display: block;
-    }
-
-    .service-image {
-      height: 200px;
+      border-radius: var(--border-radius);
       overflow: hidden;
+      box-shadow: var(--shadow-md);
+      height: 450px;
     }
 
-    .service-image img {
+    .service-image-wrapper img {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      transition: transform 0.5s ease;
+      transition: transform 0.6s ease;
+    }
+
+    .service-section:hover .service-image-wrapper img {
+      transform: scale(1.05);
+    }
+
+    .service-badge {
+      position: absolute;
+      top: 25px;
+      right: 25px;
+      background: var(--accent);
+      color: var(--light);
+      padding: 12px 24px;
+      border-radius: 50px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      box-shadow: var(--shadow-sm);
+      z-index: 2;
     }
 
     .service-content {
       padding: 20px;
     }
 
-    .service-card h3 {
-      margin: 0 0 10px;
-      color: var(--secondary);
-      font-size: 1.3rem;
-    }
-
-    .service-card p {
-      color: var(--text-muted);
-      margin: 0;
-    }
-
-    .price-tag {
+    .service-number {
       display: inline-block;
-      background: var(--primary);
-      color: white;
-      padding: 5px 15px;
-      border-radius: 20px;
-      font-size: 0.9rem;
-      margin-top: 15px;
-      font-weight: 600;
-    }
-
-    .loading {
+      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+      color: var(--light);
+      width: 50px;
+      height: 50px;
+      line-height: 50px;
       text-align: center;
-      padding: 40px;
+      border-radius: 50%;
+      font-weight: 700;
       font-size: 1.2rem;
-      color: var(--text-muted);
+      margin-bottom: 20px;
+      box-shadow: var(--shadow-sm);
     }
 
-    .error-message {
-      text-align: center;
-      padding: 40px;
+    .service-content h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.5rem;
+      color: var(--text-primary);
+      margin-bottom: 20px;
+      font-weight: 700;
+    }
+
+    .service-content .tagline {
       color: var(--accent);
       font-size: 1.1rem;
+      font-weight: 600;
+      margin-bottom: 25px;
+      font-style: italic;
+    }
+
+    .service-content .description {
+      color: var(--text-secondary);
+      font-size: 1.05rem;
+      line-height: 1.9;
+      margin-bottom: 30px;
+      text-align: justify;
+    }
+
+    .service-meta {
+      display: flex;
+      gap: 25px;
+      margin-bottom: 30px;
+      flex-wrap: wrap;
+    }
+
+    .meta-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--text-primary);
+      font-weight: 500;
+      background: var(--bg-accent);
+      padding: 10px 20px;
+      border-radius: 30px;
+      border: 1px solid var(--accent-light);
+    }
+
+    .meta-item i {
+      color: var(--primary);
+      font-size: 1.2rem;
+    }
+
+    /* Benefits Grid */
+    .benefits-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 15px;
+      margin-bottom: 35px;
+    }
+
+    .benefit-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 12px 16px;
+      background: var(--bg-accent);
+      border-radius: 8px;
+      border-left: 4px solid var(--accent);
+      transition: var(--transition);
+    }
+
+    .benefit-item:hover {
+      transform: translateX(8px);
+      box-shadow: var(--shadow-sm);
+      border-left-color: var(--primary);
+    }
+
+    .benefit-item i {
+      color: var(--primary);
+      font-size: 1.1rem;
+      min-width: 20px;
+    }
+
+    .benefit-item span {
+      color: var(--text-primary);
+      font-size: 0.95rem;
+    }
+
+    .book-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+      color: var(--light);
+      padding: 16px 40px;
+      border-radius: 50px;
+      font-size: 1.05rem;
+      font-weight: 600;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      transition: var(--transition);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .book-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .book-btn i {
+      color: var(--accent-light);
+      font-size: 1.2rem;
+    }
+
+    /* Filter Section */
+    .filter-section {
+      text-align: center;
+      margin-bottom: 60px;
+    }
+
+    .filter-tabs {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      flex-wrap: wrap;
+      margin-top: 30px;
+    }
+
+    .filter-tab {
+      padding: 14px 32px;
+      background: var(--bg-primary);
+      border: 2px solid #e5e5e5;
+      border-radius: 50px;
+      cursor: pointer;
+      transition: var(--transition);
+      font-weight: 500;
+      color: var(--text-primary);
+      font-size: 1rem;
+    }
+
+    .filter-tab:hover {
+      border-color: var(--accent);
+      color: var(--primary);
+      transform: translateY(-2px);
+    }
+
+    .filter-tab.active {
+      background: var(--primary);
+      color: var(--light);
+      border-color: var(--primary);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-sm);
+    }
+
+    /* Responsive */
+    @media (max-width: 1024px) {
+      .service-section {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+
+      .service-section:nth-child(even) {
+        direction: ltr;
+      }
+
+      .service-image-wrapper {
+        height: 400px;
+      }
+
+      .benefits-grid {
+        grid-template-columns: 1fr;
+      }
     }
 
     @media (max-width: 768px) {
-      .services-grid {
-        grid-template-columns: 1fr;
+      .hero-section {
+        padding: 80px 20px 60px;
       }
 
-      .service-image {
-        height: 180px;
+      .hero-section h1 {
+        font-size: 2.2rem;
       }
+
+      .hero-section p {
+        font-size: 1.1rem;
+      }
+
+      .container {
+        padding: 50px 20px;
+      }
+
+      .service-section {
+        margin-bottom: 50px;
+        padding: 40px 0;
+      }
+
+      .service-content h2 {
+        font-size: 2rem;
+      }
+
+      .service-image-wrapper {
+        height: 300px;
+      }
+
+      .filter-tab {
+        padding: 12px 24px;
+        font-size: 0.9rem;
+      }
+
+      .hero-badges {
+        gap: 15px;
+      }
+
+      .badge {
+        padding: 12px 20px;
+        font-size: 0.9rem;
+      }
+    }
+
+    /* Scrollbar */
+    ::-webkit-scrollbar {
+      width: 10px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: var(--bg-secondary);
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: var(--primary);
+      border-radius: 5px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: var(--primary-dark);
     }
   </style>
 </head>
@@ -213,77 +518,684 @@
     <i class="fab fa-whatsapp" style="color: white; font-size: 28px;"></i>
   </a>
 
+  <!-- Hero Section -->
+  <section class="hero-section">
+    <div class="hero-content">
+      <h1>Professional Cupping Therapies at Home</h1>
+      <p>Experience ancient healing with certified cupping therapies delivered by trained professionals in the comfort of your home across Pune</p>
+      
+      <div class="hero-badges">
+        <div class="badge">
+          <i class="fas fa-shield-alt"></i>
+          <span>Hygienic & Safe</span>
+        </div>
+        <div class="badge">
+          <i class="fas fa-user-md"></i>
+          <span>Trained Practitioners</span>
+        </div>
+        <div class="badge">
+          <i class="fas fa-home"></i>
+          <span>At-Home Service</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services Section -->
   <section class="services">
     <div class="container">
-      <div class="section-title">
-        <h2>Our Cupping Services</h2>
-        <p>Professional cupping therapies to enhance your wellbeing</p>
+      
+      <div class="filter-section">
+        <div class="filter-tabs">
+          <div class="filter-tab active" onclick="filterServices('all')">All Therapies</div>
+          <div class="filter-tab" onclick="filterServices('traditional')">Traditional</div>
+          <div class="filter-tab" onclick="filterServices('therapeutic')">Therapeutic</div>
+          <div class="filter-tab" onclick="filterServices('beauty')">Beauty & Wellness</div>
+        </div>
       </div>
 
       <div id="services-container">
-        <div class="loading">Loading services...</div>
+
+        <!-- Service 1: Hijama (Wet Cupping) -->
+        <div class="service-section" data-category="traditional">
+          <div class="service-image-wrapper">
+            <img src="https://images.unsplash.com/photo-1519823551278-64ac92734fb1?w=1200" alt="Hijama Wet Cupping" loading="lazy">
+            <span class="service-badge">Traditional Therapy</span>
+          </div>
+          <div class="service-content">
+            <span class="service-number">01</span>
+            <h2>Hijama (Wet Cupping)</h2>
+            <p class="tagline">Traditional detox therapy with bloodletting</p>
+            
+            <div class="service-meta">
+              <div class="meta-item">
+                <i class="far fa-clock"></i>
+                <span>45-60 minutes</span>
+              </div>
+              <div class="meta-item">
+                <i class="fas fa-syringe"></i>
+                <span>Sterile Equipment</span>
+              </div>
+            </div>
+
+            <p class="description">
+              A time-honored therapy rooted in traditional medicine, Hijama uses suction cups and controlled micro-incisions to draw out stagnant blood, promoting detoxification, pain relief and improved circulation. Performed in a sterile environment by trained professionals, it is ideal for chronic pain, fatigue or stress. The process involves mild discomfort but delivers profound healing, leaving you revitalized. This ancient practice has been used for centuries to balance the body's energy, remove toxins, and enhance overall vitality. Each session is customized to target specific areas of concern, ensuring optimal therapeutic benefits while maintaining the highest hygiene standards.
+            </p>
+
+            <div class="benefits-grid">
+              <div class="benefit-item">
+                <i class="fas fa-check-circle"></i>
+                <span>Promotes deep detoxification</span>
+              </div>
+              <div class="benefit-item">
+                <i class="fas fa-check-circle"></i>
+                <span>Relieves chronic pain</span>
+              </div>
+              <div class="benefit-item">
+                <i class="fas fa-check-circle"></i>
+                <span>Improves blood circulation</span>
+              </div>
+              <div class="benefit-item">
+                <i class="fas fa-check-circle"></i>
+                <span>Reduces inflammation</span>
+              </div>
+              <div class="benefit-item">
+                <i class="fas fa-check-circle"></i>
+                <span>Boosts immune function</span>
+              </div>
+              <div class="benefit-item">
+                <i class="fas fa-check-circle"></i>
+                <span>Enhances energy levels</span>
+              </div>
+            </div>
+
+            <a href="booking-form.html" class="book-btn">
+              <i class="fas fa-calendar-check"></i>
+              Book This Therapy
+            </a>
+          </div>
+        </div>
+
+        <!-- Service 2: Dry Cupping -->
+        <div class="service-section" data-category="therapeutic">
+          <div class="service-image-wrapper">
+            <img src="https://images.unsplash.com/photo-1600334129128-685c5582fd35?w=1200" alt="Dry Cupping" loading="lazy">
+            <span class="service-badge">Non-Invasive</span>
+          </div>
+          <div class="service-content">
+            <span class="service-number">02</span>
+            <h2>Dry Cupping</h2>
+            <p class="tagline">Non-invasive suction therapy for pain relief</p>
+            
+            <div class="service-meta">
+              <div class="meta-item">
+                <i class="far fa-clock"></i>
+                <span>30-45 minutes</span>
+              </div>
+              <div class="meta-item">
+                <i class="fas fa-heart"></i>
+                <span>Gentle & Safe</span>
+              </div>
+            </div>
+
+            <p class="description">
+              A gentle, non-invasive form of cupping where suction cups are placed on the skin to improve blood flow, release muscle tension and promote healing. Unlike wet cupping, no incisions are made, making it ideal for those seeking a less intense therapy. Perfect for muscle soreness, stress or poor circulation, this treatment leaves temporary circular marks but provides deep relaxation and pain relief without downtime. The suction created by the cups draws blood to the surface, encouraging the body's natural healing processes. This therapy is particularly effective for office workers, athletes, and anyone experiencing muscular discomfort or stress-related tension.
+            </p>
+
+            <div class="benefits-grid">
+              <div class="benefit-item">
+                <i class="fas fa-check-circle"></i>
+                <span>Releases muscle tension</span>
+              </div>
+              <div class="benefit-item">
+                <i class="fas fa-check-circle"></i>
+                <span>Improves blood flow</span>
+              </div>
+              <div class="benefit-item">
+                <i class="fas fa-check-circle"></i>
+                <span>Reduces pain naturally</span>
+              </div>
+              <div class="benefit-item">
+                <i class="fas fa-check-circle"></i>
+                <span>No invasive procedures</span>
+              </div>
+              <div class="benefit-item">
+                <i class="fas fa-check-circle"></i>
+                <span>Promotes relaxation</span>
+              </div>
+              <div class="benefit-item">
+                <i class="fas fa-check-circle"></i>
+                <span>Quick recovery time</span>
+              </div>
+            </div>
+
+            <a href="booking-form.html" class="book-btn">
+              <i class="fas fa-calendar-check"></i>
+              Book This Therapy
+            </a>
+          </div>
+        </div>
+
+        <!-- Service 3: Fire Cupping -->
+        <div class="service-section" data-category="traditional">
+          <div class="service-image-wrapper">
+            <img src="https://images.unsplash.com/photo-1544161515-4ab6ce6db874?w=1200" alt="Fire Cupping" loading="lazy">
+            <span class="service-badge">Ancient Technique</span>
+          </div>
+          <div class="service-content">
+            <span class="service-number">03</span>
+            <h2>Fire Cupping</h2>
+            <p class="tagline">Traditional fire-based suction therapy</p>
+            
+            <div class="service-meta">
+              <div class="meta-item">
+                <i class="far fa-clock"></i>
+                <span>45-60 minutes</span>
+              </div>
+              <div class="meta-item">
+                <i class="fas fa-fire"></i>
+                <span>Traditional Method</span>
+              </div>
+            </div>
+
+            <p class="description">
+              This ancient technique uses glass cups heated with a flame to create a vacuum effect on the skin, drawing out toxins and relieving deep muscle tension. Fire cupping enhances circulation, reduces pain and promotes relaxation, making it effective for chronic pain, respiratory issues or stress. The warmth provides a unique soothing sensation and while temporary marks may appear, the therapy delivers profound healing and rejuvenation. The combination of heat and suction creates a powerful therapeutic effect that penetrates deep into muscle tissue, releasing stored tension and promoting the flow of vital energy throughout the body.
+            </p>
+
+            <div class="benefits-grid">
+              <div class="benefit-item">
+                <i class="fas fa-check-circle"></i>
+                <span>Deep muscle relief</span>
+              </div>
+              <div class="benefit-item">
+                <i class="fas fa-check-circle"></i>
+                <span>Draws out toxins</span>
+              </div>
+              <div class="benefit-item">
+                <i class="fas fa-check-circle"></i>
+                <span>Enhances circulation</span>
+              </div>
+              <div class="benefit-item">
+                <i class="fas fa-check-circle"></i>
+                <span>Relieves respiratory issues</span>
+              </div>
+              <div class="benefit-item">
+                <i class="fas fa-check-circle"></i>
+                <span>Soothing warmth</span>
+              </div>
+              <div class="benefit-item">
+                <i class="fas fa-check-circle"></i>
+                <span>Profound healing</span>
+              </div>
+            </div>
+
+            <a href="booking-form.html" class="book-btn">
+              <i class="fas fa-calendar-check"></i>
+              Book This Therapy
+            </a>
+          </div>
+        </div>
+
+        <!-- Service 4: Facial Cupping -->
+        <div class="service-section" data-category="beauty">
+          <div class="service-image-wrapper">
+            <img src="https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=1200" alt="Facial Cupping" loading="lazy">
+            <span class="service-badge">Beauty Therapy</span>
+          </div>
+          <div class="service-content">
+            <span class="service-number">04</span>
+            <h2>Facial Cupping</h2>
+            <p class="tagline">Gentle suction for glowing skin</p>
+            
+            <div class="service-meta">
+              <div class="meta-item">
+                <i class="far fa-clock"></i>
+                <span>30-45 minutes</span>
+              </div>
+              <div class="meta-item">
+                <i class="fas fa-spa"></i>
+                <span>Skin Rejuvenation</span>
+              </div>
+            </div>
+
+            <p class="description">
+              A specialized therapy using small suction cups on the face to stimulate blood flow, reduce puffiness and promote a youthful glow. This non-invasive treatment enhances collagen production, minimizes fine lines and improves skin tone by boosting circulation and lymphatic drainage. Ideal for those seeking natural facial rejuvenation, the gentle suction feels relaxing and leaves no significant marks, making it perfect for pre-event skin prep. Regular sessions can result in firmer, more radiant skin with improved elasticity and a natural lifting effect. The therapy also helps reduce dark circles, smooth wrinkles, and enhance the overall complexion.
+            </p>
+
+            <div class="benefits-grid">
+              <div class="benefit-item">
+                <i class="fas fa-check-circle"></i>
+                <span>Promotes youthful glow</span>
+              </div>
+              <div class="benefit-item">
+                <i class="fas fa-check-circle"></i>
+                <span>Reduces puffiness</span>
+              </div>
+              <div class="benefit-item">
+                <i class="fas fa-check-circle"></i>
+                <span>Enhances collagen</span>
+              </div>
+              <div class="benefit-item">
+                <i class="fas fa-check-circle"></i>
+                <span>Minimizes fine lines</span>
+              </div>
+              <div class="benefit-item">
+                <i class="fas fa-check-circle"></i>
+                <span>Improves skin tone</span>
+              </div>
+              <div class="benefit-item">
+                <i class="fas fa-check-circle"></i>
+                <span>Natural face lift</span>
+              </div>
+            </div>
+
+            <a href="booking-form.html" class="book-btn">
+              <i class="fas fa-calendar-check"></i>
+              Book This Therapy
+            </a>
+          </div>
+        </div>
+
+        <!-- Service 5: Moving/Sliding Cupping -->
+        <div class="service-section" data-category="therapeutic">
+          <div class="service-image-wrapper">
+            <img src="https://images.unsplash.com/photo-1519823551278-64ac92734fb1?w=1200" alt="Moving Cupping" loading="lazy">
+            <span class="service-badge">Dynamic Therapy</span>
+          </div>
+          <div class="service-content">
+            <span class="service-number">05</span>
+            <h2>Moving/Sliding Cupping</h2>
+            <p class="tagline">Gliding cups for muscle relaxation</p>
+            
+            <div class="service-meta">
+              <div class="meta-item">
+                <i class="far fa-clock"></i>
+                <span>45-60 minutes</span>
+              </div>
+              <div class="meta-item">
+                <i class="fas fa-hands"></i>
+                <span>Massage + Cupping</span>
+              </div>
+            </div>
+
+            <p class="description">
+              Also known as sliding cupping, this therapy involves applying oil to the skin and gliding suction cups over large muscle groups to release tension and improve circulation. Combining the benefits of massage and cupping, it is ideal for widespread muscle soreness, stress or poor flexibility. The dynamic movement feels invigorating and while temporary marks may appear, the therapy enhances mobility and leaves you deeply relaxed. This technique is particularly effective for treating large muscle areas and can address multiple problem zones in a single session, making it a favorite among athletes and those with demanding physical lifestyles.
+            </p>
+
+            <div class="benefits-grid">
+              <div class="benefit-item">
+                <i class="fas fa-check-circle"></i>
+                <span>Releases muscle tension</span>
+              </div>
+              <div class="benefit-item">
+                <i class="fas fa-check-circle"></i>
+                <span>Improves circulation</span>
+              </div>
+              <div class="benefit-item">
+                <i class="fas fa-check-circle"></i>
+                <span>Enhances flexibility</span>
+              </div>
+              <div class="benefit-item">
+                <i class="fas fa-check-circle"></i>
+                <span>Treats large areas</span>
+              </div>
+              <div class="benefit-item">
+                <i class="fas fa-check-circle"></i>
+                <span>Invigorating experience</span>
+              </div>
+              <div class="benefit-item">
+                <i class="fas fa-check-circle"></i>
+                <span>Deep relaxation</span>
+              </div>
+            </div>
+
+            <a href="booking-form.html" class="book-btn">
+              <i class="fas fa-calendar-check"></i>
+              Book This Therapy
+            </a>
+          </div>
+        </div>
+
+        <!-- Service 6: Breast Cupping -->
+        <div class="service-section" data-category="beauty">
+          <div class="service-image-wrapper">
+            <img src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?w=1200" alt="Breast Cupping" loading="lazy">
+            <span class="service-badge">Wellness Therapy</span>
+          </div>
+          <div class="service-content">
+            <span class="service-number">06</span>
+            <h2>Breast Cupping</h2>
+            <p class="tagline">Breast firming and lymphatic enhancement</p>
+            
+            <div class="service-meta">
+              <div class="meta-item">
+                <i class="far fa-clock"></i>
+                <span>30-45 minutes</span>
+              </div>
+              <div class="meta-item">
+                <i class="fas fa-user-shield"></i>
+                <span>Private & Safe</span>
+              </div>
+            </div>
+
+            <p class="description">
+              This specialized therapy uses gentle vacuum suction to tone breast tissue and promote lymphatic drainage. It enhances blood circulation, reduces fluid retention and supports breast health, making it ideal for women seeking a natural way to improve breast appearance or alleviate discomfort from swelling. Performed with care, the session is relaxing and non-invasive, ensuring comfort while delivering noticeable results over multiple sessions. The therapy can help improve tissue elasticity, support natural firmness, and promote overall breast wellness in a safe, professional environment.
+            </p>
+
+            <div class="benefits-grid">
+              <div class="benefit-item">
+                <i class="fas fa-check-circle"></i>
+                <span>Tones breast tissue</span>
+              </div>
+              <div class="benefit-item">
+                <i class="fas fa-check-circle"></i>
+                <span>Promotes lymphatic drainage</span>
+              </div>
+              <div class="benefit-item">
+                <i class="fas fa-check-circle"></i>
+                <span>Enhances circulation</span>
+              </div>
+              <div class="benefit-item">
+                <i class="fas fa-check-circle"></i>
+                <span>Reduces fluid retention</span>
+              </div>
+              <div class="benefit-item">
+                <i class="fas fa-check-circle"></i>
+                <span>Natural wellness</span>
+              </div>
+              <div class="benefit-item">
+                <i class="fas fa-check-circle"></i>
+                <span>Safe & comfortable</span>
+              </div>
+            </div>
+
+            <a href="booking-form.html" class="book-btn">
+              <i class="fas fa-calendar-check"></i>
+              Book This Therapy
+            </a>
+          </div>
+        </div>
+
+        <!-- Service 7: Dynamic Cupping -->
+        <div class="service-section" data-category="therapeutic">
+          <div class="service-image-wrapper">
+            <img src="https://images.unsplash.com/photo-1571902943202-507ec2618e8f?w=1200" alt="Dynamic Cupping" loading="lazy">
+            <span class="service-badge">Athletic Recovery</span>
+          </div>
+          <div class="service-content">
+            <span class="service-number">07</span>
+            <h2>Dynamic Cupping</h2>
+            <p class="tagline">Moving cups for targeted muscle therapy</p>
+            
+            <div class="service-meta">
+              <div class="meta-item">
+                <i class="far fa-clock"></i>
+                <span>45-60 minutes</span>
+              </div>
+              <div class="meta-item">
+                <i class="fas fa-running"></i>
+                <span>For Athletes</span>
+              </div>
+            </div>
+
+            <p class="description">
+              A variation of moving cupping, dynamic cupping uses gliding suction cups with massage oil to target specific muscle groups, release tension and boost circulation. This therapy is ideal for athletes or those with widespread muscle stiffness, as it combines the deep relief of cupping with the fluidity of massage. Expect a soothing yet invigorating session with temporary skin marks, resulting in improved flexibility and reduced soreness. The technique allows for precise targeting of problem areas while covering large muscle groups, making it highly effective for post-workout recovery and injury prevention.
+            </p>
+
+            <div class="benefits-grid">
+              <div class="benefit-item">
+                <i class="fas fa-check-circle"></i>
+                <span>Targets muscle groups</span>
+              </div>
+              <div class="benefit-item">
+                <i class="fas fa-check-circle"></i>
+                <span>Releases deep tension</span>
+              </div>
+              <div class="benefit-item">
+                <i class="fas fa-check-circle"></i>
+                <span>Boosts circulation</span>
+              </div>
+              <div class="benefit-item">
+                <i class="fas fa-check-circle"></i>
+                <span>Improves flexibility</span>
+              </div>
+              <div class="benefit-item">
+                <i class="fas fa-check-circle"></i>
+                <span>Reduces soreness</span>
+              </div>
+              <div class="benefit-item">
+                <i class="fas fa-check-circle"></i>
+                <span>Athletic recovery</span>
+              </div>
+            </div>
+
+            <a href="booking-form.html" class="book-btn">
+              <i class="fas fa-calendar-check"></i>
+              Book This Therapy
+            </a>
+          </div>
+        </div>
+
+        <!-- Service 8: Moska Cupping -->
+        <div class="service-section" data-category="traditional">
+          <div class="service-image-wrapper">
+            <img src="https://images.unsplash.com/photo-1594736797933-d0501ba2fe65?w=1200" alt="Moska Cupping" loading="lazy">
+            <span class="service-badge">Traditional Healing</span>
+          </div>
+          <div class="service-content">
+            <span class="service-number">08</span>
+            <h2>Moska Cupping</h2>
+            <p class="tagline">Fire cupping for detox and deep relief</p>
+            
+            <div class="service-meta">
+              <div class="meta-item">
+                <i class="far fa-clock"></i>
+                <span>45-60 minutes</span>
+              </div>
+              <div class="meta-item">
+                <i class="fas fa-fire-alt"></i>
+                <span>Traditional Fire Method</span>
+              </div>
+            </div>
+
+            <p class="description">
+              A traditional therapy where glass cups are heated with fire to create suction, drawing out toxins and relieving deep-seated muscle tension. Moska cupping promotes healing, improves blood flow and is particularly effective for chronic pain, stress or respiratory issues. The warm suction feels uniquely therapeutic and while temporary circular marks may appear, the session leaves you feeling refreshed, balanced and deeply relaxed. This ancient practice has been refined over generations and continues to be valued for its powerful therapeutic effects and ability to address both physical and energetic imbalances in the body.
+            </p>
+
+            <div class="benefits-grid">
+              <div class="benefit-item">
+                <i class="fas fa-check-circle"></i>
+                <span>Draws out toxins</span>
+              </div>
+              <div class="benefit-item">
+                <i class="fas fa-check-circle"></i>
+                <span>Deep muscle relief</span>
+              </div>
+              <div class="benefit-item">
+                <i class="fas fa-check-circle"></i>
+                <span>Promotes healing</span>
+              </div>
+              <div class="benefit-item">
+                <i class="fas fa-check-circle"></i>
+                <span>Improves blood flow</span>
+              </div>
+              <div class="benefit-item">
+                <i class="fas fa-check-circle"></i>
+                <span>Relieves chronic pain</span>
+              </div>
+              <div class="benefit-item">
+                <i class="fas fa-check-circle"></i>
+                <span>Balances energy</span>
+              </div>
+            </div>
+
+            <a href="booking-form.html" class="book-btn">
+              <i class="fas fa-calendar-check"></i>
+              Book This Therapy
+            </a>
+          </div>
+        </div>
+
+        <!-- Service 9: Head Cupping -->
+        <div class="service-section" data-category="therapeutic">
+          <div class="service-image-wrapper">
+            <img src="https://images.unsplash.com/photo-1519824145371-296894a0daa9?w=1200" alt="Head Cupping" loading="lazy">
+            <span class="service-badge">Stress Relief</span>
+          </div>
+          <div class="service-content">
+            <span class="service-number">09</span>
+            <h2>Head Cupping</h2>
+            <p class="tagline">Suction therapy for headaches and stress</p>
+            
+            <div class="service-meta">
+              <div class="meta-item">
+                <i class="far fa-clock"></i>
+                <span>30-40 minutes</span>
+              </div>
+              <div class="meta-item">
+                <i class="fas fa-brain"></i>
+                <span>Mental Clarity</span>
+              </div>
+            </div>
+
+            <p class="description">
+              This targeted therapy uses small suction cups on the scalp and neck to relieve headaches, migraines and stress-related tension. By improving blood flow and relaxing tight muscles, it promotes mental clarity and reduces anxiety. The gentle suction is soothing and the quick session is ideal for those with chronic headaches or mental fatigue. Temporary marks may appear but fade quickly, leaving you refreshed and focused. The therapy can be particularly beneficial for those who suffer from tension headaches, stress-induced migraines, or cognitive fatigue from prolonged mental work.
+            </p>
+
+            <div class="benefits-grid">
+              <div class="benefit-item">
+                <i class="fas fa-check-circle"></i>
+                <span>Relieves headaches</span>
+              </div>
+              <div class="benefit-item">
+                <i class="fas fa-check-circle"></i>
+                <span>Reduces migraines</span>
+              </div>
+              <div class="benefit-item">
+                <i class="fas fa-check-circle"></i>
+                <span>Improves blood flow</span>
+              </div>
+              <div class="benefit-item">
+                <i class="fas fa-check-circle"></i>
+                <span>Promotes mental clarity</span>
+              </div>
+              <div class="benefit-item">
+                <i class="fas fa-check-circle"></i>
+                <span>Reduces anxiety</span>
+              </div>
+              <div class="benefit-item">
+                <i class="fas fa-check-circle"></i>
+                <span>Quick treatment</span>
+              </div>
+            </div>
+
+            <a href="booking-form.html" class="book-btn">
+              <i class="fas fa-calendar-check"></i>
+              Book This Therapy
+            </a>
+          </div>
+        </div>
+
+        <!-- Service 10: Bamboo Cupping -->
+        <div class="service-section" data-category="therapeutic">
+          <div class="service-image-wrapper">
+            <img src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?w=1200" alt="Bamboo Cupping" loading="lazy">
+            <span class="service-badge">Eco-Friendly</span>
+          </div>
+          <div class="service-content">
+            <span class="service-number">10</span>
+            <h2>Bamboo Cupping</h2>
+            <p class="tagline">Natural bamboo therapy for muscle relief</p>
+            
+            <div class="service-meta">
+              <div class="meta-item">
+                <i class="far fa-clock"></i>
+                <span>40-50 minutes</span>
+              </div>
+              <div class="meta-item">
+                <i class="fas fa-leaf"></i>
+                <span>Natural & Organic</span>
+              </div>
+            </div>
+
+            <p class="description">
+              Using heated bamboo cups to create suction, this eco-friendly therapy stimulates blood flow, relaxes tight muscles and promotes relaxation. The natural warmth of the bamboo enhances the therapeutic effect, making it ideal for muscle soreness, stress or poor circulation. Cups are placed or moved along the body to target tension areas, delivering a warm, soothing sensation and noticeable relief with minimal temporary marks. Bamboo cupping offers a unique connection to nature while providing all the benefits of traditional cupping methods. The sustainable bamboo material adds an element of environmental consciousness to the healing process.
+            </p>
+
+            <div class="benefits-grid">
+              <div class="benefit-item">
+                <i class="fas fa-check-circle"></i>
+                <span>Natural bamboo warmth</span>
+              </div>
+              <div class="benefit-item">
+                <i class="fas fa-check-circle"></i>
+                <span>Stimulates blood flow</span>
+              </div>
+              <div class="benefit-item">
+                <i class="fas fa-check-circle"></i>
+                <span>Relaxes muscles</span>
+              </div>
+              <div class="benefit-item">
+                <i class="fas fa-check-circle"></i>
+                <span>Eco-friendly therapy</span>
+              </div>
+              <div class="benefit-item">
+                <i class="fas fa-check-circle"></i>
+                <span>Soothing sensation</span>
+              </div>
+              <div class="benefit-item">
+                <i class="fas fa-check-circle"></i>
+                <span>Minimal marking</span>
+              </div>
+            </div>
+
+            <a href="booking-form.html" class="book-btn">
+              <i class="fas fa-calendar-check"></i>
+              Book This Therapy
+            </a>
+          </div>
+        </div>
+
       </div>
     </div>
   </section>
 
   <script>
-    document.addEventListener('DOMContentLoaded', function () {
-      const apiUrl = 'https://my-backend-hsra.onrender.com/api/admin/services/type/cupping';
-      const container = document.getElementById('services-container');
-
-      async function fetchServices() {
-        try {
-          const response = await fetch(apiUrl);
-
-          if (!response.ok) {
-            throw new Error('Network response was not ok');
+    // Filter Functions
+    function filterServices(category) {
+      const sections = document.querySelectorAll('.service-section');
+      const tabs = document.querySelectorAll('.filter-tab');
+      
+      // Update active tab
+      tabs.forEach(tab => tab.classList.remove('active'));
+      event.target.classList.add('active');
+      
+      // Filter sections
+      sections.forEach(section => {
+        if (category === 'all') {
+          section.style.display = 'grid';
+        } else {
+          if (section.dataset.category === category) {
+            section.style.display = 'grid';
+          } else {
+            section.style.display = 'none';
           }
-
-          const services = await response.json();
-
-          if (services.length === 0) {
-            container.innerHTML = '<div class="error-message">No cupping services found at this time.</div>';
-            return;
-          }
-
-          renderServices(services);
-        } catch (error) {
-          console.error('Error fetching services:', error);
-          container.innerHTML = `<div class="error-message">Error loading services. Please try again later.</div>`;
         }
-      }
+      });
+    }
 
-      function renderServices(services) {
-        container.innerHTML = `
-          <div class="services-grid">
-            ${services.map(service => `
-              <a href="service-details.html?id=${service.service_id}" class="service-card">
-                <div class="service-image">
-                  <img src="${service.card_image}" alt="${service.title}" loading="lazy">
-                </div>
-                <div class="service-content">
-                  <h3>${service.title}</h3>
-                  <p>${service.card_description}</p>
-                  <span class="price-tag">₹${service.min_price} - ₹${service.max_price}</span>
-                </div>
-              </a>
-            `).join('')}
-          </div>
-        `;
-      }
-
-      fetchServices();
-    });
-
+    // Navigation
     document.addEventListener('DOMContentLoaded', () => {
       // Mobile Menu Toggle
       const menuToggle = document.getElementById('mobile-menu');
       const navLinks = document.getElementById('nav-links');
 
-      menuToggle.addEventListener('click', () => {
-        navLinks.classList.toggle('active');
-        menuToggle.classList.toggle('open');
-      });
+      if (menuToggle) {
+        menuToggle.addEventListener('click', () => {
+          navLinks.classList.toggle('active');
+          menuToggle.classList.toggle('open');
+        });
+      }
 
       // Close menu when clicking on links
       document.querySelectorAll('.nav-links a').forEach(link => {
@@ -310,10 +1222,12 @@
           const targetId = this.getAttribute('href');
           const targetElement = document.querySelector(targetId);
 
-          window.scrollTo({
-            top: targetElement.offsetTop - 70,
-            behavior: 'smooth'
-          });
+          if (targetElement) {
+            window.scrollTo({
+              top: targetElement.offsetTop - 70,
+              behavior: 'smooth'
+            });
+          }
         });
       });
     });

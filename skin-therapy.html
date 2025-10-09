@@ -9,11 +9,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <!-- SEO Title: short, keyword + brand -->
-  <title>Skin & Massage Services at Home in Pune — Avira Health Centre</title>
+  <title>Skin & Laser Services at Home in Pune — Avira Health Centre</title>
 
   <!-- Concise meta description with local keywords (keep ~120-160 chars) -->
   <meta name="description"
-    content="Avira Health Centre — certified at-home skin therapies, facials, laser & cupping in Pune (Kothrud, Baner, Wakad, Pimpri, Viman Nagar, Koregaon Park & nearby). Book now." />
+    content="Avira Health Centre — certified at-home skin therapies, facials, laser & anti-aging treatments in Pune (Kothrud, Baner, Wakad, Pimpri, Viman Nagar, Koregaon Park & nearby). Book now." />
 
   <!-- Ensure canonical is present -->
   <link rel="canonical" href="https://avirahealthcentre.in/skin-services/" />
@@ -22,9 +22,9 @@
   <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large" />
 
   <!-- Open Graph / Twitter -->
-  <meta property="og:title" content="Avira Health Centre — Skin & Massage Services at Home in Pune" />
+  <meta property="og:title" content="Avira Health Centre — Skin & Laser Services at Home in Pune" />
   <meta property="og:description"
-    content="Certified home skin therapies, facials, laser, and cupping across Pune neighbourhoods. Book Avira Health Centre." />
+    content="Certified home skin therapies, facials, laser, and anti-aging treatments across Pune neighbourhoods. Book Avira Health Centre." />
   <meta property="og:image" content="https://avirahealthcentre.in/assets/logo1.jpg" />
   <meta property="og:url" content="https://avirahealthcentre.in/skin-services/" />
   <meta property="og:type" content="website" />
@@ -33,11 +33,10 @@
   <!-- Preconnect for performance -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="preconnect" href="https://www.googletagmanager.com" />
 
   <!-- Fonts & icons -->
   <link
-    href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Open+Sans:wght@300;400;600&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700&display=swap"
     rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 
@@ -50,127 +49,433 @@
 
   <style>
     :root {
-      --primary: #27ae60;
-      --secondary: #2c3e50;
-      --accent: #e74c3c;
+      /* Brand Colors from Logo */
+      --primary: #1a7a6e;
+      --primary-dark: #145e55;
+      --accent: #c9a77c;
+      --accent-light: #e5d4be;
+      
+      /* Base Colors */
       --light: #ffffff;
-      --dark: #2d3436;
-      --text-muted: #7f8c8d;
-      --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-      --transition: all 0.3s ease;
+      --dark: #1a1a1a;
+      --text-primary: #2d2d2d;
+      --text-secondary: #5a5a5a;
+      --text-muted: #767676;
+      
+      /* Backgrounds */
+      --bg-primary: #ffffff;
+      --bg-secondary: #fafafa;
+      --bg-accent: #f8f6f3;
+      
+      /* Shadows */
+      --shadow-sm: 0 2px 8px rgba(26, 122, 110, 0.08);
+      --shadow-md: 0 4px 16px rgba(26, 122, 110, 0.12);
+      
+      --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      --border-radius: 12px;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
     }
 
     body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      line-height: 1.6;
-      color: #333;
-      padding: 0;
-      margin: 0;
-      background-color: #f9f9f9;
+      font-family: 'Poppins', sans-serif;
+      line-height: 1.7;
+      color: var(--text-primary);
+      background-color: var(--bg-primary);
+      overflow-x: hidden;
     }
 
-    .container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 20px;
-    }
-
-    .section-title {
+    /* Hero Section */
+    .hero-section {
+      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+      padding: 100px 20px 80px;
       text-align: center;
-      margin-bottom: 40px;
+      color: var(--light);
+      position: relative;
+      overflow: hidden;
     }
 
-    .section-title h2 {
-      color: var(--secondary);
-      font-size: 2.2rem;
-      margin-bottom: 15px;
+    .hero-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="rgba(255,255,255,0.1)" d="M0,96L48,112C96,128,192,160,288,160C384,160,480,128,576,122.7C672,117,768,139,864,138.7C960,139,1056,117,1152,96C1248,75,1344,53,1392,42.7L1440,32L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>') no-repeat bottom;
+      background-size: cover;
+      opacity: 0.3;
     }
 
-    .section-title p {
-      color: var(--text-muted);
-      font-size: 1.1rem;
-      max-width: 700px;
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 900px;
       margin: 0 auto;
     }
 
-    .services-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    .hero-section h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 3.5rem;
+      font-weight: 700;
+      margin-bottom: 25px;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+      color: var(--light);
+    }
+
+    .hero-section p {
+      font-size: 1.3rem;
+      margin-bottom: 40px;
+      opacity: 0.95;
+      color: var(--light);
+      line-height: 1.8;
+    }
+
+    .hero-badges {
+      display: flex;
+      justify-content: center;
       gap: 30px;
+      flex-wrap: wrap;
+      margin-top: 40px;
     }
 
-    .service-card {
-      background: var(--light);
-      border-radius: 10px;
-      overflow: hidden;
-      transition: var(--transition);
-      box-shadow: var(--shadow);
+    .badge {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      background: rgba(255, 255, 255, 0.15);
+      padding: 15px 30px;
+      border-radius: 50px;
+      backdrop-filter: blur(10px);
+      border: 2px solid rgba(255, 255, 255, 0.25);
+      color: var(--light);
+      font-weight: 500;
+    }
+
+    .badge i {
+      font-size: 1.4rem;
+      color: var(--accent-light);
+    }
+
+    /* Container */
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 80px 20px;
+      background-color: var(--bg-primary);
+    }
+
+    /* Service Section */
+    .service-section {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+      margin-bottom: 80px;
+      padding: 60px 0;
+    }
+
+    .service-section:not(:last-child) {
+      border-bottom: 2px solid var(--bg-secondary);
+    }
+
+    /* Alternate layout */
+    .service-section:nth-child(even) {
+      direction: rtl;
+    }
+
+    .service-section:nth-child(even) > * {
+      direction: ltr;
+    }
+
+    .service-image-wrapper {
       position: relative;
-      text-decoration: none;
-      color: inherit;
-      display: block;
-    }
-
-    .service-image {
-      height: 200px;
+      border-radius: var(--border-radius);
       overflow: hidden;
+      box-shadow: var(--shadow-md);
+      height: 450px;
     }
 
-    .service-image img {
+    .service-image-wrapper img {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      transition: transform 0.5s ease;
+      transition: transform 0.6s ease;
+    }
+
+    .service-section:hover .service-image-wrapper img {
+      transform: scale(1.05);
+    }
+
+    .service-badge {
+      position: absolute;
+      top: 25px;
+      right: 25px;
+      background: var(--accent);
+      color: var(--light);
+      padding: 12px 24px;
+      border-radius: 50px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      box-shadow: var(--shadow-sm);
+      z-index: 2;
     }
 
     .service-content {
       padding: 20px;
     }
 
-    .service-card h3 {
-      margin: 0 0 10px;
-      color: var(--secondary);
-      font-size: 1.3rem;
-    }
-
-    .service-card p {
-      color: var(--text-muted);
-      margin: 0;
-    }
-
-    .price-tag {
+    .service-number {
       display: inline-block;
-      background: var(--primary);
-      color: white;
-      padding: 5px 15px;
-      border-radius: 20px;
-      font-size: 0.9rem;
-      margin-top: 15px;
-      font-weight: 600;
-    }
-
-    .loading {
+      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+      color: var(--light);
+      width: 50px;
+      height: 50px;
+      line-height: 50px;
       text-align: center;
-      padding: 40px;
+      border-radius: 50%;
+      font-weight: 700;
       font-size: 1.2rem;
-      color: var(--text-muted);
+      margin-bottom: 20px;
+      box-shadow: var(--shadow-sm);
     }
 
-    .error-message {
-      text-align: center;
-      padding: 40px;
+    .service-content h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.5rem;
+      color: var(--text-primary);
+      margin-bottom: 20px;
+      font-weight: 700;
+    }
+
+    .service-content .tagline {
       color: var(--accent);
       font-size: 1.1rem;
+      font-weight: 600;
+      margin-bottom: 25px;
+      font-style: italic;
+    }
+
+    .service-content .description {
+      color: var(--text-secondary);
+      font-size: 1.05rem;
+      line-height: 1.9;
+      margin-bottom: 30px;
+      text-align: justify;
+    }
+
+    .service-meta {
+      display: flex;
+      gap: 25px;
+      margin-bottom: 30px;
+      flex-wrap: wrap;
+    }
+
+    .meta-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--text-primary);
+      font-weight: 500;
+      background: var(--bg-accent);
+      padding: 10px 20px;
+      border-radius: 30px;
+      border: 1px solid var(--accent-light);
+    }
+
+    .meta-item i {
+      color: var(--primary);
+      font-size: 1.2rem;
+    }
+
+    /* Benefits Grid */
+    .benefits-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 15px;
+      margin-bottom: 35px;
+    }
+
+    .benefit-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 12px 16px;
+      background: var(--bg-accent);
+      border-radius: 8px;
+      border-left: 4px solid var(--accent);
+      transition: var(--transition);
+    }
+
+    .benefit-item:hover {
+      transform: translateX(8px);
+      box-shadow: var(--shadow-sm);
+      border-left-color: var(--primary);
+    }
+
+    .benefit-item i {
+      color: var(--primary);
+      font-size: 1.1rem;
+      min-width: 20px;
+    }
+
+    .benefit-item span {
+      color: var(--text-primary);
+      font-size: 0.95rem;
+    }
+
+    .book-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+      color: var(--light);
+      padding: 16px 40px;
+      border-radius: 50px;
+      font-size: 1.05rem;
+      font-weight: 600;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      transition: var(--transition);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .book-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .book-btn i {
+      color: var(--accent-light);
+      font-size: 1.2rem;
+    }
+
+    /* Filter Section */
+    .filter-section {
+      text-align: center;
+      margin-bottom: 60px;
+    }
+
+    .filter-tabs {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      flex-wrap: wrap;
+      margin-top: 30px;
+    }
+
+    .filter-tab {
+      padding: 14px 32px;
+      background: var(--bg-primary);
+      border: 2px solid #e5e5e5;
+      border-radius: 50px;
+      cursor: pointer;
+      transition: var(--transition);
+      font-weight: 500;
+      color: var(--text-primary);
+      font-size: 1rem;
+    }
+
+    .filter-tab:hover {
+      border-color: var(--accent);
+      color: var(--primary);
+      transform: translateY(-2px);
+    }
+
+    .filter-tab.active {
+      background: var(--primary);
+      color: var(--light);
+      border-color: var(--primary);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-sm);
+    }
+
+    /* Responsive */
+    @media (max-width: 1024px) {
+      .service-section {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+
+      .service-section:nth-child(even) {
+        direction: ltr;
+      }
+
+      .service-image-wrapper {
+        height: 400px;
+      }
+
+      .benefits-grid {
+        grid-template-columns: 1fr;
+      }
     }
 
     @media (max-width: 768px) {
-      .services-grid {
-        grid-template-columns: 1fr;
+      .hero-section {
+        padding: 80px 20px 60px;
       }
 
-      .service-image {
-        height: 180px;
+      .hero-section h1 {
+        font-size: 2.2rem;
       }
+
+      .hero-section p {
+        font-size: 1.1rem;
+      }
+
+      .container {
+        padding: 50px 20px;
+      }
+
+      .service-section {
+        margin-bottom: 50px;
+        padding: 40px 0;
+      }
+
+      .service-content h2 {
+        font-size: 2rem;
+      }
+
+      .service-image-wrapper {
+        height: 300px;
+      }
+
+      .filter-tab {
+        padding: 12px 24px;
+        font-size: 0.9rem;
+      }
+
+      .hero-badges {
+        gap: 15px;
+      }
+
+      .badge {
+        padding: 12px 20px;
+        font-size: 0.9rem;
+      }
+    }
+
+    /* Scrollbar */
+    ::-webkit-scrollbar {
+      width: 10px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: var(--bg-secondary);
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: var(--primary);
+      border-radius: 5px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: var(--primary-dark);
     }
   </style>
 </head>
@@ -218,77 +523,564 @@
     <i class="fab fa-whatsapp" style="color: white; font-size: 28px;"></i>
   </a>
 
+  <!-- Hero Section -->
+  <section class="hero-section">
+    <div class="hero-content">
+      <h1>Professional Skin & Laser Therapies at Home</h1>
+      <p>Experience advanced skin treatments with certified professionals delivering cutting-edge facials, laser therapies, and anti-aging solutions in the comfort of your home across Pune</p>
+      
+      <div class="hero-badges">
+        <div class="badge">
+          <i class="fas fa-award"></i>
+          <span>Advanced Technology</span>
+        </div>
+        <div class="badge">
+          <i class="fas fa-user-md"></i>
+          <span>Expert Practitioners</span>
+        </div>
+        <div class="badge">
+          <i class="fas fa-home"></i>
+          <span>At-Home Service</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services Section -->
   <section class="services">
     <div class="container">
-      <div class="section-title">
-        <h2>Our Cupping Services</h2>
-        <p>Professional cupping therapies to enhance your wellbeing</p>
+      
+      <div class="filter-section">
+        <div class="filter-tabs">
+          <div class="filter-tab active" onclick="filterServices('all')">All Treatments</div>
+          <div class="filter-tab" onclick="filterServices('facial')">Facial Therapies</div>
+          <div class="filter-tab" onclick="filterServices('laser')">Laser Treatments</div>
+          <div class="filter-tab" onclick="filterServices('antiaging')">Anti-Aging</div>
+        </div>
       </div>
 
       <div id="services-container">
-        <div class="loading">Loading services...</div>
+
+        <!-- Service 1: Skin Glow Therapy -->
+        <div class="service-section" data-category="facial">
+          <div class="service-image-wrapper">
+            <img src="https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=1200" alt="Skin Glow Therapy" loading="lazy">
+            <span class="service-badge">Radiance Boost</span>
+          </div>
+          <div class="service-content">
+            <span class="service-number">01</span>
+            <h2>Skin Glow Therapy</h2>
+            <p class="tagline">Radiance boosting facial treatment</p>
+            
+            <div class="service-meta">
+              <div class="meta-item">
+                <i class="far fa-clock"></i>
+                <span>60-75 minutes</span>
+              </div>
+              <div class="meta-item">
+                <i class="fas fa-spa"></i>
+                <span>All Skin Types</span>
+              </div>
+            </div>
+
+            <p class="description">
+              A luxurious facial treatment designed to restore radiance and deeply hydrate the skin. Using a sophisticated combination of cleansing, exfoliation, and nourishing masks, this therapy enhances skin tone, reduces dullness, and promotes a healthy, luminous glow. Infused with serums rich in vitamins and powerful antioxidants, it is ideal for all skin types seeking a refreshed, radiant complexion. The relaxing session requires no downtime and leaves your skin feeling soft, supple, and beautifully rejuvenated. This treatment combines multiple steps including gentle cleansing to remove impurities, professional exfoliation to slough away dead skin cells, application of targeted serums to address specific concerns, and finishing with nourishing masks that lock in moisture and nutrients for lasting radiance.
+            </p>
+
+            <div class="benefits-grid">
+              <div class="benefit-item">
+                <i class="fas fa-check-circle"></i>
+                <span>Restores natural radiance</span>
+              </div>
+              <div class="benefit-item">
+                <i class="fas fa-check-circle"></i>
+                <span>Deep hydration</span>
+              </div>
+              <div class="benefit-item">
+                <i class="fas fa-check-circle"></i>
+                <span>Reduces dullness</span>
+              </div>
+              <div class="benefit-item">
+                <i class="fas fa-check-circle"></i>
+                <span>Enhances skin tone</span>
+              </div>
+              <div class="benefit-item">
+                <i class="fas fa-check-circle"></i>
+                <span>No downtime required</span>
+              </div>
+              <div class="benefit-item">
+                <i class="fas fa-check-circle"></i>
+                <span>Suitable for all skin types</span>
+              </div>
+            </div>
+
+            <a href="booking-form.html" class="book-btn">
+              <i class="fas fa-calendar-check"></i>
+              Book This Treatment
+            </a>
+          </div>
+        </div>
+
+        <!-- Service 2: Anti Ageing Therapy -->
+        <div class="service-section" data-category="antiaging">
+          <div class="service-image-wrapper">
+            <img src="https://images.unsplash.com/photo-1616394584738-fc6e612e71b9?w=1200" alt="Anti Ageing Therapy" loading="lazy">
+            <span class="service-badge">Age-Defying</span>
+          </div>
+          <div class="service-content">
+            <span class="service-number">02</span>
+            <h2>Anti Ageing Therapy</h2>
+            <p class="tagline">Reduces wrinkles for youthful skin</p>
+            
+            <div class="service-meta">
+              <div class="meta-item">
+                <i class="far fa-clock"></i>
+                <span>60-90 minutes</span>
+              </div>
+              <div class="meta-item">
+                <i class="fas fa-heart"></i>
+                <span>Mature Skin</span>
+              </div>
+            </div>
+
+            <p class="description">
+              This advanced treatment targets visible signs of aging such as fine lines, wrinkles, and sagging skin using a sophisticated combination of premium serums, microcurrents, or state-of-the-art laser technology. By stimulating natural collagen production and significantly improving skin elasticity, it restores a youthful, vibrant appearance. Ideal for mature skin, the therapy is completely non-invasive with no downtime required, and delivers noticeable, impressive results over multiple sessions. Expect a deeply relaxing experience with smoother, firmer skin as the outcome. The treatment works at cellular level to rejuvenate skin structure, repair damage, and promote long-term improvement in skin quality and appearance.
+            </p>
+
+            <div class="benefits-grid">
+              <div class="benefit-item">
+                <i class="fas fa-check-circle"></i>
+                <span>Reduces fine lines & wrinkles</span>
+              </div>
+              <div class="benefit-item">
+                <i class="fas fa-check-circle"></i>
+                <span>Stimulates collagen production</span>
+              </div>
+              <div class="benefit-item">
+                <i class="fas fa-check-circle"></i>
+                <span>Improves skin elasticity</span>
+              </div>
+              <div class="benefit-item">
+                <i class="fas fa-check-circle"></i>
+                <span>Non-invasive procedure</span>
+              </div>
+              <div class="benefit-item">
+                <i class="fas fa-check-circle"></i>
+                <span>Restores youthful appearance</span>
+              </div>
+              <div class="benefit-item">
+                <i class="fas fa-check-circle"></i>
+                <span>No downtime required</span>
+              </div>
+            </div>
+
+            <a href="booking-form.html" class="book-btn">
+              <i class="fas fa-calendar-check"></i>
+              Book This Treatment
+            </a>
+          </div>
+        </div>
+
+        <!-- Service 3: Acne Treatment -->
+        <div class="service-section" data-category="facial">
+          <div class="service-image-wrapper">
+            <img src="https://images.unsplash.com/photo-1598440947619-2c35fc9aa908?w=1200" alt="Acne Treatment" loading="lazy">
+            <span class="service-badge">Clear Skin</span>
+          </div>
+          <div class="service-content">
+            <span class="service-number">03</span>
+            <h2>Acne Treatment</h2>
+            <p class="tagline">Targeted therapy for clear, healthy skin</p>
+            
+            <div class="service-meta">
+              <div class="meta-item">
+                <i class="far fa-clock"></i>
+                <span>45-60 minutes</span>
+              </div>
+              <div class="meta-item">
+                <i class="fas fa-shield-alt"></i>
+                <span>Acne-Prone Skin</span>
+              </div>
+            </div>
+
+            <p class="description">
+              A specialized treatment expertly designed to combat acne and effectively prevent future breakouts. Using comprehensive deep cleansing, professional exfoliation, and targeted serums, this therapy significantly reduces oil production, unclogs pores, and soothes inflammation. Suitable for oily or acne-prone skin, it includes professional extractions performed with precision and calming masks to promote healing and restore balance. The non-invasive session minimizes redness, reduces active breakouts, and leaves your skin clearer, smoother, and healthier with consistent sessions. The treatment addresses both current acne concerns and underlying causes to provide long-term improvement and prevention of future breakouts.
+            </p>
+
+            <div class="benefits-grid">
+              <div class="benefit-item">
+                <i class="fas fa-check-circle"></i>
+                <span>Combats active acne</span>
+              </div>
+              <div class="benefit-item">
+                <i class="fas fa-check-circle"></i>
+                <span>Prevents future breakouts</span>
+              </div>
+              <div class="benefit-item">
+                <i class="fas fa-check-circle"></i>
+                <span>Reduces oil production</span>
+              </div>
+              <div class="benefit-item">
+                <i class="fas fa-check-circle"></i>
+                <span>Unclogs pores</span>
+              </div>
+              <div class="benefit-item">
+                <i class="fas fa-check-circle"></i>
+                <span>Soothes inflammation</span>
+              </div>
+              <div class="benefit-item">
+                <i class="fas fa-check-circle"></i>
+                <span>Professional extractions</span>
+              </div>
+            </div>
+
+            <a href="booking-form.html" class="book-btn">
+              <i class="fas fa-calendar-check"></i>
+              Book This Treatment
+            </a>
+          </div>
+        </div>
+
+        <!-- Service 4: Pigmentation Removal -->
+        <div class="service-section" data-category="laser">
+          <div class="service-image-wrapper">
+            <img src="https://images.unsplash.com/photo-1515377905703-c4788e51af15?w=1200" alt="Pigmentation Removal" loading="lazy">
+            <span class="service-badge">Even Tone</span>
+          </div>
+          <div class="service-content">
+            <span class="service-number">04</span>
+            <h2>Pigmentation Removal</h2>
+            <p class="tagline">Evens skin tone by reducing dark spots</p>
+            
+            <div class="service-meta">
+              <div class="meta-item">
+                <i class="far fa-clock"></i>
+                <span>45-60 minutes</span>
+              </div>
+              <div class="meta-item">
+                <i class="fas fa-bolt"></i>
+                <span>Laser Technology</span>
+              </div>
+            </div>
+
+            <p class="description">
+              This advanced treatment uses cutting-edge laser technology or professional-grade chemical peels to effectively target hyperpigmentation, dark spots, and uneven skin tone. By breaking down excess melanin deposits in the skin, it restores a balanced, uniform complexion and significantly enhances skin clarity. Ideal for addressing sun damage, melasma, or post-acne marks, the therapy is safe, precisely controlled, and customized to your specific skin type and concerns. Multiple sessions may be required for optimal, long-lasting results, with minimal downtime and a visibly brighter, more even-toned complexion. The treatment penetrates deep into skin layers to address pigmentation at its source.
+            </p>
+
+            <div class="benefits-grid">
+              <div class="benefit-item">
+                <i class="fas fa-check-circle"></i>
+                <span>Reduces dark spots</span>
+              </div>
+              <div class="benefit-item">
+                <i class="fas fa-check-circle"></i>
+                <span>Evens skin tone</span>
+              </div>
+              <div class="benefit-item">
+                <i class="fas fa-check-circle"></i>
+                <span>Treats sun damage</span>
+              </div>
+              <div class="benefit-item">
+                <i class="fas fa-check-circle"></i>
+                <span>Targets melasma</span>
+              </div>
+              <div class="benefit-item">
+                <i class="fas fa-check-circle"></i>
+                <span>Fades post-acne marks</span>
+              </div>
+              <div class="benefit-item">
+                <i class="fas fa-check-circle"></i>
+                <span>Customized treatment</span>
+              </div>
+            </div>
+
+            <a href="booking-form.html" class="book-btn">
+              <i class="fas fa-calendar-check"></i>
+              Book This Treatment
+            </a>
+          </div>
+        </div>
+
+        <!-- Service 5: Carbon Facial -->
+        <div class="service-section" data-category="laser">
+          <div class="service-image-wrapper">
+            <img src="https://images.unsplash.com/photo-1560750588-73207b1ef5b8?w=1200" alt="Carbon Facial" loading="lazy">
+            <span class="service-badge">Hollywood Facial</span>
+          </div>
+          <div class="service-content">
+            <span class="service-number">05</span>
+            <h2>Carbon Facial</h2>
+            <p class="tagline">Laser glow facial for pore tightening</p>
+            
+            <div class="service-meta">
+              <div class="meta-item">
+                <i class="far fa-clock"></i>
+                <span>30-45 minutes</span>
+              </div>
+              <div class="meta-item">
+                <i class="fas fa-star"></i>
+                <span>Celebrity Treatment</span>
+              </div>
+            </div>
+
+            <p class="description">
+              Known as the Hollywood Facial, this innovative treatment applies a specialized carbon-based lotion to the skin followed by precise laser energy to exfoliate dead skin cells, reduce acne, and tighten pores. The laser breaks down the carbon particles, effectively removing impurities deep within pores and stimulating collagen production for smoother, brighter, more youthful skin. Ideal for oily or acne-prone skin, this completely painless procedure delivers an instant, noticeable glow with absolutely no downtime, making it perfect for quick skin rejuvenation before important events or special occasions. The treatment provides immediate visible results that continue to improve over following days.
+            </p>
+
+            <div class="benefits-grid">
+              <div class="benefit-item">
+                <i class="fas fa-check-circle"></i>
+                <span>Instant glow & radiance</span>
+              </div>
+              <div class="benefit-item">
+                <i class="fas fa-check-circle"></i>
+                <span>Tightens enlarged pores</span>
+              </div>
+              <div class="benefit-item">
+                <i class="fas fa-check-circle"></i>
+                <span>Reduces acne</span>
+              </div>
+              <div class="benefit-item">
+                <i class="fas fa-check-circle"></i>
+                <span>Exfoliates dead cells</span>
+              </div>
+              <div class="benefit-item">
+                <i class="fas fa-check-circle"></i>
+                <span>No downtime</span>
+              </div>
+              <div class="benefit-item">
+                <i class="fas fa-check-circle"></i>
+                <span>Perfect pre-event treatment</span>
+              </div>
+            </div>
+
+            <a href="booking-form.html" class="book-btn">
+              <i class="fas fa-calendar-check"></i>
+              Book This Treatment
+            </a>
+          </div>
+        </div>
+
+        <!-- Service 6: Hydra Facial -->
+        <div class="service-section" data-category="facial">
+          <div class="service-image-wrapper">
+            <img src="https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=1200" alt="Hydra Facial" loading="lazy">
+            <span class="service-badge">Premium Treatment</span>
+          </div>
+          <div class="service-content">
+            <span class="service-number">06</span>
+            <h2>Hydra Facial</h2>
+            <p class="tagline">Deep hydration and exfoliation</p>
+            
+            <div class="service-meta">
+              <div class="meta-item">
+                <i class="far fa-clock"></i>
+                <span>60-75 minutes</span>
+              </div>
+              <div class="meta-item">
+                <i class="fas fa-water"></i>
+                <span>Hydration Therapy</span>
+              </div>
+            </div>
+
+            <p class="description">
+              A comprehensive multi-step facial that thoroughly cleanses, exfoliates, and intensely hydrates using a specialized medical-grade device. It gently extracts impurities from deep within pores while simultaneously infusing powerful serums packed with antioxidants, peptides, and hyaluronic acid for maximum skin benefits. Suitable for all skin types and concerns, this therapy effectively reduces fine lines, dramatically improves texture, and delivers a radiant, youthful glow. The relaxing, completely non-invasive procedure requires no downtime, leaving your skin feeling refreshed, deeply hydrated, and visibly rejuvenated after just one comprehensive session. Results are immediate and continue to improve with regular treatments.
+            </p>
+
+            <div class="benefits-grid">
+              <div class="benefit-item">
+                <i class="fas fa-check-circle"></i>
+                <span>Deep cleansing & extraction</span>
+              </div>
+              <div class="benefit-item">
+                <i class="fas fa-check-circle"></i>
+                <span>Intense hydration</span>
+              </div>
+              <div class="benefit-item">
+                <i class="fas fa-check-circle"></i>
+                <span>Reduces fine lines</span>
+              </div>
+              <div class="benefit-item">
+                <i class="fas fa-check-circle"></i>
+                <span>Improves skin texture</span>
+              </div>
+              <div class="benefit-item">
+                <i class="fas fa-check-circle"></i>
+                <span>Infuses powerful serums</span>
+              </div>
+              <div class="benefit-item">
+                <i class="fas fa-check-circle"></i>
+                <span>Instant radiant glow</span>
+              </div>
+            </div>
+
+            <a href="booking-form.html" class="book-btn">
+              <i class="fas fa-calendar-check"></i>
+              Book This Treatment
+            </a>
+          </div>
+        </div>
+
+        <!-- Service 7: Hair Removal -->
+        <div class="service-section" data-category="laser">
+          <div class="service-image-wrapper">
+            <img src="https://images.unsplash.com/photo-1519415510236-718bdfcd89c8?w=1200" alt="Laser Hair Removal" loading="lazy">
+            <span class="service-badge">Permanent Solution</span>
+          </div>
+          <div class="service-content">
+            <span class="service-number">07</span>
+            <h2>Laser Hair Removal</h2>
+            <p class="tagline">Painless permanent hair reduction</p>
+            
+            <div class="service-meta">
+              <div class="meta-item">
+                <i class="far fa-clock"></i>
+                <span>20-60 minutes</span>
+              </div>
+              <div class="meta-item">
+                <i class="fas fa-magic"></i>
+                <span>Long-term Results</span>
+              </div>
+            </div>
+
+            <p class="description">
+              This state-of-the-art laser treatment precisely targets hair follicles to significantly reduce unwanted hair growth permanently. The advanced laser's controlled energy safely disables follicles without harming surrounding skin tissue, making it suitable for various areas including the face, underarms, legs, bikini line, and more. Virtually painless and highly effective, it requires multiple sessions spaced appropriately for optimal, long-lasting results, delivering smoother skin with minimal ongoing maintenance. Ideal for those seeking a permanent, professional solution to unwanted hair, this treatment offers freedom from constant shaving, waxing, or plucking. Results improve progressively with each session.
+            </p>
+
+            <div class="benefits-grid">
+              <div class="benefit-item">
+                <i class="fas fa-check-circle"></i>
+                <span>Permanent hair reduction</span>
+              </div>
+              <div class="benefit-item">
+                <i class="fas fa-check-circle"></i>
+                <span>Virtually painless</span>
+              </div>
+              <div class="benefit-item">
+                <i class="fas fa-check-circle"></i>
+                <span>Suitable for all areas</span>
+              </div>
+              <div class="benefit-item">
+                <i class="fas fa-check-circle"></i>
+                <span>Safe for all skin types</span>
+              </div>
+              <div class="benefit-item">
+                <i class="fas fa-check-circle"></i>
+                <span>Minimal maintenance</span>
+              </div>
+              <div class="benefit-item">
+                <i class="fas fa-check-circle"></i>
+                <span>Professional precision</span>
+              </div>
+            </div>
+
+            <a href="booking-form.html" class="book-btn">
+              <i class="fas fa-calendar-check"></i>
+              Book This Treatment
+            </a>
+          </div>
+        </div>
+
+        <!-- Service 8: Tattoo Removal -->
+        <div class="service-section" data-category="laser">
+          <div class="service-image-wrapper">
+            <img src="https://images.unsplash.com/photo-1519834785169-98be25ec3f84?w=1200" alt="Tattoo Removal" loading="lazy">
+            <span class="service-badge">Advanced Laser</span>
+          </div>
+          <div class="service-content">
+            <span class="service-number">08</span>
+            <h2>Tattoo Removal</h2>
+            <p class="tagline">Safe and effective tattoo fading</p>
+            
+            <div class="service-meta">
+              <div class="meta-item">
+                <i class="far fa-clock"></i>
+                <span>15-45 minutes</span>
+              </div>
+              <div class="meta-item">
+                <i class="fas fa-eraser"></i>
+                <span>Laser Technology</span>
+              </div>
+            </div>
+
+            <p class="description">
+              Using advanced, FDA-approved laser technology, this treatment safely and effectively breaks down tattoo ink particles, allowing the body to naturally eliminate them over time through its lymphatic system. Suitable for all skin types and most tattoo colors, it requires multiple sessions based on the tattoo's size, depth, color complexity, and age. The process is safe, controlled, with minimal discomfort, and includes comprehensive aftercare instructions to ensure optimal healing and results. Perfect for removing or significantly lightening unwanted tattoos with professional care, precision, and noticeable, progressive results. Each session brings visible improvement as ink gradually fades.
+            </p>
+
+            <div class="benefits-grid">
+              <div class="benefit-item">
+                <i class="fas fa-check-circle"></i>
+                <span>Safe ink removal</span>
+              </div>
+              <div class="benefit-item">
+                <i class="fas fa-check-circle"></i>
+                <span>Works on all colors</span>
+              </div>
+              <div class="benefit-item">
+                <i class="fas fa-check-circle"></i>
+                <span>Suitable for all skin types</span>
+              </div>
+              <div class="benefit-item">
+                <i class="fas fa-check-circle"></i>
+                <span>Minimal discomfort</span>
+              </div>
+              <div class="benefit-item">
+                <i class="fas fa-check-circle"></i>
+                <span>Progressive fading</span>
+              </div>
+              <div class="benefit-item">
+                <i class="fas fa-check-circle"></i>
+                <span>Professional aftercare</span>
+              </div>
+            </div>
+
+            <a href="booking-form.html" class="book-btn">
+              <i class="fas fa-calendar-check"></i>
+              Book This Treatment
+            </a>
+          </div>
+        </div>
+
       </div>
     </div>
   </section>
 
   <script>
-    document.addEventListener('DOMContentLoaded', function () {
-      const apiUrl = 'https://my-backend-hsra.onrender.com/api/admin/services/type/skin';
-      const container = document.getElementById('services-container');
-
-      async function fetchServices() {
-        try {
-          const response = await fetch(apiUrl);
-
-          if (!response.ok) {
-            throw new Error('Network response was not ok');
+    // Filter Functions
+    function filterServices(category) {
+      const sections = document.querySelectorAll('.service-section');
+      const tabs = document.querySelectorAll('.filter-tab');
+      
+      // Update active tab
+      tabs.forEach(tab => tab.classList.remove('active'));
+      event.target.classList.add('active');
+      
+      // Filter sections
+      sections.forEach(section => {
+        if (category === 'all') {
+          section.style.display = 'grid';
+        } else {
+          if (section.dataset.category === category) {
+            section.style.display = 'grid';
+          } else {
+            section.style.display = 'none';
           }
-
-          const services = await response.json();
-
-          if (services.length === 0) {
-            container.innerHTML = '<div class="error-message">No cupping services found at this time.</div>';
-            return;
-          }
-
-          renderServices(services);
-        } catch (error) {
-          console.error('Error fetching services:', error);
-          container.innerHTML = `<div class="error-message">Error loading services. Please try again later.</div>`;
         }
-      }
+      });
+    }
 
-      function renderServices(services) {
-        container.innerHTML = `
-          <div class="services-grid">
-            ${services.map(service => `
-              <a href="service-details.html?id=${service.service_id}" class="service-card">
-                <div class="service-image">
-                  <img src="${service.card_image}" alt="${service.title}" loading="lazy">
-                </div>
-                <div class="service-content">
-                  <h3>${service.title}</h3>
-                  <p>${service.card_description}</p>
-                  <span class="price-tag">₹${service.min_price} - ₹${service.max_price}</span>
-                </div>
-              </a>
-            `).join('')}
-          </div>
-        `;
-      }
-
-      fetchServices();
-    });
-
+    // Navigation
     document.addEventListener('DOMContentLoaded', () => {
       // Mobile Menu Toggle
       const menuToggle = document.getElementById('mobile-menu');
       const navLinks = document.getElementById('nav-links');
 
-      menuToggle.addEventListener('click', () => {
-        navLinks.classList.toggle('active');
-        menuToggle.classList.toggle('open');
-      });
+      if (menuToggle) {
+        menuToggle.addEventListener('click', () => {
+          navLinks.classList.toggle('active');
+          menuToggle.classList.toggle('open');
+        });
+      }
 
       // Close menu when clicking on links
       document.querySelectorAll('.nav-links a').forEach(link => {
@@ -315,14 +1107,17 @@
           const targetId = this.getAttribute('href');
           const targetElement = document.querySelector(targetId);
 
-          window.scrollTo({
-            top: targetElement.offsetTop - 70,
-            behavior: 'smooth'
-          });
+          if (targetElement) {
+            window.scrollTo({
+              top: targetElement.offsetTop - 70,
+              behavior: 'smooth'
+            });
+          }
         });
       });
     });
   </script>
+
   <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -369,38 +1164,48 @@
     },
     {
       "@type": "OfferCatalog",
-      "name": "Skin & Massage Services",
+      "name": "Skin & Laser Services",
       "itemListElement": [
         {
           "@type": "Offer",
-          "itemOffered": {
-            "@type": "Service",
-            "name": "Swedish Massage",
-            "description": "Gentle full body massage to relax and improve circulation."
-          },
-          "priceSpecification": {"@type":"PriceSpecification","priceCurrency":"INR","minPrice":999,"maxPrice":1499}
-        },
-        {
-          "@type": "Offer",
-          "itemOffered": {"@type":"Service","name":"Deep Tissue Massage"},
+          "itemOffered": {"@type":"Service","name":"Skin Glow Therapy"},
           "priceSpecification": {"@type":"PriceSpecification","priceCurrency":"INR","minPrice":1299,"maxPrice":1799}
         },
         {
           "@type": "Offer",
-          "itemOffered": {"@type":"Service","name":"Hijama (Wet Cupping)"},
-          "priceSpecification": {"@type":"PriceSpecification","priceCurrency":"INR","minPrice":999,"maxPrice":1499}
+          "itemOffered": {"@type":"Service","name":"Anti Ageing Therapy"},
+          "priceSpecification": {"@type":"PriceSpecification","priceCurrency":"INR","minPrice":1499,"maxPrice":1999}
         },
         {
           "@type": "Offer",
-          "itemOffered": {"@type":"Service","name":"Dry Cupping"},
-          "priceSpecification": {"@type":"PriceSpecification","priceCurrency":"INR","minPrice":899,"maxPrice":1299}
+          "itemOffered": {"@type":"Service","name":"Acne Treatment"},
+          "priceSpecification": {"@type":"PriceSpecification","priceCurrency":"INR","minPrice":1199,"maxPrice":1599}
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {"@type":"Service","name":"Pigmentation Removal"},
+          "priceSpecification": {"@type":"PriceSpecification","priceCurrency":"INR","minPrice":1299,"maxPrice":1799}
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {"@type":"Service","name":"Carbon Facial"},
+          "priceSpecification": {"@type":"PriceSpecification","priceCurrency":"INR","minPrice":1499,"maxPrice":1999}
         },
         {
           "@type": "Offer",
           "itemOffered": {"@type":"Service","name":"Hydra Facial"},
           "priceSpecification": {"@type":"PriceSpecification","priceCurrency":"INR","minPrice":1799,"maxPrice":2499}
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {"@type":"Service","name":"Laser Hair Removal"},
+          "priceSpecification": {"@type":"PriceSpecification","priceCurrency":"INR","minPrice":999,"maxPrice":1999}
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {"@type":"Service","name":"Tattoo Removal"},
+          "priceSpecification": {"@type":"PriceSpecification","priceCurrency":"INR","minPrice":999,"maxPrice":2999}
         }
-        /* add other offers in same pattern as needed */
       ]
     },
     {
@@ -413,8 +1218,13 @@
         },
         {
           "@type": "Question",
-          "name": "Is Hijama (wet cupping) safe at home?",
-          "acceptedAnswer": {"@type":"Answer","text":"Yes — Hijama is performed by trained practitioners using sterile tools and following strict hygiene protocols. We recommend a consultation before the session."}
+          "name": "Are laser treatments safe at home?",
+          "acceptedAnswer": {"@type":"Answer","text":"Yes — All laser treatments are performed by trained practitioners using professional-grade equipment with safety protocols. We recommend a consultation before the session."}
+        },
+        {
+          "@type": "Question",
+          "name": "How many sessions are needed for best results?",
+          "acceptedAnswer": {"@type":"Answer","text":"The number of sessions varies by treatment type and individual skin condition. Most treatments require 4-8 sessions for optimal results."}
         }
       ]
     },
@@ -423,13 +1233,12 @@
       "itemListElement": [
         {"@type":"ListItem","position":1,"name":"Home","item":"https://avirahealthcentre.in/"},
         {"@type":"ListItem","position":2,"name":"Services","item":"https://avirahealthcentre.in/services/"},
-        {"@type":"ListItem","position":3,"name":"Skin & Massage","item":"https://avirahealthcentre.in/skin-services/"}
+        {"@type":"ListItem","position":3,"name":"Skin & Laser","item":"https://avirahealthcentre.in/skin-services/"}
       ]
     }
   ]
 }
 </script>
-
 
 </body>
 
