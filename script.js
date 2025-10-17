@@ -111,8 +111,62 @@ document.addEventListener("DOMContentLoaded", () => {
     appointmentForm.reset();
   });
 });
+// Static Diwali offers for your wellness center
+const staticDiwaliOffers = [
+  {
+    offer_id: 'DIWALI2025_MASSAGE',
+    title: '✨ Diwali Bliss Package',
+    subtitle: 'Relax & Rejuvenate This Festive Season',
+    description: 'Swedish Massage + Full Body Relaxation - Experience complete stress relief with aromatic oils and soothing strokes. Perfect way to unwind during festivities!',
+    price_before: '2998',
+    price_after: '₹1499',
+    discount: '50',
+    button_text: 'Book Your Relaxation',
+    image: 'https://images.pexels.com/photos/6629560/pexels-photo-6629560.jpeg',
+    valid_from: '2025-10-17',
+    valid_till: '2025-11-05'
+  },
+  {
+    offer_id: 'DIWALI2025_CUPPING',
+    title: '🪔 Traditional Hijama Special',
+    subtitle: 'Detox & Heal the Ancient Way',
+    description: 'Hijama Wet Cupping + Dry Cupping Combo - Cleanse your body with time-honored therapy. Boost circulation, relieve pain & feel revitalized!',
+    price_before: '2398',
+    price_after: '₹1599',
+    discount: '35',
+    button_text: 'Get Traditional Healing',
+    image: 'https://media.istockphoto.com/id/1906839618/photo/the-cupping-specialist-performs-vacuum-blood-suction-on-the-patients-skin.jpg?s=1024x1024&w=is&k=20&c=qTbkQNY5CYvnTVjSA1kY4gWRePK_M89mLNSaebJOaTc=',
+    valid_from: '2025-10-17',
+    valid_till: '2025-11-05'
+  },
+  {
+    offer_id: 'DIWALI2025_SKIN',
+    title: '🎆 Glow Like Diwali Lights',
+    subtitle: 'Premium Skin Radiance Package',
+    description: 'Hydra Facial + Carbon Facial - Get red carpet ready skin! Deep hydration, pore tightening & instant glow. Shine brighter than diyas this Diwali!',
+    price_before: '4498',
+    price_after: '₹2999',
+    discount: '33',
+    button_text: 'Get Festive Glow',
+    image: 'https://media.istockphoto.com/id/1172257016/photo/asian-woman-with-black-mask-on-face-with-surprised-emotionon-advertising-procedure-of-carbon.jpg?s=1024x1024&w=is&k=20&c=xJgnNN-3CMgvzeDQu8ci2KByLljC3yzEB633kCRqO7U=',
+    valid_from: '2025-10-17',
+    valid_till: '2025-11-05'
+  },
+  {
+    offer_id: 'DIWALI2025_COMBO',
+    title: '🌟 Ultimate Diwali Wellness',
+    subtitle: 'Complete Mind-Body Transformation',
+    description: 'Deep Tissue Massage + Skin Glow Therapy + Foot Reflexology - Full body wellness package for complete rejuvenation. Limited slots available!',
+    price_before: '4597',
+    price_after: '₹2999',
+    discount: '35',
+    button_text: 'Book Complete Package',
+    image: 'https://images.pexels.com/photos/6188038/pexels-photo-6188038.jpeg',
+    valid_from: '2025-10-17',
+    valid_till: '2025-11-05'
+  }
+];
 
-const offerURL = "https://my-backend-hsra.onrender.com/api/admin/offers";
 let slideInterval;
 
 async function loadOffers() {
@@ -133,19 +187,20 @@ async function loadOffers() {
   loadingDiv.style.zIndex = "10";
 
   loadingDiv.innerHTML = `
-        <div style="text-align:center;color:white">
-          <div class="loading-spinner"></div>
-          <p style="font-size:1.1rem;margin-top:15px;">Loading special offers...</p>
-        </div>
-      `;
+    <div style="text-align:center;color:white">
+      <div class="loading-spinner"></div>
+      <p style="font-size:1.1rem;margin-top:15px;">Loading Diwali special offers...</p>
+    </div>
+  `;
 
   heroSlider.appendChild(loadingDiv);
 
-  try {
-    const res = await fetch(offerURL);
-    if (!res.ok) throw new Error("Network response not ok");
+  // Simulate loading for smooth transition
+  await new Promise(resolve => setTimeout(resolve, 800));
 
-    const offers = await res.json();
+  try {
+    const offers = staticDiwaliOffers;
+    
     if (!offers.length) throw new Error("No offers available");
 
     // Clear loading state
@@ -155,9 +210,9 @@ async function loadOffers() {
     const navDiv = document.createElement("div");
     navDiv.className = "slider-nav";
     navDiv.innerHTML = `
-          <button id="prevSlide" aria-label="Previous slide">&lt;</button>
-          <button id="nextSlide" aria-label="Next slide">&gt;</button>
-        `;
+      <button id="prevSlide" aria-label="Previous slide">&lt;</button>
+      <button id="nextSlide" aria-label="Next slide">&gt;</button>
+    `;
     heroSlider.appendChild(navDiv);
 
     // Create dots container
@@ -182,46 +237,37 @@ async function loadOffers() {
         month: "short",
         year: "numeric",
       });
-      const bucketUrl = "https://storage.googleapis.com/avira-uploads";
 
+      // Set background image with overlay for text visibility
       slide.style.backgroundImage = offer.image
-        ? `linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('${offer.image}')`
+        ? `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.6)), url('${offer.image}')`
         : "linear-gradient(135deg, var(--secondary-color), #3498db)";
+      
+      slide.style.backgroundSize = "cover";
+      slide.style.backgroundPosition = "center";
+      slide.style.backgroundRepeat = "no-repeat";
 
       slide.innerHTML = `
-            <div class="slide-overlay">
-              <h1>${offer.title || "Special Offer"}</h1>
-              <div class="offer-subtitle">${
-                offer.subtitle || "Limited Time Offer"
-              }</div>
-              <p class="offer-description">${
-                offer.description || "Exclusive offer for our valued customers"
-              }</p>
-              <div class="price-container">
-                <span class="original-price">₹${
-                  offer.price_before || "0"
-                }</span>
-                <span class="discounted-price">${
-                  offer.price_after || "0"
-                }</span>
-                <span class="discount-badge">${
-                  offer.discount || "0"
-                }% OFF</span>
-              </div>
-              <div class="btn-container">
-                <a href="/booking-form.html?offer_id=${
-                  offer.offer_id
-                }" class="btn book" aria-label="Book appointment">
-  ${offer.button_text || "Book Now"}
-</a>
-
-                <a href="tel:+919545246708" class="btn call" aria-label="Call us now">
-                  Call Now
-                </a>
-              </div>
-              <div class="offer-validity">Valid: ${validFrom} to ${validTill}</div>
-            </div>
-          `;
+        <div class="slide-overlay">
+          <h1>${offer.title || "Special Offer"}</h1>
+          <div class="offer-subtitle">${offer.subtitle || "Limited Time Offer"}</div>
+          <p class="offer-description">${offer.description || "Exclusive offer for our valued customers"}</p>
+          <div class="price-container">
+            <span class="original-price">₹${offer.price_before || "0"}</span>
+            <span class="discounted-price">${offer.price_after || "0"}</span>
+            <span class="discount-badge">${offer.discount || "0"}% OFF</span>
+          </div>
+          <div class="btn-container">
+            <a href="/booking-form.html?offer_id=${offer.offer_id}" class="btn book" aria-label="Book appointment">
+              ${offer.button_text || "Book Now"}
+            </a>
+            <a href="tel:+919545246708" class="btn call" aria-label="Call us now">
+              Call Now
+            </a>
+          </div>
+          <div class="offer-validity">Valid: ${validFrom} to ${validTill}</div>
+        </div>
+      `;
 
       heroSlider.insertBefore(slide, dotsDiv);
 
@@ -243,19 +289,22 @@ async function loadOffers() {
 function showFallbackContent() {
   const heroSlider = document.getElementById("heroSlider");
   heroSlider.innerHTML = `
-        <div class="slide active" style="background: linear-gradient(135deg, var(--secondary-color), #3498db)">
-          <div class="slide-overlay">
-            <h1>Welcome to Avira Health Center</h1>
-            <div class="offer-subtitle">Holistic Wellness Solutions</div>
-            <p class="offer-description">Discover our range of healing services and special offers</p>
-            <div class="btn-container">
-              <a href="/booking-form.html" class="btn book" aria-label="Book appointment">Book Now</a>
-              <a href="tel:+919545246708" class="btn call" aria-label="Call us now">Call Now</a>
-            </div>
-          </div>
+    <div class="slide active" style="background: linear-gradient(135deg, var(--secondary-color), #3498db)">
+      <div class="slide-overlay">
+        <h1>Welcome to Avira Health Center</h1>
+        <div class="offer-subtitle">Holistic Wellness Solutions</div>
+        <p class="offer-description">Discover our range of healing services and special offers</p>
+        <div class="btn-container">
+          <a href="/booking-form.html" class="btn book" aria-label="Book appointment">Book Now</a>
+          <a href="tel:+919545246708" class="btn call" aria-label="Call us now">Call Now</a>
         </div>
-      `;
+      </div>
+    </div>
+  `;
 }
+
+// Initialize on page load
+document.addEventListener('DOMContentLoaded', loadOffers);
 
 function initSlider() {
   const slides = document.querySelectorAll(".slide");
