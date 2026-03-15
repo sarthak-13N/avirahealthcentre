@@ -6,39 +6,43 @@
 }
 
 :root {
-    --primary: #0a3d62;
-    --secondary: #0d8a72;
-    --accent: #ffd700;
-    --light: #f8f9fa;
-    --dark: #333333;
-    --text: #444444;
-    --gray: #6c757d;
+    --primary: #1a7470;
+    --secondary: #FF6B6B;
+    --accent: #FFB84D;
+    --light: #f5f9f8;
+    --dark: #1a1f22;
+    --text: #2d3436;
+    --gray: #65676b;
     --white: #ffffff;
-    --shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
-    --transition: all 0.3s ease;
-    --primary-color: #27ae60;
-    --primary-dark: #219653;
-    --secondary-color: #2c3e50;
-    --accent-color: #e74c3c;
-    --call-color: #3498db;
-    --call-dark: #2980b9;
+    --shadow: 0 8px 32px rgba(26, 116, 112, 0.12);
+    --shadow-lg: 0 12px 48px rgba(26, 116, 112, 0.15);
+    --transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    --gradient-primary: linear-gradient(135deg, #1a7470 0%, #0d5f5a 100%);
+    --gradient-warm: linear-gradient(135deg, #FF6B6B 0%, #FF8E72 100%);
+    --primary-color: #1a7470;
+    --primary-dark: #0d5f5a;
+    --secondary-color: #FF6B6B;
+    --accent-color: #FFB84D;
+    --call-color: #FF8E72;
+    --call-dark: #FF6B6B;
     --text-light: #ffffff;
     --text-dark: #2d3436;
-    --text-muted: #b2bec3;
-    --overlay-dark: rgba(151, 151, 151, 0.141);
-    --overlay-light: rgba(11, 11, 11, 0);
+    --text-muted: #65676b;
+    --overlay-dark: rgba(26, 116, 112, 0.15);
+    --overlay-light: rgba(26, 116, 112, 0.08);
     --border-radius: 12px;
-    --box-shadow: 0 12px 24px rgba(0, 0, 0, 0);
+    --box-shadow: 0 8px 32px rgba(26, 116, 112, 0.12);
 }
 
 body {
-    font-family: 'Open Sans', 'Segoe UI', 'Roboto', -apple-system, BlinkMacSystemFont, sans-serif;
-    background-color: var(--light);
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #f5f9f8 0%, #f0f8f6 100%);
     color: var(--text-dark);
-    line-height: 1.6;
+    line-height: 1.7;
     overflow-x: hidden;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    letter-spacing: 0.3px;
 }
 
 h1,
@@ -95,44 +99,42 @@ h5 {
 /* Buttons */
 .btn {
     display: inline-block;
-    padding: 12px 28px;
-    background: var(--secondary);
+    padding: 14px 32px;
+    background: var(--gradient-primary);
     color: var(--white);
     border-radius: 50px;
     text-decoration: none;
-    font-weight: 600;
+    font-weight: 700;
     transition: var(--transition);
     border: none;
     cursor: pointer;
-    text-transform: uppercase;
-    font-size: 14px;
-    letter-spacing: 1px;
-    box-shadow: var(--shadow);
+    font-size: 15px;
+    letter-spacing: 0.5px;
+    box-shadow: 0 4px 15px rgba(26, 116, 112, 0.3);
     position: relative;
     overflow: hidden;
     min-width: 180px;
 }
 
 .btn:hover {
-    background: #0a6a5a;
-    transform: translateY(-3px);
-    box-shadow: 0 8px 25px rgba(13, 138, 114, 0.4);
+    transform: translateY(-4px);
+    box-shadow: 0 8px 25px rgba(26, 116, 112, 0.4);
 }
 
 .btn::after {
     content: '';
     position: absolute;
     top: 0;
-    left: 0;
+    left: -100%;
     width: 100%;
     height: 100%;
-    background: linear-gradient(rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
-    opacity: 0;
-    transition: var(--transition);
+    background: rgba(255, 255, 255, 0.2);
+    transition: left 0.4s ease;
+    z-index: 1;
 }
 
 .btn:hover::after {
-    opacity: 1;
+    left: 100%;
 }
 
 .btn-accent {
@@ -363,15 +365,15 @@ h5 {
 }
 
 .slide-overlay {
-    background-color: var(--overlay-dark);
+    background: linear-gradient(135deg, rgba(26, 116, 112, 0.15), rgba(13, 95, 90, 0.2));
     padding: 60px 50px;
     border-radius: var(--border-radius);
     max-width: 900px;
     width: 90%;
     margin: 0 auto;
-    backdrop-filter: blur(2px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    box-shadow: var(--box-shadow);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
     text-align: center;
     animation: fadeInUp 0.8s cubic-bezier(0.22, 0.61, 0.36, 1);
 }
@@ -438,13 +440,14 @@ h5 {
 }
 
 .discount-badge {
-    background-color: var(--accent-color);
+    background: var(--gradient-warm);
     color: white;
-    padding: 8px 18px;
+    padding: 10px 20px;
     border-radius: 30px;
     font-weight: 700;
     font-size: 1.1rem;
     letter-spacing: 0.5px;
+    box-shadow: 0 4px 12px rgba(255, 107, 107, 0.3);
 }
 
 .offer-validity {
@@ -479,8 +482,8 @@ h5 {
 
 .slider-dot.active {
     background: var(--primary-color);
-    transform: scale(1.2);
-    box-shadow: 0 0 10px rgba(39, 174, 96, 0.6);
+    transform: scale(1.3);
+    box-shadow: 0 0 12px rgba(26, 116, 112, 0.7);
 }
 
 .slider-nav {
@@ -512,16 +515,18 @@ h5 {
 }
 
 .slider-nav button:hover {
-    background: rgba(0, 0, 0, 0.6);
-    transform: scale(1.1);
+    background: var(--gradient-primary);
+    transform: scale(1.15);
+    box-shadow: 0 4px 16px rgba(26, 116, 112, 0.3);
 }
 
 /* Emergency Banner */
 .emergency-banner {
-    background: linear-gradient(to right, var(--primary) 50%, var(--secondary) 50%);
+    background: var(--gradient-primary);
     color: var(--white);
-    padding: 20px 0;
+    padding: 30px 0;
     text-align: center;
+    box-shadow: 0 8px 24px rgba(26, 116, 112, 0.15);
 }
 
 .emergency-content {
@@ -529,22 +534,24 @@ h5 {
     justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
-    gap: 20px;
+    gap: 25px;
     padding: 20px 0;
 }
 
 .emergency-text h3 {
-    font-size: 24px;
-    margin-bottom: 10px;
+    font-size: 26px;
+    margin-bottom: 12px;
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 12px;
     color: var(--white);
+    font-weight: 700;
 }
 
 .emergency-text p {
     max-width: 600px;
-    color: #b4c7db;
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 16px;
 }
 
 /* Services Section */

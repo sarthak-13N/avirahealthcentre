@@ -142,10 +142,13 @@
 
     <style>
         :root {
-            --primary: #0f3057;
-            --secondary: #008891;
-            --accent: #e7e7de;
-            --gray: #444;
+            --primary: #1a7470;
+            --secondary: #FF6B6B;
+            --accent: #FFB84D;
+            --gray: #2d3436;
+            --light-bg: #f5f9f8;
+            --gradient-primary: linear-gradient(135deg, #1a7470 0%, #0d5f5a 100%);
+            --gradient-warm: linear-gradient(135deg, #FF6B6B 0%, #FF8E72 100%);
         }
 
         /* Modal Base */
@@ -239,13 +242,21 @@
         .submit-btn {
             width: 100%;
             padding: 14px;
-            background: linear-gradient(135deg, var(--secondary), var(--primary));
+            background: var(--gradient-primary);
             color: white;
             border: none;
             border-radius: 8px;
             font-size: 16px;
+            font-weight: 600;
             cursor: pointer;
             margin-top: 10px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(26, 116, 112, 0.3);
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(26, 116, 112, 0.4);
         }
 
         @keyframes modalFadeIn {
@@ -1022,7 +1033,8 @@
                     <h2>Enquire Now</h2>
                     <p>Please fill in the form and we’ll get back to you.</p>
                 </div>
-                <form id="enquiryForm">
+                <form id="enquiryForm" action="https://api.web3forms.com/submit" method="POST">
+                    <input type="hidden" name="access_key" value="31e51296-aeb7-47e6-95ec-8a071700672e">
                     <!-- Loader Spinner -->
                     <div id="enquiryLoader" style="display:none; text-align:center; margin-top:20px;">
                         <div class="spinner" style="

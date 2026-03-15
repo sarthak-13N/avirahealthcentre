@@ -28,7 +28,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 
   <!-- Styles -->
-  <link rel="stylesheet" href="/style.css" />
+  <link rel="stylesheet" href="style.css" />
 
   <!-- Favicon -->
   <link rel="icon" href="https://avirahealthcentre.in/logo1.ico" type="image/x-icon" />
@@ -36,11 +36,12 @@
 
   <style>
     :root {
-      /* Brand Colors from Logo */
-      --primary: #1a7a6e;
-      --primary-dark: #145e55;
-      --accent: #c9a77c;
-      --accent-light: #e5d4be;
+      /* Modern Brand Colors */
+      --primary: #1a7470;
+      --primary-dark: #0d5f5a;
+      --secondary: #FF6B6B;
+      --accent: #FFB84D;
+      --accent-light: #FFD180;
       
       /* Base Colors */
       --light: #ffffff;
@@ -55,8 +56,8 @@
       --bg-accent: #f8f6f3;
       
       /* Shadows */
-      --shadow-sm: 0 2px 8px rgba(26, 122, 110, 0.08);
-      --shadow-md: 0 4px 16px rgba(26, 122, 110, 0.12);
+      --shadow-sm: 0 2px 8px rgba(26, 116, 112, 0.08);
+      --shadow-md: 0 4px 16px rgba(26, 116, 112, 0.12);
       
       --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
       --border-radius: 12px;
@@ -1125,6 +1126,12 @@
 
     // Navigation
     document.addEventListener('DOMContentLoaded', () => {
+      // Initialize services display (show all by default)
+      const sections = document.querySelectorAll('.service-section');
+      sections.forEach(section => {
+        section.style.display = 'grid';
+      });
+
       // Mobile Menu Toggle
       const menuToggle = document.getElementById('mobile-menu');
       const navLinks = document.getElementById('nav-links');
@@ -1244,6 +1251,27 @@
       }
     ]
   }
+  </script>
+
+  <!-- Handle booking button clicks to pass service information -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const bookingButtons = document.querySelectorAll('.book-btn');
+      
+      bookingButtons.forEach(btn => {
+        btn.addEventListener('click', (e) => {
+          e.preventDefault();
+          // Get the closest service section
+          const serviceSection = btn.closest('.service-section');
+          if (serviceSection) {
+            // Extract service name from h2 or heading
+            const serviceName = serviceSection.querySelector('h2')?.textContent || 'Massage Service';
+            // Redirect with service name
+            window.location.href = `booking-form.html?service_name=${encodeURIComponent(serviceName)}`;
+          }
+        });
+      });
+    });
   </script>
 
 </body>

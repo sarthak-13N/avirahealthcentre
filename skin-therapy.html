@@ -1,47 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <!-- verification kept -->
+  <!-- keep verification -->
   <meta name="google-site-verification" content="TY1WotuHSxQZLJkQzO0O2_Z-ciY9GWzSUFvk4KmbvJQ" />
 
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <!-- SEO Title: short, keyword + brand -->
-  <title>Skin & Laser Services at Home in Pune — Avira Health Centre</title>
-
-  <!-- Concise meta description with local keywords (keep ~120-160 chars) -->
-  <meta name="description"
-    content="Avira Health Centre — certified at-home skin therapies, facials, laser & anti-aging treatments in Pune (Kothrud, Baner, Wakad, Pimpri, Viman Nagar, Koregaon Park & nearby). Book now." />
-
-  <!-- Ensure canonical is present -->
+  <title>Skin Therapies at Home in Pune — Avira Health Centre</title>
+  <meta name="description" content="Avira Health Centre provides certified at-home skin therapies in Pune — hydra facial, acne treatment, anti-aging care, pigmentation correction, glow therapy and more. Book now." />
   <link rel="canonical" href="https://avirahealthcentre.in/skin-services/" />
-
-  <!-- Robots -->
   <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large" />
 
   <!-- Open Graph / Twitter -->
-  <meta property="og:title" content="Avira Health Centre — Skin & Laser Services at Home in Pune" />
-  <meta property="og:description"
-    content="Certified home skin therapies, facials, laser, and anti-aging treatments across Pune neighbourhoods. Book Avira Health Centre." />
-  <meta property="og:image" content="https://avirahealthcentre.in/assets/logo1.jpg" />
+  <meta property="og:title" content="Skin Therapies at Home — Avira Health Centre, Pune" />
+  <meta property="og:description" content="Certified at-home facial, laser and anti-aging skin therapies across Pune. Safe, hygienic, trained practitioners — call to book." />
+  <meta property="og:image" content="https://avirahealthcentre.in/assets/skin-preview.jpg" />
   <meta property="og:url" content="https://avirahealthcentre.in/skin-services/" />
-  <meta property="og:type" content="website" />
   <meta name="twitter:card" content="summary_large_image" />
 
-  <!-- Preconnect for performance -->
+  <!-- Performance -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
-  <!-- Fonts & icons -->
-  <link
-    href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700&display=swap"
-    rel="stylesheet" />
+  <!-- Fonts & Icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 
   <!-- Styles -->
-  <link rel="stylesheet" href="/style.css" />
+  <link rel="stylesheet" href="style.css" />
 
   <!-- Favicon -->
   <link rel="icon" href="https://avirahealthcentre.in/logo1.ico" type="image/x-icon" />
@@ -49,11 +36,12 @@
 
   <style>
     :root {
-      /* Brand Colors from Logo */
-      --primary: #1a7a6e;
-      --primary-dark: #145e55;
-      --accent: #c9a77c;
-      --accent-light: #e5d4be;
+      /* Modern Brand Colors */
+      --primary: #1a7470;
+      --primary-dark: #0d5f5a;
+      --secondary: #FF6B6B;
+      --accent: #FFB84D;
+      --accent-light: #FFD180;
       
       /* Base Colors */
       --light: #ffffff;
@@ -68,8 +56,8 @@
       --bg-accent: #f8f6f3;
       
       /* Shadows */
-      --shadow-sm: 0 2px 8px rgba(26, 122, 110, 0.08);
-      --shadow-md: 0 4px 16px rgba(26, 122, 110, 0.12);
+      --shadow-sm: 0 2px 8px rgba(26, 116, 112, 0.08);
+      --shadow-md: 0 4px 16px rgba(26, 116, 112, 0.12);
       
       --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
       --border-radius: 12px;
@@ -270,7 +258,7 @@
 
     .service-meta {
       display: flex;
-      gap: 25px;
+      gap: 30px;
       margin-bottom: 30px;
       flex-wrap: wrap;
     }
@@ -281,15 +269,23 @@
       gap: 10px;
       color: var(--text-primary);
       font-weight: 500;
-      background: var(--bg-accent);
-      padding: 10px 20px;
-      border-radius: 30px;
-      border: 1px solid var(--accent-light);
     }
 
     .meta-item i {
       color: var(--primary);
-      font-size: 1.2rem;
+      font-size: 1.3rem;
+    }
+
+    .meta-item .price {
+      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+      color: var(--light);
+      padding: 8px 20px;
+      border-radius: 30px;
+      font-weight: 600;
+    }
+
+    .meta-item .duration {
+      color: var(--text-secondary);
     }
 
     /* Benefits Grid */
@@ -482,7 +478,6 @@
 
 <body>
 
-  <!-- Navbar -->
   <nav class="navbar">
     <div class="logo">
       <img src="logo.jpg" alt="Avira Health Centre Logo" />
@@ -526,21 +521,21 @@
   <!-- Hero Section -->
   <section class="hero-section">
     <div class="hero-content">
-      <h1>Professional Skin & Laser Therapies at Home</h1>
-      <p>Experience advanced skin treatments with certified professionals delivering cutting-edge facials, laser therapies, and anti-aging solutions in the comfort of your home across Pune</p>
+      <h1>Professional Skin Therapies at Home</h1>
+      <p>Experience advanced skin care and rejuvenation with our certified professionals in the comfort of your home across Pune</p>
       
       <div class="hero-badges">
         <div class="badge">
-          <i class="fas fa-award"></i>
-          <span>Advanced Technology</span>
-        </div>
-        <div class="badge">
-          <i class="fas fa-user-md"></i>
-          <span>Expert Practitioners</span>
+          <i class="fas fa-certificate"></i>
+          <span>Certified Skin Experts</span>
         </div>
         <div class="badge">
           <i class="fas fa-home"></i>
           <span>At-Home Service</span>
+        </div>
+        <div class="badge">
+          <i class="fas fa-star"></i>
+          <span>Premium Quality</span>
         </div>
       </div>
     </div>
@@ -574,49 +569,49 @@
             
             <div class="service-meta">
               <div class="meta-item">
-                <i class="far fa-clock"></i>
-                <span>60-75 minutes</span>
+                <i class="fas fa-rupee-sign"></i>
+                <span class="price">₹1299 - ₹1799</span>
               </div>
               <div class="meta-item">
-                <i class="fas fa-spa"></i>
-                <span>All Skin Types</span>
+                <i class="far fa-clock"></i>
+                <span class="duration">60-75 minutes</span>
               </div>
             </div>
 
             <p class="description">
-              A luxurious facial treatment designed to restore radiance and deeply hydrate the skin. Using a sophisticated combination of cleansing, exfoliation, and nourishing masks, this therapy enhances skin tone, reduces dullness, and promotes a healthy, luminous glow. Infused with serums rich in vitamins and powerful antioxidants, it is ideal for all skin types seeking a refreshed, radiant complexion. The relaxing session requires no downtime and leaves your skin feeling soft, supple, and beautifully rejuvenated. This treatment combines multiple steps including gentle cleansing to remove impurities, professional exfoliation to slough away dead skin cells, application of targeted serums to address specific concerns, and finishing with nourishing masks that lock in moisture and nutrients for lasting radiance.
+              A classic relaxation technique using long flowing strokes, kneading and circular movements with light to medium pressure. This therapy enhances blood circulation, reduces muscle tension and promotes a deep sense of calm. Perfect for beginners or those seeking stress relief, the session takes place in a soothing environment with aromatic oils, leaving you refreshed, balanced and revitalized.
             </p>
 
             <div class="benefits-grid">
               <div class="benefit-item">
                 <i class="fas fa-check-circle"></i>
-                <span>Restores natural radiance</span>
+                <span>Enhances blood circulation</span>
               </div>
               <div class="benefit-item">
                 <i class="fas fa-check-circle"></i>
-                <span>Deep hydration</span>
+                <span>Reduces muscle tension</span>
               </div>
               <div class="benefit-item">
                 <i class="fas fa-check-circle"></i>
-                <span>Reduces dullness</span>
+                <span>Promotes deep relaxation</span>
               </div>
               <div class="benefit-item">
                 <i class="fas fa-check-circle"></i>
-                <span>Enhances skin tone</span>
+                <span>Reduces anxiety levels</span>
               </div>
               <div class="benefit-item">
                 <i class="fas fa-check-circle"></i>
-                <span>No downtime required</span>
+                <span>Improves sleep quality</span>
               </div>
               <div class="benefit-item">
                 <i class="fas fa-check-circle"></i>
-                <span>Suitable for all skin types</span>
+                <span>Boosts immune system</span>
               </div>
             </div>
 
             <a href="booking-form.html" class="book-btn">
               <i class="fas fa-calendar-check"></i>
-              Book This Treatment
+              Book This Service
             </a>
           </div>
         </div>
@@ -634,49 +629,49 @@
             
             <div class="service-meta">
               <div class="meta-item">
-                <i class="far fa-clock"></i>
-                <span>60-90 minutes</span>
+                <i class="fas fa-rupee-sign"></i>
+                <span class="price">₹1499 - ₹1999</span>
               </div>
               <div class="meta-item">
-                <i class="fas fa-heart"></i>
-                <span>Mature Skin</span>
+                <i class="far fa-clock"></i>
+                <span class="duration">60-90 minutes</span>
               </div>
             </div>
 
             <p class="description">
-              This advanced treatment targets visible signs of aging such as fine lines, wrinkles, and sagging skin using a sophisticated combination of premium serums, microcurrents, or state-of-the-art laser technology. By stimulating natural collagen production and significantly improving skin elasticity, it restores a youthful, vibrant appearance. Ideal for mature skin, the therapy is completely non-invasive with no downtime required, and delivers noticeable, impressive results over multiple sessions. Expect a deeply relaxing experience with smoother, firmer skin as the outcome. The treatment works at cellular level to rejuvenate skin structure, repair damage, and promote long-term improvement in skin quality and appearance.
+              This intensive therapy uses slow deliberate strokes and firm pressure to target deeper muscle and connective tissue layers. Ideal for chronic pain, muscle stiffness or post-injury recovery, it realigns muscle fibers, releases tension and improves mobility. Expect some discomfort as tight areas are worked on, but the result is profound relief, reduced inflammation and enhanced flexibility.
             </p>
 
             <div class="benefits-grid">
               <div class="benefit-item">
                 <i class="fas fa-check-circle"></i>
-                <span>Reduces fine lines & wrinkles</span>
+                <span>Relieves chronic pain</span>
               </div>
               <div class="benefit-item">
                 <i class="fas fa-check-circle"></i>
-                <span>Stimulates collagen production</span>
+                <span>Breaks down scar tissue</span>
               </div>
               <div class="benefit-item">
                 <i class="fas fa-check-circle"></i>
-                <span>Improves skin elasticity</span>
+                <span>Improves mobility</span>
               </div>
               <div class="benefit-item">
                 <i class="fas fa-check-circle"></i>
-                <span>Non-invasive procedure</span>
+                <span>Reduces inflammation</span>
               </div>
               <div class="benefit-item">
                 <i class="fas fa-check-circle"></i>
-                <span>Restores youthful appearance</span>
+                <span>Enhances flexibility</span>
               </div>
               <div class="benefit-item">
                 <i class="fas fa-check-circle"></i>
-                <span>No downtime required</span>
+                <span>Speeds up recovery</span>
               </div>
             </div>
 
             <a href="booking-form.html" class="book-btn">
               <i class="fas fa-calendar-check"></i>
-              Book This Treatment
+              Book This Service
             </a>
           </div>
         </div>
@@ -694,49 +689,49 @@
             
             <div class="service-meta">
               <div class="meta-item">
-                <i class="far fa-clock"></i>
-                <span>45-60 minutes</span>
+                <i class="fas fa-rupee-sign"></i>
+                <span class="price">₹1199 - ₹1599</span>
               </div>
               <div class="meta-item">
-                <i class="fas fa-shield-alt"></i>
-                <span>Acne-Prone Skin</span>
+                <i class="far fa-clock"></i>
+                <span class="duration">45-60 minutes</span>
               </div>
             </div>
 
             <p class="description">
-              A specialized treatment expertly designed to combat acne and effectively prevent future breakouts. Using comprehensive deep cleansing, professional exfoliation, and targeted serums, this therapy significantly reduces oil production, unclogs pores, and soothes inflammation. Suitable for oily or acne-prone skin, it includes professional extractions performed with precision and calming masks to promote healing and restore balance. The non-invasive session minimizes redness, reduces active breakouts, and leaves your skin clearer, smoother, and healthier with consistent sessions. The treatment addresses both current acne concerns and underlying causes to provide long-term improvement and prevention of future breakouts.
+              Rooted in ancient Thai traditions, this dynamic therapy blends yoga-like assisted stretching, acupressure and rhythmic compressions to enhance flexibility, improve joint mobility and balance energy flow. Performed on a mat with the client fully clothed, the therapist guides you through stretches, making it a unique combination of massage and guided yoga.
             </p>
 
             <div class="benefits-grid">
               <div class="benefit-item">
                 <i class="fas fa-check-circle"></i>
-                <span>Combats active acne</span>
+                <span>Improves flexibility</span>
               </div>
               <div class="benefit-item">
                 <i class="fas fa-check-circle"></i>
-                <span>Prevents future breakouts</span>
+                <span>Enhances joint mobility</span>
               </div>
               <div class="benefit-item">
                 <i class="fas fa-check-circle"></i>
-                <span>Reduces oil production</span>
+                <span>Balances energy flow</span>
               </div>
               <div class="benefit-item">
                 <i class="fas fa-check-circle"></i>
-                <span>Unclogs pores</span>
+                <span>Reduces stress levels</span>
               </div>
               <div class="benefit-item">
                 <i class="fas fa-check-circle"></i>
-                <span>Soothes inflammation</span>
+                <span>Boosts circulation</span>
               </div>
               <div class="benefit-item">
                 <i class="fas fa-check-circle"></i>
-                <span>Professional extractions</span>
+                <span>Increases energy</span>
               </div>
             </div>
 
             <a href="booking-form.html" class="book-btn">
               <i class="fas fa-calendar-check"></i>
-              Book This Treatment
+              Book This Service
             </a>
           </div>
         </div>
@@ -754,49 +749,49 @@
             
             <div class="service-meta">
               <div class="meta-item">
-                <i class="far fa-clock"></i>
-                <span>45-60 minutes</span>
+                <i class="fas fa-rupee-sign"></i>
+                <span class="price">₹1299 - ₹1799</span>
               </div>
               <div class="meta-item">
-                <i class="fas fa-bolt"></i>
-                <span>Laser Technology</span>
+                <i class="far fa-clock"></i>
+                <span class="duration">45-60 minutes</span>
               </div>
             </div>
 
             <p class="description">
-              This advanced treatment uses cutting-edge laser technology or professional-grade chemical peels to effectively target hyperpigmentation, dark spots, and uneven skin tone. By breaking down excess melanin deposits in the skin, it restores a balanced, uniform complexion and significantly enhances skin clarity. Ideal for addressing sun damage, melasma, or post-acne marks, the therapy is safe, precisely controlled, and customized to your specific skin type and concerns. Multiple sessions may be required for optimal, long-lasting results, with minimal downtime and a visibly brighter, more even-toned complexion. The treatment penetrates deep into skin layers to address pigmentation at its source.
+              Tailored for athletes and active individuals, this therapy combines deep tissue techniques, stretching and trigger point therapy to enhance performance, prevent injuries and speed up recovery. It targets specific muscle groups to alleviate soreness, improve flexibility and reduce the risk of strains. Customized to your activity level, the session ensures optimal muscle health.
             </p>
 
             <div class="benefits-grid">
               <div class="benefit-item">
                 <i class="fas fa-check-circle"></i>
-                <span>Reduces dark spots</span>
+                <span>Enhances athletic performance</span>
               </div>
               <div class="benefit-item">
                 <i class="fas fa-check-circle"></i>
-                <span>Evens skin tone</span>
+                <span>Prevents injuries</span>
               </div>
               <div class="benefit-item">
                 <i class="fas fa-check-circle"></i>
-                <span>Treats sun damage</span>
+                <span>Speeds up recovery</span>
               </div>
               <div class="benefit-item">
                 <i class="fas fa-check-circle"></i>
-                <span>Targets melasma</span>
+                <span>Reduces muscle soreness</span>
               </div>
               <div class="benefit-item">
                 <i class="fas fa-check-circle"></i>
-                <span>Fades post-acne marks</span>
+                <span>Improves flexibility</span>
               </div>
               <div class="benefit-item">
                 <i class="fas fa-check-circle"></i>
-                <span>Customized treatment</span>
+                <span>Boosts endurance</span>
               </div>
             </div>
 
             <a href="booking-form.html" class="book-btn">
               <i class="fas fa-calendar-check"></i>
-              Book This Treatment
+              Book This Service
             </a>
           </div>
         </div>
@@ -814,49 +809,49 @@
             
             <div class="service-meta">
               <div class="meta-item">
-                <i class="far fa-clock"></i>
-                <span>30-45 minutes</span>
+                <i class="fas fa-rupee-sign"></i>
+                <span class="price">₹1499 - ₹1999</span>
               </div>
               <div class="meta-item">
-                <i class="fas fa-star"></i>
-                <span>Celebrity Treatment</span>
+                <i class="far fa-clock"></i>
+                <span class="duration">30-45 minutes</span>
               </div>
             </div>
 
             <p class="description">
-              Known as the Hollywood Facial, this innovative treatment applies a specialized carbon-based lotion to the skin followed by precise laser energy to exfoliate dead skin cells, reduce acne, and tighten pores. The laser breaks down the carbon particles, effectively removing impurities deep within pores and stimulating collagen production for smoother, brighter, more youthful skin. Ideal for oily or acne-prone skin, this completely painless procedure delivers an instant, noticeable glow with absolutely no downtime, making it perfect for quick skin rejuvenation before important events or special occasions. The treatment provides immediate visible results that continue to improve over following days.
+              This targeted therapy focuses on releasing muscle knots or trigger points, which are tight spots causing localized or referred pain. Using precise sustained pressure, the therapist deactivates these points, restoring muscle function and improving range of motion. Ideal for chronic pain, tension headaches or restricted mobility.
             </p>
 
             <div class="benefits-grid">
               <div class="benefit-item">
                 <i class="fas fa-check-circle"></i>
-                <span>Instant glow & radiance</span>
+                <span>Releases muscle knots</span>
               </div>
               <div class="benefit-item">
                 <i class="fas fa-check-circle"></i>
-                <span>Tightens enlarged pores</span>
+                <span>Relieves referred pain</span>
               </div>
               <div class="benefit-item">
                 <i class="fas fa-check-circle"></i>
-                <span>Reduces acne</span>
+                <span>Restores muscle function</span>
               </div>
               <div class="benefit-item">
                 <i class="fas fa-check-circle"></i>
-                <span>Exfoliates dead cells</span>
+                <span>Improves range of motion</span>
               </div>
               <div class="benefit-item">
                 <i class="fas fa-check-circle"></i>
-                <span>No downtime</span>
+                <span>Reduces tension headaches</span>
               </div>
               <div class="benefit-item">
                 <i class="fas fa-check-circle"></i>
-                <span>Perfect pre-event treatment</span>
+                <span>Alleviates chronic pain</span>
               </div>
             </div>
 
             <a href="booking-form.html" class="book-btn">
               <i class="fas fa-calendar-check"></i>
-              Book This Treatment
+              Book This Service
             </a>
           </div>
         </div>
@@ -874,54 +869,54 @@
             
             <div class="service-meta">
               <div class="meta-item">
-                <i class="far fa-clock"></i>
-                <span>60-75 minutes</span>
+                <i class="fas fa-rupee-sign"></i>
+                <span class="price">₹1799 - ₹2499</span>
               </div>
               <div class="meta-item">
-                <i class="fas fa-water"></i>
-                <span>Hydration Therapy</span>
+                <i class="far fa-clock"></i>
+                <span class="duration">60-75 minutes</span>
               </div>
             </div>
 
             <p class="description">
-              A comprehensive multi-step facial that thoroughly cleanses, exfoliates, and intensely hydrates using a specialized medical-grade device. It gently extracts impurities from deep within pores while simultaneously infusing powerful serums packed with antioxidants, peptides, and hyaluronic acid for maximum skin benefits. Suitable for all skin types and concerns, this therapy effectively reduces fine lines, dramatically improves texture, and delivers a radiant, youthful glow. The relaxing, completely non-invasive procedure requires no downtime, leaving your skin feeling refreshed, deeply hydrated, and visibly rejuvenated after just one comprehensive session. Results are immediate and continue to improve with regular treatments.
+              A gentle rhythmic massage that stimulates the lymphatic system to remove toxins, reduce swelling and enhance immune function. Using light precise strokes, the therapist encourages lymph flow to eliminate excess fluid and waste. Ideal for bloating, post-surgery swelling or a sluggish immune system, this non-invasive therapy is deeply relaxing.
             </p>
 
             <div class="benefits-grid">
               <div class="benefit-item">
                 <i class="fas fa-check-circle"></i>
-                <span>Deep cleansing & extraction</span>
+                <span>Removes toxins</span>
               </div>
               <div class="benefit-item">
                 <i class="fas fa-check-circle"></i>
-                <span>Intense hydration</span>
+                <span>Reduces swelling</span>
               </div>
               <div class="benefit-item">
                 <i class="fas fa-check-circle"></i>
-                <span>Reduces fine lines</span>
+                <span>Boosts immune function</span>
               </div>
               <div class="benefit-item">
                 <i class="fas fa-check-circle"></i>
-                <span>Improves skin texture</span>
+                <span>Improves skin health</span>
               </div>
               <div class="benefit-item">
                 <i class="fas fa-check-circle"></i>
-                <span>Infuses powerful serums</span>
+                <span>Reduces puffiness</span>
               </div>
               <div class="benefit-item">
                 <i class="fas fa-check-circle"></i>
-                <span>Instant radiant glow</span>
+                <span>Enhances energy levels</span>
               </div>
             </div>
 
             <a href="booking-form.html" class="book-btn">
               <i class="fas fa-calendar-check"></i>
-              Book This Treatment
+              Book This Service
             </a>
           </div>
         </div>
 
-        <!-- Service 7: Hair Removal -->
+        <!-- Service 7: Laser Hair Removal -->
         <div class="service-section" data-category="laser">
           <div class="service-image-wrapper">
             <img src="https://images.unsplash.com/photo-1519415510236-718bdfcd89c8?w=1200" alt="Laser Hair Removal" loading="lazy">
@@ -934,49 +929,49 @@
             
             <div class="service-meta">
               <div class="meta-item">
-                <i class="far fa-clock"></i>
-                <span>20-60 minutes</span>
+                <i class="fas fa-rupee-sign"></i>
+                <span class="price">₹999 - ₹1999</span>
               </div>
               <div class="meta-item">
-                <i class="fas fa-magic"></i>
-                <span>Long-term Results</span>
+                <i class="far fa-clock"></i>
+                <span class="duration">20-60 minutes</span>
               </div>
             </div>
 
             <p class="description">
-              This state-of-the-art laser treatment precisely targets hair follicles to significantly reduce unwanted hair growth permanently. The advanced laser's controlled energy safely disables follicles without harming surrounding skin tissue, making it suitable for various areas including the face, underarms, legs, bikini line, and more. Virtually painless and highly effective, it requires multiple sessions spaced appropriately for optimal, long-lasting results, delivering smoother skin with minimal ongoing maintenance. Ideal for those seeking a permanent, professional solution to unwanted hair, this treatment offers freedom from constant shaving, waxing, or plucking. Results improve progressively with each session.
+              A comprehensive massage designed to melt away stress and tension across the entire body. Using a blend of gentle strokes, kneading and light pressure, this therapy promotes deep relaxation, improves circulation and eases muscle soreness. Performed with calming essential oils in a tranquil setting, it is perfect for those seeking a holistic escape from daily stress.
             </p>
 
             <div class="benefits-grid">
               <div class="benefit-item">
                 <i class="fas fa-check-circle"></i>
-                <span>Permanent hair reduction</span>
+                <span>Melts away stress</span>
               </div>
               <div class="benefit-item">
                 <i class="fas fa-check-circle"></i>
-                <span>Virtually painless</span>
+                <span>Promotes deep relaxation</span>
               </div>
               <div class="benefit-item">
                 <i class="fas fa-check-circle"></i>
-                <span>Suitable for all areas</span>
+                <span>Improves circulation</span>
               </div>
               <div class="benefit-item">
                 <i class="fas fa-check-circle"></i>
-                <span>Safe for all skin types</span>
+                <span>Eases muscle soreness</span>
               </div>
               <div class="benefit-item">
                 <i class="fas fa-check-circle"></i>
-                <span>Minimal maintenance</span>
+                <span>Enhances well-being</span>
               </div>
               <div class="benefit-item">
                 <i class="fas fa-check-circle"></i>
-                <span>Professional precision</span>
+                <span>Restores balance</span>
               </div>
             </div>
 
             <a href="booking-form.html" class="book-btn">
               <i class="fas fa-calendar-check"></i>
-              Book This Treatment
+              Book This Service
             </a>
           </div>
         </div>
@@ -994,49 +989,109 @@
             
             <div class="service-meta">
               <div class="meta-item">
-                <i class="far fa-clock"></i>
-                <span>15-45 minutes</span>
+                <i class="fas fa-rupee-sign"></i>
+                <span class="price">₹999 - ₹2999</span>
               </div>
               <div class="meta-item">
-                <i class="fas fa-eraser"></i>
-                <span>Laser Technology</span>
+                <i class="far fa-clock"></i>
+                <span class="duration">15-45 minutes</span>
               </div>
             </div>
 
             <p class="description">
-              Using advanced, FDA-approved laser technology, this treatment safely and effectively breaks down tattoo ink particles, allowing the body to naturally eliminate them over time through its lymphatic system. Suitable for all skin types and most tattoo colors, it requires multiple sessions based on the tattoo's size, depth, color complexity, and age. The process is safe, controlled, with minimal discomfort, and includes comprehensive aftercare instructions to ensure optimal healing and results. Perfect for removing or significantly lightening unwanted tattoos with professional care, precision, and noticeable, progressive results. Each session brings visible improvement as ink gradually fades.
+              This focused therapy targets the back, neck and shoulders—common areas for stress and tension buildup. Using a combination of deep tissue techniques and soothing strokes, the therapist relieves muscle stiffness, improves posture and alleviates pain caused by prolonged sitting or physical strain. Ideal for office workers or those with chronic upper body discomfort.
             </p>
 
             <div class="benefits-grid">
               <div class="benefit-item">
                 <i class="fas fa-check-circle"></i>
-                <span>Safe ink removal</span>
+                <span>Relieves neck tension</span>
               </div>
               <div class="benefit-item">
                 <i class="fas fa-check-circle"></i>
-                <span>Works on all colors</span>
+                <span>Reduces back pain</span>
               </div>
               <div class="benefit-item">
                 <i class="fas fa-check-circle"></i>
-                <span>Suitable for all skin types</span>
+                <span>Improves posture</span>
               </div>
               <div class="benefit-item">
                 <i class="fas fa-check-circle"></i>
-                <span>Minimal discomfort</span>
+                <span>Alleviates stiffness</span>
               </div>
               <div class="benefit-item">
                 <i class="fas fa-check-circle"></i>
-                <span>Progressive fading</span>
+                <span>Restores mobility</span>
               </div>
               <div class="benefit-item">
                 <i class="fas fa-check-circle"></i>
-                <span>Professional aftercare</span>
+                <span>Perfect for desk workers</span>
               </div>
             </div>
 
             <a href="booking-form.html" class="book-btn">
               <i class="fas fa-calendar-check"></i>
-              Book This Treatment
+              Book This Service
+            </a>
+          </div>
+        </div>
+
+        <!-- Service 9: Medifacial Rejuvenation -->
+        <div class="service-section" data-category="antiaging">
+          <div class="service-image-wrapper">
+            <img src="https://images.unsplash.com/photo-1519824145371-296894a0daa9?w=1200" alt="Medifacial Rejuvenation" loading="lazy">
+            <span class="service-badge">Skin Renewal</span>
+          </div>
+          <div class="service-content">
+            <span class="service-number">09</span>
+            <h2>Medifacial Rejuvenation</h2>
+            <p class="tagline">Clinical facial for texture and tone improvement</p>
+            
+            <div class="service-meta">
+              <div class="meta-item">
+                <i class="fas fa-rupee-sign"></i>
+                <span class="price">₹1599 - ₹2499</span>
+              </div>
+              <div class="meta-item">
+                <i class="far fa-clock"></i>
+                <span class="duration">45-75 minutes</span>
+              </div>
+            </div>
+
+            <p class="description">
+              A therapeutic technique that applies pressure to specific points on the feet corresponding to different body systems to promote relaxation and balance. Based on ancient reflexology principles, this therapy relieves foot pain, reduces stress and improves overall well-being by stimulating nerve endings. Performed with soothing oils or lotions, it is ideal for those on their feet all day.
+            </p>
+
+            <div class="benefits-grid">
+              <div class="benefit-item">
+                <i class="fas fa-check-circle"></i>
+                <span>Relieves foot pain</span>
+              </div>
+              <div class="benefit-item">
+                <i class="fas fa-check-circle"></i>
+                <span>Reduces stress</span>
+              </div>
+              <div class="benefit-item">
+                <i class="fas fa-check-circle"></i>
+                <span>Improves circulation</span>
+              </div>
+              <div class="benefit-item">
+                <i class="fas fa-check-circle"></i>
+                <span>Balances body systems</span>
+              </div>
+              <div class="benefit-item">
+                <i class="fas fa-check-circle"></i>
+                <span>Stimulates nerve endings</span>
+              </div>
+              <div class="benefit-item">
+                <i class="fas fa-check-circle"></i>
+                <span>Quick rejuvenation</span>
+              </div>
+            </div>
+
+            <a href="booking-form.html" class="book-btn">
+              <i class="fas fa-calendar-check"></i>
+              Book This Service
             </a>
           </div>
         </div>
@@ -1071,6 +1126,12 @@
 
     // Navigation
     document.addEventListener('DOMContentLoaded', () => {
+      // Initialize services display (show all by default)
+      const sections = document.querySelectorAll('.service-section');
+      sections.forEach(section => {
+        section.style.display = 'grid';
+      });
+
       // Mobile Menu Toggle
       const menuToggle = document.getElementById('mobile-menu');
       const navLinks = document.getElementById('nav-links');
@@ -1119,127 +1180,99 @@
   </script>
 
   <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "LocalBusiness",
-      "@id": "https://avirahealthcentre.in/#avira",
-      "name": "Avira Health Centre",
-      "url": "https://avirahealthcentre.in/",
-      "logo": "https://avirahealthcentre.in/assets/logo1.jpg",
-      "image": "https://avirahealthcentre.in/assets/logo1.jpg",
-      "telephone": "+91 9545246708",
-      "address": {
-        "@type": "PostalAddress",
-        "streetAddress": "Kothrud",
-        "addressLocality": "Pune",
-        "addressRegion": "Maharashtra",
-        "postalCode": "411038",
-        "addressCountry": "IN"
+  {
+    "@context":"https://schema.org",
+    "@graph":[
+      {
+        "@type":"LocalBusiness",
+        "@id":"https://avirahealthcentre.in/#avira",
+        "name":"Avira Health Centre",
+        "url":"https://avirahealthcentre.in/",
+        "logo":"https://avirahealthcentre.in/assets/logo1.jpg",
+        "image":"https://avirahealthcentre.in/assets/skin-preview.jpg",
+        "telephone":"+91 9545246708",
+        "address":{
+          "@type":"PostalAddress",
+          "streetAddress":"Kothrud",
+          "addressLocality":"Pune",
+          "addressRegion":"Maharashtra",
+          "postalCode":"411038",
+          "addressCountry":"IN"
+        },
+        "geo":{"@type":"GeoCoordinates","latitude":18.5204,"longitude":73.8567},
+        "areaServed":[
+          {"@type":"Place","name":"Kothrud"},
+          {"@type":"Place","name":"Bavdhan"},
+          {"@type":"Place","name":"Baner"},
+          {"@type":"Place","name":"Pashan"},
+          {"@type":"Place","name":"Wakad"},
+          {"@type":"Place","name":"Hinjewadi"},
+          {"@type":"Place","name":"Pimpri"},
+          {"@type":"Place","name":"Viman Nagar"},
+          {"@type":"Place","name":"Koregaon Park"}
+        ],
+        "openingHours":"Mo-Su 09:00-21:00",
+        "priceRange":"₹799 - ₹2999",
+        "sameAs":[
+          "https://www.instagram.com/avirahealthcentre",
+          "https://www.facebook.com/Avira-skin-health-centre-100072040299747",
+          "https://www.linkedin.com/company/avira-health-center"
+        ]
       },
-      "geo": {
-        "@type": "GeoCoordinates",
-        "latitude": 18.5204,
-        "longitude": 73.8567
+      {
+        "@type":"OfferCatalog",
+        "name":"Skin Therapy Services",
+        "itemListElement":[
+          {"@type":"Offer","itemOffered":{"@type":"Service","name":"Skin Glow Therapy"},"priceSpecification":{"@type":"PriceSpecification","priceCurrency":"INR","minPrice":1299,"maxPrice":1799}},
+          {"@type":"Offer","itemOffered":{"@type":"Service","name":"Anti Ageing Therapy"},"priceSpecification":{"@type":"PriceSpecification","priceCurrency":"INR","minPrice":1499,"maxPrice":1999}},
+          {"@type":"Offer","itemOffered":{"@type":"Service","name":"Acne Treatment"},"priceSpecification":{"@type":"PriceSpecification","priceCurrency":"INR","minPrice":1199,"maxPrice":1599}},
+          {"@type":"Offer","itemOffered":{"@type":"Service","name":"Pigmentation Removal"},"priceSpecification":{"@type":"PriceSpecification","priceCurrency":"INR","minPrice":1299,"maxPrice":1799}},
+          {"@type":"Offer","itemOffered":{"@type":"Service","name":"Carbon Facial"},"priceSpecification":{"@type":"PriceSpecification","priceCurrency":"INR","minPrice":1499,"maxPrice":1999}},
+          {"@type":"Offer","itemOffered":{"@type":"Service","name":"Hydra Facial"},"priceSpecification":{"@type":"PriceSpecification","priceCurrency":"INR","minPrice":1799,"maxPrice":2499}},
+          {"@type":"Offer","itemOffered":{"@type":"Service","name":"Laser Hair Removal"},"priceSpecification":{"@type":"PriceSpecification","priceCurrency":"INR","minPrice":999,"maxPrice":1999}},
+          {"@type":"Offer","itemOffered":{"@type":"Service","name":"Tattoo Removal"},"priceSpecification":{"@type":"PriceSpecification","priceCurrency":"INR","minPrice":999,"maxPrice":2999}},
+          {"@type":"Offer","itemOffered":{"@type":"Service","name":"Medifacial Rejuvenation"},"priceSpecification":{"@type":"PriceSpecification","priceCurrency":"INR","minPrice":1599,"maxPrice":2499}}
+        ]
       },
-      "areaServed": [
-        {"@type":"Place","name":"Kothrud"},
-        {"@type":"Place","name":"Bavdhan"},
-        {"@type":"Place","name":"Baner"},
-        {"@type":"Place","name":"Pashan"},
-        {"@type":"Place","name":"Wakad"},
-        {"@type":"Place","name":"Hinjewadi"},
-        {"@type":"Place","name":"Pimpri"},
-        {"@type":"Place","name":"Viman Nagar"},
-        {"@type":"Place","name":"Koregaon Park"}
-      ],
-      "openingHours": "Mo-Su 09:00-21:00",
-      "priceRange": "₹799 - ₹2999",
-      "sameAs": [
-        "https://www.instagram.com/avirahealthcentre",
-        "https://www.facebook.com/Avira-skin-health-centre-100072040299747",
-        "https://www.linkedin.com/company/avira-health-center"
-      ]
-    },
-    {
-      "@type": "OfferCatalog",
-      "name": "Skin & Laser Services",
-      "itemListElement": [
-        {
-          "@type": "Offer",
-          "itemOffered": {"@type":"Service","name":"Skin Glow Therapy"},
-          "priceSpecification": {"@type":"PriceSpecification","priceCurrency":"INR","minPrice":1299,"maxPrice":1799}
-        },
-        {
-          "@type": "Offer",
-          "itemOffered": {"@type":"Service","name":"Anti Ageing Therapy"},
-          "priceSpecification": {"@type":"PriceSpecification","priceCurrency":"INR","minPrice":1499,"maxPrice":1999}
-        },
-        {
-          "@type": "Offer",
-          "itemOffered": {"@type":"Service","name":"Acne Treatment"},
-          "priceSpecification": {"@type":"PriceSpecification","priceCurrency":"INR","minPrice":1199,"maxPrice":1599}
-        },
-        {
-          "@type": "Offer",
-          "itemOffered": {"@type":"Service","name":"Pigmentation Removal"},
-          "priceSpecification": {"@type":"PriceSpecification","priceCurrency":"INR","minPrice":1299,"maxPrice":1799}
-        },
-        {
-          "@type": "Offer",
-          "itemOffered": {"@type":"Service","name":"Carbon Facial"},
-          "priceSpecification": {"@type":"PriceSpecification","priceCurrency":"INR","minPrice":1499,"maxPrice":1999}
-        },
-        {
-          "@type": "Offer",
-          "itemOffered": {"@type":"Service","name":"Hydra Facial"},
-          "priceSpecification": {"@type":"PriceSpecification","priceCurrency":"INR","minPrice":1799,"maxPrice":2499}
-        },
-        {
-          "@type": "Offer",
-          "itemOffered": {"@type":"Service","name":"Laser Hair Removal"},
-          "priceSpecification": {"@type":"PriceSpecification","priceCurrency":"INR","minPrice":999,"maxPrice":1999}
-        },
-        {
-          "@type": "Offer",
-          "itemOffered": {"@type":"Service","name":"Tattoo Removal"},
-          "priceSpecification": {"@type":"PriceSpecification","priceCurrency":"INR","minPrice":999,"maxPrice":2999}
-        }
-      ]
-    },
-    {
-      "@type": "FAQPage",
-      "mainEntity": [
-        {
-          "@type": "Question",
-          "name": "Do you provide home service in Baner and Kothrud?",
-          "acceptedAnswer": {"@type":"Answer","text":"Yes — Avira Health Centre offers certified at-home therapies across Baner, Kothrud and most Pune neighbourhoods. Call +91 9545246708 to book."}
-        },
-        {
-          "@type": "Question",
-          "name": "Are laser treatments safe at home?",
-          "acceptedAnswer": {"@type":"Answer","text":"Yes — All laser treatments are performed by trained practitioners using professional-grade equipment with safety protocols. We recommend a consultation before the session."}
-        },
-        {
-          "@type": "Question",
-          "name": "How many sessions are needed for best results?",
-          "acceptedAnswer": {"@type":"Answer","text":"The number of sessions varies by treatment type and individual skin condition. Most treatments require 4-8 sessions for optimal results."}
-        }
-      ]
-    },
-    {
-      "@type": "BreadcrumbList",
-      "itemListElement": [
-        {"@type":"ListItem","position":1,"name":"Home","item":"https://avirahealthcentre.in/"},
-        {"@type":"ListItem","position":2,"name":"Services","item":"https://avirahealthcentre.in/services/"},
-        {"@type":"ListItem","position":3,"name":"Skin & Laser","item":"https://avirahealthcentre.in/skin-services/"}
-      ]
-    }
-  ]
-}
-</script>
+      {
+        "@type":"FAQPage",
+        "mainEntity":[
+          {"@type":"Question","name":"How long is a typical skin therapy session?","acceptedAnswer":{"@type":"Answer","text":"Most sessions last 45–75 minutes depending on treatment type and skin concerns."}},
+          {"@type":"Question","name":"Are products and devices included in home sessions?","acceptedAnswer":{"@type":"Answer","text":"Yes — our experts bring professional products and required devices based on the booked skin treatment."}}
+        ]
+      },
+      {
+        "@type":"BreadcrumbList",
+        "itemListElement":[
+          {"@type":"ListItem","position":1,"name":"Home","item":"https://avirahealthcentre.in/"},
+          {"@type":"ListItem","position":2,"name":"Services","item":"https://avirahealthcentre.in/services/"},
+          {"@type":"ListItem","position":3,"name":"Skin Therapy Services","item":"https://avirahealthcentre.in/skin-services/"}
+        ]
+      }
+    ]
+  }
+  </script>
+
+  <!-- Handle booking button clicks to pass service information -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const bookingButtons = document.querySelectorAll('.book-btn');
+      
+      bookingButtons.forEach(btn => {
+        btn.addEventListener('click', (e) => {
+          e.preventDefault();
+          // Get the closest service section
+          const serviceSection = btn.closest('.service-section');
+          if (serviceSection) {
+            // Extract service name from h2 or heading
+            const serviceName = serviceSection.querySelector('h2')?.textContent || 'Skin Therapy Service';
+            // Redirect with service name
+            window.location.href = `booking-form.html?service_name=${encodeURIComponent(serviceName)}`;
+          }
+        });
+      });
+    });
+  </script>
 
 </body>
-
 </html>

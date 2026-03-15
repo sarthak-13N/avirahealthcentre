@@ -394,70 +394,107 @@
 
   <!-- Script -->
   <script>
-    document.addEventListener('DOMContentLoaded', async () => {
+    // Static service data - no backend needed
+    const staticServices = {
+      'massage': {
+        title: 'Professional Massage Therapy',
+        card_description: 'Swedish, Deep Tissue, Thai, and therapeutic massages at home',
+        big_description: 'Experience the healing power of professional massage therapy. Our certified therapists offer Swedish, Deep Tissue, Thai, Sports, Trigger Point, Lymphatic Drainage, and Reflexology treatments at your home in Pune.',
+        min_price: 799,
+        max_price: 2999,
+        service_id: 'massage',
+        card_image: 'https://images.pexels.com/photos/3808517/pexels-photo-3808517.jpeg',
+        image1: 'https://images.pexels.com/photos/6629560/pexels-photo-6629560.jpeg',
+        image2: 'https://images.pexels.com/photos/3807517/pexels-photo-3807517.jpeg',
+        image3: null,
+        image4: null,
+        image5: null,
+        image6: null
+      },
+      'hijama': {
+        title: 'Hijama & Cupping Therapy',
+        card_description: 'Traditional Hijama, Dry, Fire, and Facial Cupping',
+        big_description: 'Discover the ancient healing art of cupping therapy. We offer Hijama wet cupping, dry cupping, fire cupping, moving cupping, and facial cupping performed by certified practitioners using hygienic, sterilized equipment.',
+        min_price: 999,
+        max_price: 2499,
+        service_id: 'hijama',
+        card_image: 'https://media.istockphoto.com/id/1906839618/photo/the-cupping-specialist-performs-vacuum-blood-suction-on-the-patients-skin.jpg',
+        image1: 'https://media.istockphoto.com/id/1172257016/photo/asian-woman-with-black-mask-on-face-with-surprised-emotionon-advertising-procedure-of-carbon.jpg',
+        image2: null,
+        image3: null,
+        image4: null,
+        image5: null,
+        image6: null
+      },
+      'facial': {
+        title: 'Advanced Skin & Facial Treatments',
+        card_description: 'Hydra Facials, Carbon Laser, Anti-aging treatments',
+        big_description: 'Transform your skin with our advanced facial and laser treatments. We offer Hydra Facials, Carbon Facials, HydraFacial MD, acne removal, pigmentation treatment, anti-aging therapy, and more.',
+        min_price: 1499,
+        max_price: 4999,
+        service_id: 'facial',
+        card_image: 'https://media.istockphoto.com/id/1172257016/photo/asian-woman-with-black-mask-on-face-with-surprised-emotionon-advertising-procedure-of-carbon.jpg',
+        image1: 'https://images.pexels.com/photos/3873017/pexels-photo-3873017.jpeg',
+        image2: null,
+        image3: null,
+        image4: null,
+        image5: null,
+        image6: null
+      }
+    };
+
+    document.addEventListener('DOMContentLoaded', () => {
       const params = new URLSearchParams(window.location.search);
       const id = params.get('id');
       const container = document.getElementById('serviceDetails');
 
-      if (!id) {
+      if (!id || !staticServices[id]) {
         container.innerHTML = `
           <div class="error">
             <i class="fas fa-exclamation-triangle"></i>
-            Service ID not found in URL.
+            Service not found. Please select a service from our offerings.
           </div>`;
         return;
       }
 
-      try {
-        const res = await fetch(`https://my-backend-hsra.onrender.com/api/admin/services/${id}`);
-        if (!res.ok) throw new Error('Service not found');
+      const service = staticServices[id];
+      const images = [service.image1, service.image2, service.image3, service.image4, service.image5, service.image6]
+        .filter(img => img !== null)
+        .map(img => `<img src="${img}" alt="${service.title} image" />`)
+        .join('');
 
-        const service = await res.json();
-        const images = [service.image1, service.image2, service.image3, service.image4, service.image5, service.image6]
-          .filter(img => img !== null)
-          .map(img => `<img src="${img}" alt="${service.title} image" />`)
-          .join('');
+      container.innerHTML = `
+        <div class="card">
+          <img class="main-img" src="${service.card_image}" alt="${service.title}" />
+          <div class="card-body">
+            <h1>${service.title}</h1>
+            <p class="description">${service.big_description || service.card_description || 'No description available.'}</p>
+            <p class="price-range">
+              <i class="fas fa-tag"></i>
+              Price: ₹${parseFloat(service.min_price).toFixed(0)} - ₹${parseFloat(service.max_price).toFixed(0)}
+            </p>
 
-        container.innerHTML = `
-          <div class="card">
-            <img class="main-img" src="${service.card_image}" alt="${service.title}" />
-            <div class="card-body">
-              <h1>${service.title}</h1>
-              <p class="description">${service.big_description || service.card_description || 'No description available.'}</p>
-              <p class="price-range">
-                <i class="fas fa-tag"></i>
-                Price: ₹${parseFloat(service.min_price).toFixed(0)} - ₹${parseFloat(service.max_price).toFixed(0)}
-              </p>
+            ${images ? `
+              <h2 style="color: var(--secondary); margin-top: 30px; font-size: 1.5rem;">
+                <i class="fas fa-images" style="margin-right: 10px;"></i>Gallery
+              </h2>
+              <div class="gallery">${images}</div>
+            ` : ''}
 
-              ${images ? `
-                <h2 style="color: var(--secondary); margin-top: 30px; font-size: 1.5rem;">
-                  <i class="fas fa-images" style="margin-right: 10px;"></i>Gallery
-                </h2>
-                <div class="gallery">${images}</div>
-              ` : ''}
-
-              <div class="button-group">
-                <a href="tel:+919545246708" class="btn btn-call">
-                  <i class="fas fa-phone-alt"></i> Call Now
-                </a>
-                <a href="booking-form.html?service_id=${service.service_id}" class="btn btn-book">
-                  <i class="fas fa-calendar-check"></i> Book Now
-                </a>
-                <a href="https://wa.me/919545246708?text=Hi%2C%20I%20want%20to%20book%20the%20${encodeURIComponent(service.title)}%20service." class="btn btn-whatsapp" target="_blank">
-                  <i class="fab fa-whatsapp"></i> WhatsApp
-                </a>
-              </div>
+            <div class="button-group">
+              <a href="tel:+919545246708" class="btn btn-call">
+                <i class="fas fa-phone-alt"></i> Call Now
+              </a>
+              <a href="booking-form.html?service_id=${service.service_id}" class="btn btn-book">
+                <i class="fas fa-calendar-check"></i> Book Now
+              </a>
+              <a href="https://wa.me/919545246708?text=Hi%2C%20I%20want%20to%20book%20the%20${encodeURIComponent(service.title)}%20service." class="btn btn-whatsapp" target="_blank">
+                <i class="fab fa-whatsapp"></i> WhatsApp
+              </a>
             </div>
           </div>
-        `;
-      } catch (err) {
-        console.error(err);
-        container.innerHTML = `
-          <div class="error">
-            <i class="fas fa-exclamation-circle"></i>
-            Failed to load service details. Please try again later.
-          </div>`;
-      }
+        </div>
+      `;
     });
 
     document.addEventListener('DOMContentLoaded', () => {

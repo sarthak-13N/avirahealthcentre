@@ -111,59 +111,59 @@ document.addEventListener("DOMContentLoaded", () => {
     appointmentForm.reset();
   });
 });
-// Static Diwali offers for your wellness center
+// Fresh Spring 2026 Wellness Offers for your health center
 const staticDiwaliOffers = [
   {
-    offer_id: 'DIWALI2025_MASSAGE',
-    title: '✨ Diwali Bliss Package',
-    subtitle: 'Relax & Rejuvenate This Festive Season',
-    description: 'Swedish Massage + Full Body Relaxation - Experience complete stress relief with aromatic oils and soothing strokes. Perfect way to unwind during festivities!',
-    price_before: '2998',
-    price_after: '₹1499',
+    offer_id: 'SPRING2026_DETOX',
+    title: '🌿 Spring Detox Wellness',
+    subtitle: 'Refresh Your Body & Mind',
+    description: 'Hijama Cupping + Lymphatic Drainage Massage - Cleanse your system and boost immunity with our detox combination therapy. Start your spring renewal today!',
+    price_before: '3499',
+    price_after: '₹1799',
+    discount: '48',
+    button_text: 'Book Detox Session',
+    image: 'https://imgs.search.brave.com/O5UcXMP-xqMNTtjXziGGC01wPBd4qg-rul5HlYw_Fi0/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly93d3cu/bmF0dXJhbGV0b3Vj/aHNwYXRpcXVlLmNv/bS9pbWFnZXMvRGV0/b3hSZWxheFVud2lu/ZF9zdG9uZXMuanBn',
+    valid_from: '2026-03-15',
+    valid_till: '2026-04-15'
+  },
+  {
+    offer_id: 'SPRING2026_STRESS',
+    title: '✨ Stress Relief Bundle',
+    subtitle: 'Deep Relaxation & Healing',
+    description: 'Swedish Massage + Aromatherapy + Hot Stone Therapy - Melt away stress and tension with our premium relaxation package. Perfect for mental clarity!',
+    price_before: '3998',
+    price_after: '₹1999',
     discount: '50',
-    button_text: 'Book Your Relaxation',
+    button_text: 'Book Relaxation',
     image: 'https://images.pexels.com/photos/6629560/pexels-photo-6629560.jpeg',
-    valid_from: '2025-10-17',
-    valid_till: '2025-11-05'
+    valid_from: '2026-03-15',
+    valid_till: '2026-04-15'
   },
   {
-    offer_id: 'DIWALI2025_CUPPING',
-    title: '🪔 Traditional Hijama Special',
-    subtitle: 'Detox & Heal the Ancient Way',
-    description: 'Hijama Wet Cupping + Dry Cupping Combo - Cleanse your body with time-honored therapy. Boost circulation, relieve pain & feel revitalized!',
-    price_before: '2398',
-    price_after: '₹1599',
-    discount: '35',
-    button_text: 'Get Traditional Healing',
-    image: 'https://media.istockphoto.com/id/1906839618/photo/the-cupping-specialist-performs-vacuum-blood-suction-on-the-patients-skin.jpg?s=1024x1024&w=is&k=20&c=qTbkQNY5CYvnTVjSA1kY4gWRePK_M89mLNSaebJOaTc=',
-    valid_from: '2025-10-17',
-    valid_till: '2025-11-05'
+    offer_id: 'SPRING2026_BEAUTY',
+    title: '💎 Radiant Skin Transformation',
+    subtitle: 'Glow From Within',
+    description: 'HydraFacial + Laser Skin Rejuvenation + Anti-Aging Serum Treatment - Achieve luminous, youthful skin with our advanced aesthetic therapies!',
+    price_before: '5499',
+    price_after: '₹2799',
+    discount: '49',
+    button_text: 'Book Beauty Session',
+    image: 'https://imgs.search.brave.com/Pcp2wAuhRKkKcV1w4hlOGvYsOLEwh19GtmXLbLxvL5g/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9zbXl0/dGVuLmNvbS9ibG9n/cy9fbmV4dC9pbWFn/ZT91cmw9aHR0cHM6/Ly9kMW1zZXc5N3Jw/Mm5pbi5jbG91ZGZy/b250Lm5ldC9wcm9k/aW4vc215dHRlbnNo/b3AvYmxvZ2ltYWdl/cy8xLUgtOTFkM2Nj/MzktNTk3YS00NTdm/LTk0ZDUtNTIzYjE4/ZTA1MzUyLndlYnAm/dz0zODQwJnE9NzU',
+    valid_from: '2026-03-15',
+    valid_till: '2026-04-15'
   },
   {
-    offer_id: 'DIWALI2025_SKIN',
-    title: '🎆 Glow Like Diwali Lights',
-    subtitle: 'Premium Skin Radiance Package',
-    description: 'Hydra Facial + Carbon Facial - Get red carpet ready skin! Deep hydration, pore tightening & instant glow. Shine brighter than diyas this Diwali!',
-    price_before: '4498',
-    price_after: '₹2999',
-    discount: '33',
-    button_text: 'Get Festive Glow',
-    image: 'https://media.istockphoto.com/id/1172257016/photo/asian-woman-with-black-mask-on-face-with-surprised-emotionon-advertising-procedure-of-carbon.jpg?s=1024x1024&w=is&k=20&c=xJgnNN-3CMgvzeDQu8ci2KByLljC3yzEB633kCRqO7U=',
-    valid_from: '2025-10-17',
-    valid_till: '2025-11-05'
-  },
-  {
-    offer_id: 'DIWALI2025_COMBO',
-    title: '🌟 Ultimate Diwali Wellness',
-    subtitle: 'Complete Mind-Body Transformation',
-    description: 'Deep Tissue Massage + Skin Glow Therapy + Foot Reflexology - Full body wellness package for complete rejuvenation. Limited slots available!',
-    price_before: '4597',
-    price_after: '₹2999',
-    discount: '35',
-    button_text: 'Book Complete Package',
+    offer_id: 'SPRING2026_COMPLETE',
+    title: '🎯 Complete Wellness Transformation',
+    subtitle: 'Holistic Mind-Body Rejuvenation',
+    description: 'Deep Tissue Massage + Detox Cupping + Facial Treatment + Reflexology - Our ultimate wellness package for total health restoration and vitality!',
+    price_before: '5997',
+    price_after: '₹2899',
+    discount: '52',
+    button_text: 'Book Wellness Package',
     image: 'https://images.pexels.com/photos/6188038/pexels-photo-6188038.jpeg',
-    valid_from: '2025-10-17',
-    valid_till: '2025-11-05'
+    valid_from: '2026-03-15',
+    valid_till: '2026-04-15'
   }
 ];
 
@@ -189,7 +189,7 @@ async function loadOffers() {
   loadingDiv.innerHTML = `
     <div style="text-align:center;color:white">
       <div class="loading-spinner"></div>
-      <p style="font-size:1.1rem;margin-top:15px;">Loading Diwali special offers...</p>
+      <p style="font-size:1.1rem;margin-top:15px;">Loading Spring Wellness Offers...</p>
     </div>
   `;
 
@@ -258,7 +258,7 @@ async function loadOffers() {
             <span class="discount-badge">${offer.discount || "0"}% OFF</span>
           </div>
           <div class="btn-container">
-            <a href="/booking-form.html?offer_id=${offer.offer_id}" class="btn book" aria-label="Book appointment">
+            <a href="booking-form.html?offer_id=${offer.offer_id}" class="btn book" aria-label="Book appointment">
               ${offer.button_text || "Book Now"}
             </a>
             <a href="tel:+919545246708" class="btn call" aria-label="Call us now">
@@ -417,37 +417,35 @@ window.onload = function () {
 
       const loader = document.getElementById("enquiryLoader");
       loader.style.display = "block"; // Show loader
+      
       const formData = new FormData(this);
-      const data = {
-        name: formData.get("name"),
-        email: formData.get("email"),
-        phone: formData.get("phone"),
-        message: formData.get("message"),
-      };
+      const data = Object.fromEntries(formData);
 
       try {
-        const response = await fetch(
-          "https://my-backend-hsra.onrender.com/api/enquiry",
-          {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify(data),
-          }
-        );
+        // Submit to Web3Forms API
+        const response = await fetch("https://api.web3forms.com/submit", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "Accept": "application/json",
+          },
+          body: JSON.stringify(data),
+        });
 
-        const result = await response.json();
         loader.style.display = "none"; // Hide loader
+        
+        const result = await response.json();
+        
         if (response.ok) {
-          alert(result.msg);
+          alert("✅ Thank you for your enquiry! Our team will contact you at " + data.phone + " shortly to discuss your wellness needs.");
           this.reset();
           closeEnquiryModal();
         } else {
-          alert(result.msg);
+          alert("❌ Something went wrong. Please try again.");
         }
       } catch (err) {
-        alert("❌ Something went wrong!");
+        loader.style.display = "none"; // Hide loader
+        alert("❌ Something went wrong! Please try again later.");
         console.error(err);
       }
     });

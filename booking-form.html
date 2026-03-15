@@ -383,31 +383,46 @@ const dateInput = document.getElementById('appointment_date');
 const timeInput = document.getElementById('appointment_time');
 const messageBox = document.getElementById('message');
 
-const params = new URLSearchParams(window.location.search);
-const serviceId = params.get('service_id');
-const offerId = params.get('offer_id');
-
-// 🔄 Load either service or offer title
+// 🔄 Load either service or offer title (Static - No Backend)
 async function loadTherapyDetails() {
   try {
-    if (offerId) {
-      const res = await fetch(`https://my-backend-hsra.onrender.com/api/admin/offers/${offerId}`);
-      if (!res.ok) throw new Error('Offer not found');
-      const offer = await res.json();
-      serviceNameInput.value = offer.title || 'Offer Therapy';
-      serviceIdInput.value = `OFFER-${offer.offer_id}`;
-    } else if (serviceId) {
-      const res = await fetch(`https://my-backend-hsra.onrender.com/api/admin/services/${serviceId}`);
-      if (!res.ok) throw new Error('Therapy not found');
-      const service = await res.json();
-      serviceNameInput.value = service.title || 'Selected Therapy';
-      serviceIdInput.value = service.service_id;
+    const params = new URLSearchParams(window.location.search);
+    const serviceId = params.get('service_id');
+    const offerId = params.get('offer_id');
+    const serviceName = params.get('service_name');
+    
+    // Static therapy/offer titles
+    const staticOffers = {
+      'SPRING2026_DETOX': '🌿 Spring Detox Wellness - Hijama + Massage',
+      'SPRING2026_STRESS': '✨ Stress Relief Bundle - Swedish Massage + Aromatherapy',
+      'SPRING2026_BEAUTY': '💎 Radiant Skin Transformation - HydraFacial + Skin Rejuvenation',
+      'SPRING2026_COMPLETE': '🎯 Complete Wellness Transformation - Full Body Treatment'
+    };
+    
+    const staticServices = {
+      'massage': 'Swedish Massage Therapy',
+      'hijama': 'Hijama Cupping Therapy',
+      'facial': 'Facial Treatment',
+      'deep_tissue': 'Deep Tissue Massage',
+      'reflexology': 'Foot Reflexology'
+    };
+    
+    // Check if service name was passed directly (from therapy pages)
+    if (serviceName) {
+      serviceNameInput.value = serviceName;
+      serviceIdInput.value = serviceName.toLowerCase().replace(/[^\w\s]/g, '').replace(/\s+/g, '_');
+    } else if (offerId && staticOffers[offerId]) {
+      serviceNameInput.value = staticOffers[offerId];
+      serviceIdInput.value = offerId;
+    } else if (serviceId && staticServices[serviceId]) {
+      serviceNameInput.value = staticServices[serviceId];
+      serviceIdInput.value = serviceId;
     } else {
-      serviceNameInput.value = "No therapy selected";
+      serviceNameInput.value = params.toString() ? "Selected Therapy" : "No therapy selected";
     }
   } catch (err) {
     console.error(err);
-    serviceNameInput.value = "Failed to load therapy";
+    serviceNameInput.value = "Avira Health Centre Therapy";
   }
 }
 
@@ -442,10 +457,10 @@ document.addEventListener('DOMContentLoaded', async () => {
 dateInput.addEventListener('change', updateMessage);
 timeInput.addEventListener('change', updateMessage);
 
-// 📩 Submit form
+// 📩 Submit form (Static - No Backend)
 form.addEventListener('submit', async (e) => {
   e.preventDefault();
-  statusMsg.innerHTML = '<div class="loader">Submitting your appointment...</div>';
+  statusMsg.innerHTML = '<div class="loader">Processing your appointment...</div>';
 
   const formData = new FormData(form);
   const data = Object.fromEntries(formData.entries());
@@ -455,24 +470,17 @@ form.addEventListener('submit', async (e) => {
     return;
   }
 
+  // Simulate processing delay
+  await new Promise(resolve => setTimeout(resolve, 1000));
+
   try {
-    const res = await fetch('https://my-backend-hsra.onrender.com/api/book-appointment', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(data)
-    });
-
-    const result = await res.json();
-
-    if (res.ok) {
-      form.reset();
-      statusMsg.innerHTML = `<div class="success">✅ ${result.msg}</div>`;
-      setTimeout(() => {
-        window.location.href = 'index.html';
-      }, 3000);
-    } else {
-      statusMsg.innerHTML = `<div class="error">❌ ${result.msg}</div>`;
-    }
+    // Static success response - no backend call
+    form.reset();
+    statusMsg.innerHTML = `<div class="success">✅ Thank you! Your appointment request has been received.<br><br>Our coordinator will call you at <strong>${data.phone}</strong> within 30 minutes to confirm your booking.<br><br>Service: ${data.services}<br>Date: ${data.appointment_date}<br>Time: ${data.appointment_time}</div>`;
+    
+    setTimeout(() => {
+      window.location.href = 'index.html';
+    }, 4000);
   } catch (err) {
     console.error(err);
     statusMsg.innerHTML = `<div class="error">❌ Something went wrong. Please try again later.</div>`;
