@@ -265,7 +265,7 @@
   </nav>
 
   <!-- WhatsApp Floating Button -->
-<a href="https://wa.me/919545246708" target="_blank"
+<a href="https://wa.me/919370187966" target="_blank"
    style="
      position: fixed;
      bottom: 20px;
@@ -314,7 +314,7 @@
         </li>
       </ul>
 
-      <a href="tel:+919545246708" class="btn-call">
+      <a href="tel:+919370187966" class="btn-call">
         <i class="fas fa-phone-alt"></i> IMMEDIATE BOOKING
       </a>
     </div>
@@ -457,7 +457,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 dateInput.addEventListener('change', updateMessage);
 timeInput.addEventListener('change', updateMessage);
 
-// 📩 Submit form (Static - No Backend)
+// 📩 Submit form to Web3Forms (sends email)
 form.addEventListener('submit', async (e) => {
   e.preventDefault();
   statusMsg.innerHTML = '<div class="loader">Processing your appointment...</div>';
@@ -470,11 +470,23 @@ form.addEventListener('submit', async (e) => {
     return;
   }
 
-  // Simulate processing delay
-  await new Promise(resolve => setTimeout(resolve, 1000));
-
   try {
-    // Static success response - no backend call
+    // Required fields for Web3Forms email delivery
+    formData.append('access_key', '31e51296-aeb7-47e6-95ec-8a071700672e');
+    formData.append('subject', `New Appointment Booking: ${data.services || 'Therapy'}`);
+    formData.append('from_name', 'Avira Health Centre Booking Form');
+
+    const response = await fetch('https://api.web3forms.com/submit', {
+      method: 'POST',
+      body: formData
+    });
+
+    const result = await response.json();
+
+    if (!response.ok || !result.success) {
+      throw new Error(result.message || 'Submission failed');
+    }
+
     form.reset();
     statusMsg.innerHTML = `<div class="success">✅ Thank you! Your appointment request has been received.<br><br>Our coordinator will call you at <strong>${data.phone}</strong> within 30 minutes to confirm your booking.<br><br>Service: ${data.services}<br>Date: ${data.appointment_date}<br>Time: ${data.appointment_time}</div>`;
     

@@ -261,7 +261,7 @@ async function loadOffers() {
             <a href="booking-form.html?offer_id=${offer.offer_id}" class="btn book" aria-label="Book appointment">
               ${offer.button_text || "Book Now"}
             </a>
-            <a href="tel:+919545246708" class="btn call" aria-label="Call us now">
+            <a href="tel:+919370187966" class="btn call" aria-label="Call us now">
               Call Now
             </a>
           </div>
@@ -296,7 +296,7 @@ function showFallbackContent() {
         <p class="offer-description">Discover our range of healing services and special offers</p>
         <div class="btn-container">
           <a href="/booking-form.html" class="btn book" aria-label="Book appointment">Book Now</a>
-          <a href="tel:+919545246708" class="btn call" aria-label="Call us now">Call Now</a>
+          <a href="tel:+919370187966" class="btn call" aria-label="Call us now">Call Now</a>
         </div>
       </div>
     </div>
